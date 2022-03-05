@@ -28,8 +28,6 @@ namespace Programming.View
             {
                 SeasonComboBox.Items.Add(value);
             }
-            Logo rig = new Logo();
-            label1.Text = rig.GetLogo();
         }
 
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
