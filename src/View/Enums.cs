@@ -6,8 +6,8 @@ namespace Programming.View
 {
     public enum Enums
     {
-        Colour,
-        FormOfStudy,
+        Color,
+        EducationForm,
         Genre,
         Manufacturers,
         Season,

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Programming.Model.Enums;
+using Color = Programming.Model.Enums.Color;
 
 namespace Programming.View
 {
@@ -16,12 +17,12 @@ namespace Programming.View
         public MainForm()
         {
             InitializeComponent();
-            var AllEnums = Enum.GetValues(typeof(Enums));
-            foreach(var _enum in AllEnums)
+            var allEnums = Enum.GetValues(typeof(Enums));
+            foreach(var enumValue in allEnums)
             {
-                EnumsListBox.Items.Add(_enum);
+                EnumsListBox.Items.Add(enumValue);
             }
-            EnumsListBox.SetSelected(0, true);
+            EnumsListBox.SelectedIndex = 0;
 
             var valuseSeasons = Enum.GetValues(typeof(Season));
             foreach (var value in valuseSeasons)
@@ -33,33 +34,33 @@ namespace Programming.View
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();
-            var SelectEnum = (Enums)EnumsListBox.SelectedIndex;
-            Array Values;
-            switch (SelectEnum)
+            var selectEnum = (Enums)EnumsListBox.SelectedIndex;
+            Array values;
+            switch (selectEnum)
             {
-                case Enums.Colour:
-                    Values = Enum.GetValues(typeof(Colour));
+                case Enums.Color:
+                    values = Enum.GetValues(typeof(Color));
                     break;
-                case Enums.FormOfStudy:
-                    Values = Enum.GetValues(typeof(FormOfStudy));
+                case Enums.EducationForm:
+                    values = Enum.GetValues(typeof(EducationForm));
                     break;
                 case Enums.Genre:
-                    Values = Enum.GetValues(typeof(Genre));
+                    values = Enum.GetValues(typeof(Genre));
                     break;
                 case Enums.Manufacturers:
-                    Values = Enum.GetValues(typeof(Manufacturers));
+                    values = Enum.GetValues(typeof(Manufacturers));
                     break;
                 case Enums.Season:
-                    Values = Enum.GetValues(typeof(Season));
+                    values = Enum.GetValues(typeof(Season));
                     break;
                 case Enums.Weekday:
-                    Values = Enum.GetValues(typeof(Weekday));
+                    values = Enum.GetValues(typeof(Weekday));
                     break;
                 default:
                     throw new NotImplementedException();
             }
 
-            foreach(var value in Values)
+            foreach(var value in values)
             {
                 ValuesListBox.Items.Add(value);
             }
@@ -67,18 +68,17 @@ namespace Programming.View
 
         private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntValueBox.Text = ((int)ValuesListBox.SelectedItem).ToString();
+            IntValueTextBox.Text = ((int)ValuesListBox.SelectedItem).ToString();
         }
 
         private void ParsingButton_Click(object sender, EventArgs e)
         {
-            Weekday result;
-            if (Enum.TryParse(WeekdayParsingTextBox.Text, out result))
+            if (Enum.TryParse(WeekdayParsingTextBox.Text, out Weekday result))
             {
                 WeekdayParsingResultLabel.Text = $"this is the day of the week ({result} = {(int)result})";
             }
             else
-            { 
+            {
                 WeekdayParsingResultLabel.Text = "There is no such day of the week";
             }
         }
@@ -88,10 +88,10 @@ namespace Programming.View
             switch((Season)SeasonComboBox.SelectedItem)
             {
                 case Season.Summer:
-                    BackColor = Color.Green;
+                    BackColor = ColorTranslator.FromHtml("#00FF00");
                     break;
                 case Season.Autumn:
-                    BackColor = Color.Orange;
+                    BackColor = ColorTranslator.FromHtml("#e29c45");
                     break;
                 case Season.Winter:
                     MessageBox.Show("winter");

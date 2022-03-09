@@ -4,13 +4,11 @@ using System.Text;
 
 namespace Programming.Model.Enums
 {
-    public enum Colour
+    public enum EducationForm
     {
-        Red,
-        Black,
-        Yellow,
-        Green,
-        Blue,
-        Purple
+        FullTime, 
+        PartTime, 
+        Evening, 
+        Remote
     }
 }
