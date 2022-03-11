@@ -24,8 +24,8 @@ namespace Programming.View
             }
             EnumsListBox.SelectedIndex = 0;
 
-            var valuseSeasons = Enum.GetValues(typeof(Season));
-            foreach (var value in valuseSeasons)
+            var valuesSeasons = Enum.GetValues(typeof(Season));
+            foreach (var value in valuesSeasons)
             {
                 SeasonComboBox.Items.Add(value);
             }
@@ -34,9 +34,9 @@ namespace Programming.View
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValuesListBox.Items.Clear();
-            var selectEnum = (Enums)EnumsListBox.SelectedIndex;
+            var selectedEnum = (Enums)EnumsListBox.SelectedItem;
             Array values;
-            switch (selectEnum)
+            switch (selectedEnum)
             {
                 case Enums.Color:
                     values = Enum.GetValues(typeof(Color));
@@ -73,9 +73,9 @@ namespace Programming.View
 
         private void ParsingButton_Click(object sender, EventArgs e)
         {
-            if (Enum.TryParse(WeekdayParsingTextBox.Text, out Weekday result))
+            if (Enum.TryParse(WeekdayParsingTextBox.Text, out Weekday weekday))
             {
-                WeekdayParsingResultLabel.Text = $"this is the day of the week ({result} = {(int)result})";
+                WeekdayParsingResultLabel.Text = $"this is the day of the week ({weekday} = {(int)weekday})";
             }
             else
             {
