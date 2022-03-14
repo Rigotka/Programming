@@ -75,7 +75,7 @@ namespace Programming.View
         {
             if (Enum.TryParse(WeekdayParsingTextBox.Text, out Weekday weekday))
             {
-                WeekdayParsingResultLabel.Text = $"this is the day of the week ({weekday} = {(int)weekday})";
+                WeekdayParsingResultLabel.Text = $"This is the day of the week ({weekday} = {(int)weekday})";
             }
             else
             {
@@ -97,10 +97,10 @@ namespace Programming.View
                     MessageBox.Show("winter");
                     break;
                 case Season.Spring:
-                    MessageBox.Show("Spring");
+                    MessageBox.Show("spring");
                     break;
                 default:
-                    MessageBox.Show("Choice Season!");
+                    MessageBox.Show("Chooce Season!");
                     break;
             }
         }

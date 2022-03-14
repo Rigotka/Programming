@@ -32,8 +32,8 @@ namespace Programming.View
             this.ProgrammingTabControl = new System.Windows.Forms.TabControl();
             this.EnumsTabPage = new System.Windows.Forms.TabPage();
             this.SeasonGroupBox = new System.Windows.Forms.GroupBox();
-            this.SeasonLabel = new System.Windows.Forms.Label();
             this.GoButton = new System.Windows.Forms.Button();
+            this.SeasonLabel = new System.Windows.Forms.Label();
             this.SeasonComboBox = new System.Windows.Forms.ComboBox();
             this.WeekdayParsingGroupBox = new System.Windows.Forms.GroupBox();
             this.WeekdayParsinLabel = new System.Windows.Forms.Label();
@@ -89,15 +89,6 @@ namespace Programming.View
             this.SeasonGroupBox.TabStop = false;
             this.SeasonGroupBox.Text = "Season Handle";
             // 
-            // SeasonLabel
-            // 
-            this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(6, 23);
-            this.SeasonLabel.Name = "SeasonLabel";
-            this.SeasonLabel.Size = new System.Drawing.Size(110, 20);
-            this.SeasonLabel.TabIndex = 2;
-            this.SeasonLabel.Text = "Choose season:";
-            // 
             // GoButton
             // 
             this.GoButton.Location = new System.Drawing.Point(179, 44);
@@ -107,6 +98,15 @@ namespace Programming.View
             this.GoButton.Text = "Go!";
             this.GoButton.UseVisualStyleBackColor = true;
             this.GoButton.Click += new System.EventHandler(this.GoButton_Click);
+            // 
+            // SeasonLabel
+            // 
+            this.SeasonLabel.AutoSize = true;
+            this.SeasonLabel.Location = new System.Drawing.Point(6, 23);
+            this.SeasonLabel.Name = "SeasonLabel";
+            this.SeasonLabel.Size = new System.Drawing.Size(110, 20);
+            this.SeasonLabel.TabIndex = 2;
+            this.SeasonLabel.Text = "Choose season:";
             // 
             // SeasonComboBox
             // 
@@ -204,7 +204,7 @@ namespace Programming.View
             this.EnumListLabel.Name = "EnumListLabel";
             this.EnumListLabel.Size = new System.Drawing.Size(149, 20);
             this.EnumListLabel.TabIndex = 3;
-            this.EnumListLabel.Text = "Choose enumaration:";
+            this.EnumListLabel.Text = "Choose enumeration:";
             // 
             // IntValueTextBox
             // 
