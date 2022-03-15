@@ -9,7 +9,7 @@ namespace Programming.Model.Classes
         public string Title { get; set; }
         private int _duration;
         private int _year;
-        private string Genre { get; set; }
+        public string Genre { get; set; }
         private double _rating;
 
         public int Duration
