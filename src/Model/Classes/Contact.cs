@@ -6,9 +6,25 @@ namespace Programming.Model.Classes
 {
     class Contact
     {
+        private string _number;
+
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Number { get; set; }
+
+        public string Number 
+        { 
+            get{ return _number; }
+            set
+            {
+                if (value.Length != 11)
+                    throw new System.ArgumentException("number length must be 11 characters");
+
+                if (!long.TryParse(value, out long num))
+                    throw new System.ArgumentException("number must contain only digits");
+
+                _number = value;
+            }
+        }
 
         public Contact() { }
         public Contact(string name, string surname, string number)

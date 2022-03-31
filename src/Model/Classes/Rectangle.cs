@@ -33,8 +33,7 @@ namespace Programming.Model.Classes
                 else
                     _width = value;
             }
-
-        } 
+        }
 
         public Rectangle() { }
         public Rectangle(double lenght, double widht, string color)

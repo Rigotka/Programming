@@ -16,17 +16,80 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        private string[] _colors = { "Red", "Black", "Green", "Yellow", "Orange" };
+        const int CountElements = 5;
+
         private Rectangle[] _rectangles;
+
         private Rectangle _currentRectangle;
+
         private Movie[] _movies;
+
         private Movie _currentMovie;
 
-        private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
+        private Random _rand = new Random();
+
+        public MainForm()
+        {
+            InitializeComponent();
+            var allEnums = Enum.GetValues(typeof(Enums));
+            foreach (var enumValue in allEnums)
+            {
+                EnumsListBox.Items.Add(enumValue);
+            }
+            EnumsListBox.SelectedIndex = 0;
+
+            var seasonValues = Enum.GetValues(typeof(Season));
+            foreach (var value in seasonValues)
+            {
+                SeasonComboBox.Items.Add(value);
+            }
+
+            _rectangles = CreateRectengles(CountElements);
+            RectanglesListBox.SelectedIndex = 0;
+
+            _movies = CreateMovies();
+            MoviesListBox.SelectedIndex = 0;
+
+        }
+        private Rectangle[] CreateRectengles(int countRectangles)
+        {
+            Rectangle[] rectangles = new Rectangle[countRectangles];
+            var colors = Enum.GetValues(typeof(Color));
+            double length, width;
+            string color;
+            for (int i = 0; i < countRectangles; i++)
+            {
+                length = Math.Round(_rand.NextDouble() * 100, 1);
+                width = Math.Round(_rand.NextDouble() * 100, 1);
+                color = colors.GetValue(_rand.Next(0, colors.Length)).ToString();
+                rectangles[i] = new Rectangle(length, width, color);
+                RectanglesListBox.Items.Add("Rectangle " + (i + 1));
+            }
+            return rectangles;
+        }
+        private Movie[] CreateMovies()
+        {
+            Movie[] movies = new Movie[5]
+            {
+                new Movie("Tenet", 2, 2020, "Action", 8),
+                new Movie("The Gentlemen", 2, 2019, "Criminal", 9),
+                new Movie("Interstellar", 3, 2014, "Science fiction", 9.9),
+                new Movie("The Martian", 2, 2015, "Science fiction", 7.7),
+                new Movie("Stalk", 2, 2019, "с++", 7)
+            };
+
+            foreach (var movie in movies)
+            {
+                MoviesListBox.Items.Add(movie.Title);
+            }
+
+            return movies;
+        }
+        private int FindRectangleWithMaxWidth(Rectangle[] rectangles, int countRectangles)
         {
             int indexMaxWide = 0;
             double max = 0;
-            for(int i = 0; i < 5; i ++)
+            for (int i = 0; i < countRectangles; i++)
             {
                 if (rectangles[i].Width > max)
                 {
@@ -41,60 +104,15 @@ namespace Programming.View
         {
             int indexMaxRating = 0;
             double max = 0;
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < CountElements; i++)
             {
-                if(movies[i].Rating > max)
+                if (movies[i].Rating > max)
                 {
                     max = movies[i].Rating;
                     indexMaxRating = i;
                 }
             }
             return indexMaxRating;
-        }
-        public MainForm()
-        {
-            // page Enums
-            InitializeComponent();
-            var allEnums = Enum.GetValues(typeof(Enums));
-            foreach(var enumValue in allEnums)
-            {
-                EnumsListBox.Items.Add(enumValue);
-            }
-            EnumsListBox.SelectedIndex = 0;
-
-            var valuesSeasons = Enum.GetValues(typeof(Season));
-            foreach (var value in valuesSeasons)
-            {
-                SeasonComboBox.Items.Add(value);
-            }
-
-            // page Classes
-            _rectangles = new Rectangle[5];
-            var rand = new Random();
-            double length, width;
-            for (int i = 0; i < 5; i++)
-            {
-                length = Math.Round(rand.NextDouble() * 100, 1);
-                width = Math.Round(rand.NextDouble() * 100, 1);
-                _rectangles[i] = new Rectangle(length, width, _colors[i]);
-                RectanglesListBox.Items.Add("Rectangle " + (i + 1));
-            }
-            RectanglesListBox.SelectedIndex = 0;
-
-            _movies = new Movie[5]
-            {
-                new Movie("Tenet", 2, 2020, "Action", 8),
-                new Movie("The Gentlemen", 2, 2019, "Criminal", 9),
-                new Movie("Interstellar", 3, 2014, "Science fiction", 7),
-                new Movie("The Martian", 2, 2015, "Science fiction", 7.7),
-                new Movie("Stalk", 2, 2019, "с++", 7)
-            };
-
-            foreach(var movie in _movies)
-            {
-                MoviesListBox.Items.Add(movie.Title);
-            }
-            MoviesListBox.SelectedIndex = 0;
         }
 
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -175,21 +193,21 @@ namespace Programming.View
         {
             var selectedRectangle = RectanglesListBox.SelectedIndex;
             _currentRectangle = _rectangles[selectedRectangle];
-            LenghtTextBox.Text = _currentRectangle.Length.ToString();
+            LengthTextBox.Text = _currentRectangle.Length.ToString();
             WidthTextBox.Text = _currentRectangle.Width.ToString();
             ColorTextBox.Text = _currentRectangle.Color;
         }
 
         private void LenghtTextBox_TextChanged(object sender, EventArgs e)
         {
-            LenghtTextBox.BackColor = ColorTranslator.FromHtml("Window");
+            LengthTextBox.BackColor = ColorTranslator.FromHtml("Window");
             try
             {
-                _currentRectangle.Length = Convert.ToDouble(LenghtTextBox.Text);
+                _currentRectangle.Length = Convert.ToDouble(LengthTextBox.Text);
             }
             catch
             {
-                LenghtTextBox.BackColor = ColorTranslator.FromHtml("LightPink");
+                LengthTextBox.BackColor = ColorTranslator.FromHtml("LightPink");
             }
         }
 
@@ -213,7 +231,7 @@ namespace Programming.View
 
         private void FIndButton_Click(object sender, EventArgs e)
         {
-            int indexFindRectangle = FindRectangleWithMaxWidth(_rectangles);
+            int indexFindRectangle = FindRectangleWithMaxWidth(_rectangles, CountElements);
             RectanglesListBox.SelectedIndex = indexFindRectangle;
         }
 

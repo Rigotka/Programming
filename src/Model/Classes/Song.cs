@@ -6,10 +6,11 @@ namespace Programming.Model.Classes
 {
     class Song
     {
+        private int _duration;
+
         public string Title { get; set; }
         public string Author { get; set; }
         public string Genre { get; set; }
-        private int _duration;
 
         public int Duration
         {

@@ -17,8 +17,8 @@ namespace Programming.Model.Classes
             {
                 if ( value < 0 || value > 23 )
                     throw new ArgumentException("The hour must be between 0 and 23, and was " + value);
-                else
-                    _hour = value;
+                
+                _hour = value;
             }
         }
 
@@ -29,8 +29,8 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 || value > 59)
                     throw new ArgumentException("The minute must be between 0 and 59, and was " + value);
-                else
-                    _minute = value;
+
+                _minute = value;
             }
         }
 
@@ -41,16 +41,17 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 || value > 59)
                     throw new ArgumentException("The second must be between 0 and 59, and was " + value);
-                else
-                    _second = value;
+
+                _second = value;
             }
         }
+
         public Time() { }
         public Time(int hour, int minute, int second)
         {
             Hour = hour;
             Minute = minute;
             Second = second;
-        } 
+        }
     }
 }

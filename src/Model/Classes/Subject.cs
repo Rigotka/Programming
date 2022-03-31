@@ -6,9 +6,10 @@ namespace Programming.Model.Classes
 {
     class Subject
     {
+        private int _score;
+
         public string Name { get; set; }
         public string Lecturer { get; set; }
-        private int _score;
 
         public int Score
         {
@@ -17,8 +18,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 || value > 5)
                     throw new ArgumentException("The score must be between 0 and 5, but was " + value);
-                else
-                    _score = value;
+                _score = value;
             }
         }
 

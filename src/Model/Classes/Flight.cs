@@ -6,9 +6,10 @@ namespace Programming.Model.Classes
 {
     class Flight
     {
+        private int _flightTime;
+
         public string Departure { get; set; }
         public string Destination { get; set; }
-        private int _flightTime;
 
         public int FlightTime
         {
@@ -17,8 +18,8 @@ namespace Programming.Model.Classes
             {
                 if (value <= 0)
                     throw new ArgumentException("Flight time should be greater than 0, but was " + value);
-                else
-                    _flightTime = value;
+
+                _flightTime = value;
             }
         }
 
