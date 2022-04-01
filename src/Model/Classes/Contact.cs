@@ -4,16 +4,21 @@ using System.Text;
 
 namespace Programming.Model.Classes
 {
-    class Contact
+    public class Contact
     {
         private string _number;
 
         public string Name { get; set; }
+
         public string Surname { get; set; }
 
         public string Number 
         { 
-            get{ return _number; }
+            get
+            {
+                return _number; 
+            }
+
             set
             {
                 if (value.Length != 11)
@@ -26,7 +31,10 @@ namespace Programming.Model.Classes
             }
         }
 
-        public Contact() { }
+        public Contact() 
+        {
+        }
+
         public Contact(string name, string surname, string number)
         {
             Name = name;
