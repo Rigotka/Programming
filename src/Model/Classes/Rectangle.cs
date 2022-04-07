@@ -6,11 +6,33 @@ namespace Programming.Model.Classes
 {
     public class Rectangle
     {
+        private static int _allRectanglesCount;
+
+        private int _id;
+
         private double _length;
 
         private double _width;
 
         public string Color { get; set; }
+
+        public Point2D Center { get; set; }
+
+        public static int AllRectanglesCount
+        {
+            get
+            {
+                return _allRectanglesCount;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+        }
 
         public double Length
         {
@@ -21,9 +43,7 @@ namespace Programming.Model.Classes
 
             set
             {
-                if ( value < 0 )
-                    throw new ArgumentException($"Length should be greater than 0, but was {value}");
-                
+                Validator.AssertOnPositiveValue(value, nameof(Length));
                 _length = value;
             }
         }
@@ -37,22 +57,25 @@ namespace Programming.Model.Classes
 
             set
             {
-                if ( value < 0 )
-                    throw new ArgumentException($"Width should be greater than 0, but was {value}");
-                
+                Validator.AssertOnPositiveValue(value, nameof(Width));                
                 _width = value;
             }
         }
 
         public Rectangle()
         {
+            _id = _allRectanglesCount;
+            _allRectanglesCount++;
         }
 
-        public Rectangle(double length, double widht, string color)
+        public Rectangle(double length, double widht, string color, Point2D center)
         {
             Length = length;
             Width = widht;
             Color = color;
+            Center = center;
+            _id = _allRectanglesCount;
+            _allRectanglesCount++;
         }
     }
 }

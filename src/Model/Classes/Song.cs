@@ -20,12 +20,11 @@ namespace Programming.Model.Classes
             { 
                 return _duration; 
             }
+
             set
 
             {
-                if (value <= 0)
-                    throw new ArgumentException($"Song duration must be greater than 0, but was {value}");
-
+                Validator.AssertOnPositiveValue(value, nameof(Duration));
                 _duration = value;
             }
         }

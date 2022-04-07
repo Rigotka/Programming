@@ -25,9 +25,7 @@ namespace Programming.Model.Classes
 
             set
             {
-                if ( value <= 0 )
-                    throw new ArgumentException($"Movie duration should be greater than 0, but was {value}");
-
+                Validator.AssertOnPositiveValue(value, nameof(Duration));
                 _duration = value;
             }
         }
@@ -41,9 +39,7 @@ namespace Programming.Model.Classes
 
             set
             {
-                if ( value < 1900 || value > 2022 )
-                    throw new ArgumentException($"Year must be in nature from 1900 to 2022, but was {value}");
-
+                Validator.AssertValueInRange(value, 1990, 2022, nameof(Year));
                 _year = value;
             }
         }
@@ -57,9 +53,7 @@ namespace Programming.Model.Classes
 
             set
             {
-                if ( value < 0 || value > 10 )
-                    throw new ArgumentException($"The rating should be in nature from 0 to 10, but was {value}");
-                
+                Validator.AssertValueInRange(value, 0, 10, nameof(Rating));
                 _rating = value;
             }
         }

@@ -62,6 +62,12 @@ namespace Programming.View
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
             this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.YLabel = new System.Windows.Forms.Label();
+            this.XLabel = new System.Windows.Forms.Label();
+            this.YTextBox = new System.Windows.Forms.TextBox();
+            this.XTextBox = new System.Windows.Forms.TextBox();
             this.FIndRectangleButton = new System.Windows.Forms.Button();
             this.ColorTextBox = new System.Windows.Forms.TextBox();
             this.WidthTextBox = new System.Windows.Forms.TextBox();
@@ -70,6 +76,8 @@ namespace Programming.View
             this.WidthLabel = new System.Windows.Forms.Label();
             this.LengthLabel = new System.Windows.Forms.Label();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
+            this.SettingTabPage = new System.Windows.Forms.TabPage();
+            this.MusicCheckBox = new System.Windows.Forms.CheckBox();
             this.ProgrammingTabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonGroupBox.SuspendLayout();
@@ -78,12 +86,14 @@ namespace Programming.View
             this.ClassesTabPage.SuspendLayout();
             this.MoviesGroupBox.SuspendLayout();
             this.RectanglesGroupBox.SuspendLayout();
+            this.SettingTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProgrammingTabControl
             // 
             this.ProgrammingTabControl.Controls.Add(this.EnumsTabPage);
             this.ProgrammingTabControl.Controls.Add(this.ClassesTabPage);
+            this.ProgrammingTabControl.Controls.Add(this.SettingTabPage);
             this.ProgrammingTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProgrammingTabControl.Location = new System.Drawing.Point(0, 0);
             this.ProgrammingTabControl.Name = "ProgrammingTabControl";
@@ -295,7 +305,7 @@ namespace Programming.View
             // 
             // FindMovieButton
             // 
-            this.FindMovieButton.Location = new System.Drawing.Point(210, 361);
+            this.FindMovieButton.Location = new System.Drawing.Point(210, 362);
             this.FindMovieButton.Name = "FindMovieButton";
             this.FindMovieButton.Size = new System.Drawing.Size(125, 29);
             this.FindMovieButton.TabIndex = 11;
@@ -305,7 +315,7 @@ namespace Programming.View
             // 
             // RatingTextBox
             // 
-            this.RatingTextBox.Location = new System.Drawing.Point(210, 263);
+            this.RatingTextBox.Location = new System.Drawing.Point(210, 305);
             this.RatingTextBox.Name = "RatingTextBox";
             this.RatingTextBox.Size = new System.Drawing.Size(125, 27);
             this.RatingTextBox.TabIndex = 10;
@@ -313,7 +323,7 @@ namespace Programming.View
             // 
             // YearTextBox
             // 
-            this.YearTextBox.Location = new System.Drawing.Point(210, 208);
+            this.YearTextBox.Location = new System.Drawing.Point(210, 241);
             this.YearTextBox.Name = "YearTextBox";
             this.YearTextBox.Size = new System.Drawing.Size(125, 27);
             this.YearTextBox.TabIndex = 9;
@@ -321,7 +331,7 @@ namespace Programming.View
             // 
             // DurationTextBox
             // 
-            this.DurationTextBox.Location = new System.Drawing.Point(210, 155);
+            this.DurationTextBox.Location = new System.Drawing.Point(210, 177);
             this.DurationTextBox.Name = "DurationTextBox";
             this.DurationTextBox.Size = new System.Drawing.Size(125, 27);
             this.DurationTextBox.TabIndex = 8;
@@ -329,7 +339,7 @@ namespace Programming.View
             // 
             // GenreTextBox
             // 
-            this.GenreTextBox.Location = new System.Drawing.Point(210, 102);
+            this.GenreTextBox.Location = new System.Drawing.Point(210, 113);
             this.GenreTextBox.Name = "GenreTextBox";
             this.GenreTextBox.Size = new System.Drawing.Size(125, 27);
             this.GenreTextBox.TabIndex = 7;
@@ -346,16 +356,16 @@ namespace Programming.View
             // RatingLabel
             // 
             this.RatingLabel.AutoSize = true;
-            this.RatingLabel.Location = new System.Drawing.Point(210, 238);
+            this.RatingLabel.Location = new System.Drawing.Point(210, 282);
             this.RatingLabel.Name = "RatingLabel";
-            this.RatingLabel.Size = new System.Drawing.Size(52, 20);
+            this.RatingLabel.Size = new System.Drawing.Size(55, 20);
             this.RatingLabel.TabIndex = 5;
-            this.RatingLabel.Text = "Rating";
+            this.RatingLabel.Text = "Rating:";
             // 
             // GenreLabel
             // 
             this.GenreLabel.AutoSize = true;
-            this.GenreLabel.Location = new System.Drawing.Point(210, 79);
+            this.GenreLabel.Location = new System.Drawing.Point(210, 90);
             this.GenreLabel.Name = "GenreLabel";
             this.GenreLabel.Size = new System.Drawing.Size(51, 20);
             this.GenreLabel.TabIndex = 4;
@@ -364,7 +374,7 @@ namespace Programming.View
             // YearLabel
             // 
             this.YearLabel.AutoSize = true;
-            this.YearLabel.Location = new System.Drawing.Point(210, 185);
+            this.YearLabel.Location = new System.Drawing.Point(210, 218);
             this.YearLabel.Name = "YearLabel";
             this.YearLabel.Size = new System.Drawing.Size(40, 20);
             this.YearLabel.TabIndex = 3;
@@ -373,7 +383,7 @@ namespace Programming.View
             // DurationLabel
             // 
             this.DurationLabel.AutoSize = true;
-            this.DurationLabel.Location = new System.Drawing.Point(210, 132);
+            this.DurationLabel.Location = new System.Drawing.Point(210, 154);
             this.DurationLabel.Name = "DurationLabel";
             this.DurationLabel.Size = new System.Drawing.Size(70, 20);
             this.DurationLabel.TabIndex = 2;
@@ -400,6 +410,12 @@ namespace Programming.View
             // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.IdTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.IdLabel);
+            this.RectanglesGroupBox.Controls.Add(this.YLabel);
+            this.RectanglesGroupBox.Controls.Add(this.XLabel);
+            this.RectanglesGroupBox.Controls.Add(this.YTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.XTextBox);
             this.RectanglesGroupBox.Controls.Add(this.FIndRectangleButton);
             this.RectanglesGroupBox.Controls.Add(this.ColorTextBox);
             this.RectanglesGroupBox.Controls.Add(this.WidthTextBox);
@@ -415,6 +431,57 @@ namespace Programming.View
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
             // 
+            // IdTextBox
+            // 
+            this.IdTextBox.Location = new System.Drawing.Point(210, 49);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.Size = new System.Drawing.Size(125, 27);
+            this.IdTextBox.TabIndex = 13;
+            this.IdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IdTextBox_KeyPress);
+            // 
+            // IdLabel
+            // 
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(210, 26);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(27, 20);
+            this.IdLabel.TabIndex = 12;
+            this.IdLabel.Text = "ID:";
+            // 
+            // YLabel
+            // 
+            this.YLabel.AutoSize = true;
+            this.YLabel.Location = new System.Drawing.Point(275, 282);
+            this.YLabel.Name = "YLabel";
+            this.YLabel.Size = new System.Drawing.Size(20, 20);
+            this.YLabel.TabIndex = 11;
+            this.YLabel.Text = "Y:";
+            // 
+            // XLabel
+            // 
+            this.XLabel.AutoSize = true;
+            this.XLabel.Location = new System.Drawing.Point(210, 282);
+            this.XLabel.Name = "XLabel";
+            this.XLabel.Size = new System.Drawing.Size(21, 20);
+            this.XLabel.TabIndex = 10;
+            this.XLabel.Text = "X:";
+            // 
+            // YTextBox
+            // 
+            this.YTextBox.Location = new System.Drawing.Point(275, 305);
+            this.YTextBox.Name = "YTextBox";
+            this.YTextBox.Size = new System.Drawing.Size(60, 27);
+            this.YTextBox.TabIndex = 9;
+            this.YTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.YTextBox_KeyPress);
+            // 
+            // XTextBox
+            // 
+            this.XTextBox.Location = new System.Drawing.Point(210, 305);
+            this.XTextBox.Name = "XTextBox";
+            this.XTextBox.Size = new System.Drawing.Size(60, 27);
+            this.XTextBox.TabIndex = 8;
+            this.XTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.XTextBox_KeyPress);
+            // 
             // FIndRectangleButton
             // 
             this.FIndRectangleButton.Location = new System.Drawing.Point(210, 361);
@@ -427,7 +494,7 @@ namespace Programming.View
             // 
             // ColorTextBox
             // 
-            this.ColorTextBox.Location = new System.Drawing.Point(210, 155);
+            this.ColorTextBox.Location = new System.Drawing.Point(210, 241);
             this.ColorTextBox.Name = "ColorTextBox";
             this.ColorTextBox.Size = new System.Drawing.Size(125, 27);
             this.ColorTextBox.TabIndex = 6;
@@ -435,7 +502,7 @@ namespace Programming.View
             // 
             // WidthTextBox
             // 
-            this.WidthTextBox.Location = new System.Drawing.Point(210, 102);
+            this.WidthTextBox.Location = new System.Drawing.Point(210, 177);
             this.WidthTextBox.Name = "WidthTextBox";
             this.WidthTextBox.Size = new System.Drawing.Size(125, 27);
             this.WidthTextBox.TabIndex = 5;
@@ -443,7 +510,7 @@ namespace Programming.View
             // 
             // LengthTextBox
             // 
-            this.LengthTextBox.Location = new System.Drawing.Point(210, 49);
+            this.LengthTextBox.Location = new System.Drawing.Point(210, 113);
             this.LengthTextBox.Name = "LengthTextBox";
             this.LengthTextBox.Size = new System.Drawing.Size(125, 27);
             this.LengthTextBox.TabIndex = 4;
@@ -452,7 +519,7 @@ namespace Programming.View
             // ColorLabel
             // 
             this.ColorLabel.AutoSize = true;
-            this.ColorLabel.Location = new System.Drawing.Point(210, 132);
+            this.ColorLabel.Location = new System.Drawing.Point(210, 218);
             this.ColorLabel.Name = "ColorLabel";
             this.ColorLabel.Size = new System.Drawing.Size(48, 20);
             this.ColorLabel.TabIndex = 3;
@@ -461,7 +528,7 @@ namespace Programming.View
             // WidthLabel
             // 
             this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Location = new System.Drawing.Point(210, 79);
+            this.WidthLabel.Location = new System.Drawing.Point(210, 154);
             this.WidthLabel.Name = "WidthLabel";
             this.WidthLabel.Size = new System.Drawing.Size(52, 20);
             this.WidthLabel.TabIndex = 2;
@@ -470,7 +537,7 @@ namespace Programming.View
             // LengthLabel
             // 
             this.LengthLabel.AutoSize = true;
-            this.LengthLabel.Location = new System.Drawing.Point(210, 26);
+            this.LengthLabel.Location = new System.Drawing.Point(210, 90);
             this.LengthLabel.Name = "LengthLabel";
             this.LengthLabel.Size = new System.Drawing.Size(57, 20);
             this.LengthLabel.TabIndex = 1;
@@ -485,6 +552,28 @@ namespace Programming.View
             this.RectanglesListBox.Size = new System.Drawing.Size(198, 364);
             this.RectanglesListBox.TabIndex = 0;
             this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
+            // 
+            // SettingTabPage
+            // 
+            this.SettingTabPage.Controls.Add(this.MusicCheckBox);
+            this.SettingTabPage.Location = new System.Drawing.Point(4, 29);
+            this.SettingTabPage.Name = "SettingTabPage";
+            this.SettingTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SettingTabPage.Size = new System.Drawing.Size(773, 408);
+            this.SettingTabPage.TabIndex = 3;
+            this.SettingTabPage.Text = "Setting";
+            this.SettingTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MusicCheckBox
+            // 
+            this.MusicCheckBox.AutoSize = true;
+            this.MusicCheckBox.Location = new System.Drawing.Point(317, 149);
+            this.MusicCheckBox.Name = "MusicCheckBox";
+            this.MusicCheckBox.Size = new System.Drawing.Size(69, 24);
+            this.MusicCheckBox.TabIndex = 0;
+            this.MusicCheckBox.Text = "music";
+            this.MusicCheckBox.UseVisualStyleBackColor = true;
+            this.MusicCheckBox.CheckedChanged += new System.EventHandler(this.MusicCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -509,6 +598,8 @@ namespace Programming.View
             this.MoviesGroupBox.PerformLayout();
             this.RectanglesGroupBox.ResumeLayout(false);
             this.RectanglesGroupBox.PerformLayout();
+            this.SettingTabPage.ResumeLayout(false);
+            this.SettingTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -556,6 +647,14 @@ namespace Programming.View
         private System.Windows.Forms.TextBox DurationTextBox;
         private System.Windows.Forms.TextBox GenreTextBox;
         private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.TabPage SettingTabPage;
+        private System.Windows.Forms.CheckBox MusicCheckBox;
+        private System.Windows.Forms.Label YLabel;
+        private System.Windows.Forms.Label XLabel;
+        private System.Windows.Forms.TextBox YTextBox;
+        private System.Windows.Forms.TextBox XTextBox;
+        private System.Windows.Forms.TextBox IdTextBox;
+        private System.Windows.Forms.Label IdLabel;
     }
 }
 

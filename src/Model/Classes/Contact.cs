@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Programming.Model.Classes
 {
@@ -8,9 +9,34 @@ namespace Programming.Model.Classes
     {
         private string _number;
 
-        public string Name { get; set; }
+        private string _name;
 
-        public string Surname { get; set; }
+        private string _surname;
+
+        public string Name 
+        { 
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+            }
+        }
+
+        public string Surname 
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                _surname = AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+            }
+        }
 
         public string Number 
         { 
@@ -29,6 +55,15 @@ namespace Programming.Model.Classes
 
                 _number = value;
             }
+        }
+
+        private string AsserAssertStringContainsOnlyLetters(string value, string propertyName)
+        {
+            if (!Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                throw new ArgumentException(
+                    $"{propertyName} field must contain only English letters");
+            
+            return value;
         }
 
         public Contact() 

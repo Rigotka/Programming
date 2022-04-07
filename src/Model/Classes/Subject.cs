@@ -6,21 +6,23 @@ namespace Programming.Model.Classes
 {
     public class Subject
     {
-        private int _score;
+        private int _mark;
 
         public string Name { get; set; }
 
         public string Lecturer { get; set; }
 
-        public int Score
+        public int Mark
         {
-            get { return _score; }
+            get 
+            { 
+                return _mark; 
+            }
+
             set
             {
-                if (value < 0 || value > 5)
-                    throw new ArgumentException($"The score must be between 0 and 5, but was {value}");
-
-                _score = value;
+                Validator.AssertValueInRange(value, 0, 5, nameof(Mark));
+                _mark = value;
             }
         }
 
@@ -28,11 +30,11 @@ namespace Programming.Model.Classes
         {
         }
 
-        public Subject(string name, string lecturer, int score)
+        public Subject(string name, string lecturer, int mark)
         {
             Name = name;
             Lecturer = lecturer;
-            Score = score;
+            Mark = mark;
         }
     }
 }
