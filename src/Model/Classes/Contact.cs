@@ -19,7 +19,6 @@ namespace Programming.Model.Classes
             {
                 return _name;
             }
-
             set
             {
                 _name = AsserAssertStringContainsOnlyLetters(value, nameof(Name));
@@ -44,7 +43,6 @@ namespace Programming.Model.Classes
             {
                 return _number; 
             }
-
             set
             {
                 if (value.Length != 11)

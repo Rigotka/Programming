@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Classes.Geometry
 {
     public class Rectangle
     {
-        private static int _allRectanglesCount;
+        private static int _allRectanglesCount = 0;
 
         private int _id;
 
-        private double _length;
+        private int _height;
 
-        private double _width;
+        private int _width;
 
         public string Color { get; set; }
 
@@ -34,27 +34,25 @@ namespace Programming.Model.Classes
             }
         }
 
-        public double Length
+        public int Height
         {
             get 
             { 
-                return _length; 
+                return _height; 
             }
-
             set
             {
-                Validator.AssertOnPositiveValue(value, nameof(Length));
-                _length = value;
+                Validator.AssertOnPositiveValue(value, nameof(Height));
+                _height = value;
             }
         }
 
-        public double Width
+        public int Width
         {
             get 
             { 
                 return _width; 
             }
-
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(Width));                
@@ -68,9 +66,9 @@ namespace Programming.Model.Classes
             _allRectanglesCount++;
         }
 
-        public Rectangle(double length, double widht, string color, Point2D center)
+        public Rectangle(int height, int widht, string color, Point2D center)
         {
-            Length = length;
+            Height = height;
             Width = widht;
             Color = color;
             Center = center;

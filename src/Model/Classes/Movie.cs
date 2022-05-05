@@ -22,7 +22,6 @@ namespace Programming.Model.Classes
             { 
                 return _duration; 
             }
-
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(Duration));
@@ -36,7 +35,6 @@ namespace Programming.Model.Classes
             { 
                 return _year; 
             }
-
             set
             {
                 Validator.AssertValueInRange(value, 1990, 2022, nameof(Year));
@@ -50,7 +48,6 @@ namespace Programming.Model.Classes
             { 
                 return _rating; 
             }
-
             set
             {
                 Validator.AssertValueInRange(value, 0, 10, nameof(Rating));

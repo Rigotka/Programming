@@ -18,7 +18,6 @@ namespace Programming.Model.Classes
             { 
                 return _flightTime; 
             }
-
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(FlightTime));

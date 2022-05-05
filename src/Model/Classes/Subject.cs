@@ -18,7 +18,6 @@ namespace Programming.Model.Classes
             { 
                 return _mark; 
             }
-
             set
             {
                 Validator.AssertValueInRange(value, 0, 5, nameof(Mark));

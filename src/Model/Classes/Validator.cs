@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Programming.Model.Classes
 {
-    static class Validator
+    public static class Validator
     {
         public static void AssertOnPositiveValue(int value, string propertyName)
         {
@@ -24,14 +24,14 @@ namespace Programming.Model.Classes
         {
             if (value < min || value > max)
                 throw new ArgumentException(
-                    $"{propertyName} must be in nature from 1900 to 2022, but was {value}");
+                    $"{propertyName} must be in nature from {min} to {max}, but was {value}");
         }
 
         public static void AssertValueInRange(double value, double min, double max, string propertyName)
         {
             if (value < min || value > max)
                 throw new ArgumentException(
-                    $"{propertyName} must be in nature from 1900 to 2022, but was {value}");
+                    $"{propertyName} must be in nature from {min} to {max}, but was {value}");
         }
 
         public static void AssertOnCorrectRing(double min, double max)

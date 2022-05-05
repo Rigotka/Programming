@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Classes.Geometry
 {
     public class Ring
     {
@@ -18,7 +18,6 @@ namespace Programming.Model.Classes
             {
                 return _outerRadius;
             }
-
             private set
             {
                 Validator.AssertOnPositiveValue(value, nameof(OuterRadius));
@@ -32,7 +31,6 @@ namespace Programming.Model.Classes
             {
                 return _innerRadius;
             }
-
             private set
             {
                 Validator.AssertOnPositiveValue(value, nameof(InnerRadius));

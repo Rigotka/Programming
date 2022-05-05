@@ -20,9 +20,7 @@ namespace Programming.Model.Classes
             { 
                 return _duration; 
             }
-
             set
-
             {
                 Validator.AssertOnPositiveValue(value, nameof(Duration));
                 _duration = value;
