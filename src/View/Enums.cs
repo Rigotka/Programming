@@ -4,10 +4,13 @@ using System.Text;
 
 namespace Programming.View
 {
+    /// <summary>
+    /// Хранит перечисление перечислений.
+    /// </summary>
     public enum Enums
     {
-        Colour,
-        FormOfStudy,
+        Color,
+        EducationForm,
         Genre,
         Manufacturers,
         Season,

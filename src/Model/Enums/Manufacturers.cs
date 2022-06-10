@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Programming.Model.Enums
 {
+    /// <summary>
+    /// Хранит перечисление производителей.
+    /// </summary>
     public enum Manufacturers
     {
         Apple,
