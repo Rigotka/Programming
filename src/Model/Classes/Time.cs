@@ -4,14 +4,29 @@ using System.Text;
 
 namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные времени.
+    /// </summary>
     public class Time
     {
+        /// <summary>
+        /// Часы.
+        /// </summary>
         private int _hour;
 
+        /// <summary>
+        /// Минуты.
+        /// </summary>
         private int _minute;
 
+        /// <summary>
+        /// Секунды.
+        /// </summary>
         private int _second;
 
+        /// <summary>
+        /// Возвращает и задает часы. Должны быть в диапазоне 0-23.
+        /// </summary>
         public int Hour
         {
             get 
@@ -25,6 +40,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает минуты. Должны быть в диапазоне 0-59.
+        /// </summary>
         public int Minute
         {
             get 
@@ -38,6 +56,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает секунды. Должны быть в диапазоне 0-59.
+        /// </summary>
         public int Second
         {
             get
@@ -51,10 +72,19 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="Time"/>.
+        /// </summary>
         public Time()
         { 
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="Time"/>.
+        /// </summary>
+        /// <param name="hour">Часы.</param>
+        /// <param name="minute">Минуты.</param>
+        /// <param name="second">Секунды.</param>
         public Time(int hour, int minute, int second)
         {
             Hour = hour;

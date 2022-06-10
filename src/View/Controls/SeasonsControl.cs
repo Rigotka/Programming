@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Programming.Model.Enums;
+using Programming.Model.Classes;
 
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Реализация сезонов.
+    /// </summary>
     public partial class SeasonsControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр <see cref="SeasonsControl"/>.
+        /// </summary>
         public SeasonsControl()
         {
             InitializeComponent();
@@ -28,10 +30,10 @@ namespace Programming.View.Controls
             switch ((Season)SeasonComboBox.SelectedItem)
             {
                 case Season.Summer:
-                    BackColor = ColorTranslator.FromHtml("#00FF00");
+                    BackColor = AppColor.SummerColor;
                     break;
                 case Season.Autumn:
-                    BackColor = ColorTranslator.FromHtml("#e29c45");
+                    BackColor = AppColor.AutumnColor;
                     break;
                 case Season.Winter:
                     MessageBox.Show("winter");
@@ -40,7 +42,7 @@ namespace Programming.View.Controls
                     MessageBox.Show("spring");
                     break;
                 default:
-                    MessageBox.Show("Chooce Season!");
+                    MessageBox.Show("Choose Season!");
                     break;
             }
         }

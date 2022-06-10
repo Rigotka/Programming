@@ -6,28 +6,46 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Programming.Model.Classes.Geometry;
+using Programming.Model.Classes;
 using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Реализация  прямоугольников.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
+        /// <summary>
+        /// Количество элементов.
+        /// </summary>
         private const int ElementsCount = 5;
-        
-        private readonly Color ErrorColor = Color.LightPink;
 
-        private readonly Color CorrectColor = Color.White;
-
+        /// <summary>
+        /// Массив прямоугольников.
+        /// </summary>
         private Rectangle[] _rectangles;
 
+        /// <summary>
+        /// Выбранный прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Создает экземпляр <see cref="RectanglesControl"/>.
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();
             CreateRectangles(ElementsCount);
         }
 
+        /// <summary>
+        /// Находит прямоугольник с максимальной шириной
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
+        /// <param name="rectanglesCount">Количество элементов массива.</param>
+        /// <returns>Индекс прямоугольника.</returns>
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles, int rectanglesCount)
         {
             int indexMaxWide = 0;
@@ -43,6 +61,10 @@ namespace Programming.View.Controls
             return indexMaxWide;
         }
 
+        /// <summary>
+        /// Заполнение массива.
+        /// </summary>
+        /// <param name="countRectangles"></param>
         private void CreateRectangles(int countRectangles)
         {
             _rectangles = new Rectangle[countRectangles];
@@ -69,27 +91,27 @@ namespace Programming.View.Controls
 
         private void LenghtTextBox_TextChanged(object sender, EventArgs e)
         {
-            LengthTextBox.BackColor = CorrectColor;
+            LengthTextBox.BackColor = AppColor.CorrectColor;
             try
             {
                 _currentRectangle.Height = Convert.ToInt32(LengthTextBox.Text);
             }
             catch
             {
-                LengthTextBox.BackColor = ErrorColor;
+                LengthTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
-            WidthTextBox.BackColor = CorrectColor;
+            WidthTextBox.BackColor = AppColor.CorrectColor;
             try
             {
                 _currentRectangle.Width = Convert.ToInt32(WidthTextBox.Text);
             }
             catch
             {
-                WidthTextBox.BackColor = ErrorColor;
+                WidthTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 

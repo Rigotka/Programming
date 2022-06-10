@@ -80,7 +80,7 @@ namespace Programming.View
             this.EnumsTabPage.Location = new System.Drawing.Point(4, 29);
             this.EnumsTabPage.Name = "EnumsTabPage";
             this.EnumsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.EnumsTabPage.Size = new System.Drawing.Size(813, 442);
+            this.EnumsTabPage.Size = new System.Drawing.Size(778, 414);
             this.EnumsTabPage.TabIndex = 1;
             this.EnumsTabPage.Text = "Enums";
             this.EnumsTabPage.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@ namespace Programming.View
             this.RectanglesTabPage.Location = new System.Drawing.Point(4, 29);
             this.RectanglesTabPage.Name = "RectanglesTabPage";
             this.RectanglesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RectanglesTabPage.Size = new System.Drawing.Size(813, 442);
+            this.RectanglesTabPage.Size = new System.Drawing.Size(778, 414);
             this.RectanglesTabPage.TabIndex = 4;
             this.RectanglesTabPage.Text = "Rectangles";
             this.RectanglesTabPage.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@ namespace Programming.View
             this.rectanglesCollisionControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rectanglesCollisionControl1.Location = new System.Drawing.Point(3, 3);
             this.rectanglesCollisionControl1.Name = "rectanglesCollisionControl1";
-            this.rectanglesCollisionControl1.Size = new System.Drawing.Size(807, 436);
+            this.rectanglesCollisionControl1.Size = new System.Drawing.Size(772, 408);
             this.rectanglesCollisionControl1.TabIndex = 0;
             // 
             // SettingTabPage
@@ -208,7 +208,7 @@ namespace Programming.View
             this.SettingTabPage.Location = new System.Drawing.Point(4, 29);
             this.SettingTabPage.Name = "SettingTabPage";
             this.SettingTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingTabPage.Size = new System.Drawing.Size(773, 418);
+            this.SettingTabPage.Size = new System.Drawing.Size(778, 414);
             this.SettingTabPage.TabIndex = 3;
             this.SettingTabPage.Text = "Setting";
             this.SettingTabPage.UseVisualStyleBackColor = true;
@@ -233,12 +233,9 @@ namespace Programming.View
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(786, 447);
             this.Controls.Add(this.ProgrammingTabControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "Programming Demo";

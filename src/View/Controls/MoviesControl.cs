@@ -9,24 +9,38 @@ using Programming.Model.Classes;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Реализация перечислений.
+    /// </summary>
     public partial class MoviesControl : UserControl
     {
+        /// <summary>
+        /// Количество элементов в массиве.
+        /// </summary>
         private const int ElementsCount = 5;
 
+        /// <summary>
+        /// Массив фильмов.
+        /// </summary>
         private Movie[] _movies;
 
+        /// <summary>
+        /// Выбранный фильма.
+        /// </summary>
         private Movie _currentMovie;
-        
-        private readonly Color ErrorColor = Color.LightPink;
 
-        private readonly Color CorrectColor = Color.White;
-
+        /// <summary>
+        /// Создает экземпляр <see cref="MoviesControl"/>.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();
             CreateMovies();
         }
 
+        /// <summary>
+        /// Наполняет массив.
+        /// </summary>
         private void CreateMovies()
         {
             _movies = new Movie[5]
@@ -46,6 +60,11 @@ namespace Programming.View.Controls
             MoviesListBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Находит фильм с самым высоким рейтингом.
+        /// </summary>
+        /// <param name="movies">Массив фильмов</param>
+        /// <returns>Индекс фильма.</returns>
         private int FindMovieWithMaxRating(Movie[] movies)
         {
             int maxWidthIndex = 0;
@@ -85,40 +104,40 @@ namespace Programming.View.Controls
 
         private void YearTextBox_TextChanged(object sender, EventArgs e)
         {
-            YearTextBox.BackColor = CorrectColor;
+            YearTextBox.BackColor = AppColor.CorrectColor;
             try
             {
                 _currentMovie.Year = Convert.ToInt32(YearTextBox.Text);
             }
             catch
             {
-                YearTextBox.BackColor = ErrorColor;
+                YearTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void DurationTextBox_TextChanged(object sender, EventArgs e)
         {
-            DurationTextBox.BackColor = CorrectColor;
+            DurationTextBox.BackColor = AppColor.CorrectColor;
             try
             {
                 _currentMovie.Duration = Convert.ToInt32(DurationTextBox.Text);
             }
             catch
             {
-                DurationTextBox.BackColor = ErrorColor;
+                DurationTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void RatingTextBox_TextChanged(object sender, EventArgs e)
         {
-            RatingTextBox.BackColor = CorrectColor;
+            RatingTextBox.BackColor = AppColor.CorrectColor;
             try
             {
                 _currentMovie.Rating = Convert.ToDouble(RatingTextBox.Text);
             }
             catch
             {
-                RatingTextBox.BackColor = ErrorColor;
+                RatingTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 

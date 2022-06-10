@@ -6,26 +6,44 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Programming.Model.Classes.Geometry;
+using Programming.Model.Classes;
 using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Реализация пересечения прямоугольников.
+    /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
-        private readonly Color ErrorColor = Color.LightPink;
-
-        private readonly Color CorrectColor = Color.White;
-
+        /// <summary>
+        /// Коллекция прямоугольников.
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
 
+        /// <summary>
+        /// Выбранный прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Коллекция Panel.
+        /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
 
+        /// <summary>
+        /// Высота области.
+        /// </summary>
         private int _heightCanvas;
 
+        /// <summary>
+        /// Ширина области.
+        /// </summary>
         private int _widthCanvas;
 
+        /// <summary>
+        /// Создает экземпляр <see cref="RectanglesCollisionControl"/>.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
@@ -34,23 +52,31 @@ namespace Programming.View.Controls
             _widthCanvas = CanvasPanel.Width;
         }
 
+        /// <summary>
+        /// Находит пересекающиеся прямоугольники и окрашивает их.
+        /// </summary>
         private void FindCollisions()
         {
-            _rectanglePanels.ForEach(panel => panel.BackColor = Color.FromArgb(127, 127, 255, 127));
+            _rectanglePanels.ForEach(panel => panel.BackColor = AppColor.NotCollision);
             for(int i = 0; i < _rectanglePanels.Count; i++)
             {
                 for(int j = i + 1; j < _rectanglePanels.Count; j++)
                 {
                     if(CollisionManager.IsCollision(_rectangles[i], _rectangles[j]) && i != j)
                     {
-                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[i].BackColor = AppColor.IsCollision;
+                        _rectanglePanels[j].BackColor = AppColor.IsCollision;
                     }
                 }
             }
         }
 
-        private string FormatText(Rectangle rectangle)
+        /// <summary>
+        /// Формирует текст из данных прямоугольника.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник</param>
+        /// <returns>Отформатированный текст.</returns>
+        private string FormattedTextRectangle(Rectangle rectangle)
         {
             return $"{rectangle.Id}:" +
                    $"(X= {rectangle.Center.X}; " +
@@ -59,28 +85,47 @@ namespace Programming.View.Controls
                    $"H= {rectangle.Height})";
         }
 
-        private void AddRectanglesPictureBox_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Обновляет информацию в списке.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник.</param>
+        private void UpdateRectangleInfo(Rectangle rectangle)
         {
-          
-               
+            int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
+            RectanglesListBox.Items[indexSelectedRectangle] = FormattedTextRectangle(rectangle);
+            FindCollisions();
+        }
+
+        /// <summary>
+        /// Очищает информацию в TexBox-ах
+        /// </summary>
+        private void ClearRectangleInfo()
+        {
+            IdTextBox.Clear();
+            XTextBox.Clear();
+            YTextBox.Clear();
+            WidthTextBox.Clear();
+            HeightTextBox.Clear();
+        }
+
+        private void AddRectanglesPictureBox_Click(object sender, EventArgs e)
+        {      
             Rectangle rectagle = RectangleFactory.Randomize(_widthCanvas, _heightCanvas);
             _rectangles.Add(rectagle);
-            RectanglesListBox.Items.Add(FormatText(rectagle));
+            RectanglesListBox.Items.Add(FormattedTextRectangle(rectagle));
                 
             Panel rectanglePanel = new Panel
             {
                 Width = rectagle.Width,       
                 Height = rectagle.Height,
                 Location = new Point(rectagle.Center.X, rectagle.Center.Y),
-                BackColor = Color.FromArgb(127, 127, 255, 127)
+                BackColor = AppColor.NotCollision
             };
   
             _rectanglePanels.Add(rectanglePanel);                
             CanvasPanel.Controls.Add(rectanglePanel);
                 
             FindCollisions();
-            
-
         }
 
         private void RemoveRectanglePictureBox_Click(object sender, EventArgs e)
@@ -116,25 +161,9 @@ namespace Programming.View.Controls
             HeightTextBox.Text = _currentRectangle.Height.ToString();
         }
 
-        private void UpdateRectangleInfo(Rectangle rectangle)
-        {
-            int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
-            RectanglesListBox.Items[indexSelectedRectangle] = FormatText(rectangle);
-            FindCollisions();
-        }
-
-        private void ClearRectangleInfo()
-        {
-            IdTextBox.Clear();
-            XTextBox.Clear();
-            YTextBox.Clear();
-            WidthTextBox.Clear();
-            HeightTextBox.Clear();
-        }
-
         private void XTextBox_TextChanged(object sender, EventArgs e)
         {
-            XTextBox.BackColor = CorrectColor;
+            XTextBox.BackColor = AppColor.CorrectColor;
             int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
 
             if (indexSelectedRectangle == -1)
@@ -150,13 +179,13 @@ namespace Programming.View.Controls
             }
             catch
             {
-                XTextBox.BackColor = ErrorColor;
+                XTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void YTextBox_TextChanged(object sender, EventArgs e)
         {
-            YTextBox.BackColor = CorrectColor;
+            YTextBox.BackColor = AppColor.CorrectColor;
             int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
 
             if (indexSelectedRectangle == -1)
@@ -172,13 +201,13 @@ namespace Programming.View.Controls
             }
             catch
             {
-                YTextBox.BackColor = ErrorColor;
+                YTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
-            WidthTextBox.BackColor = CorrectColor;
+            WidthTextBox.BackColor = AppColor.CorrectColor;
             int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
 
             if (indexSelectedRectangle == -1)
@@ -192,13 +221,13 @@ namespace Programming.View.Controls
             }
             catch
             {
-                WidthTextBox.BackColor = ErrorColor;
+                WidthTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 
         private void HeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            HeightTextBox.BackColor = CorrectColor;
+            HeightTextBox.BackColor = AppColor.CorrectColor;
             int indexSelectedRectangle = RectanglesListBox.SelectedIndex;
 
             if (indexSelectedRectangle == -1)
@@ -212,7 +241,7 @@ namespace Programming.View.Controls
             }
             catch
             {
-                HeightTextBox.BackColor = ErrorColor;
+                HeightTextBox.BackColor = AppColor.ErrorColor;
             }
         }
 

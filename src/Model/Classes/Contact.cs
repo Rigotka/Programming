@@ -1,18 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о контактах.
+    /// </summary>
     public class Contact
     {
+        /// <summary>
+        /// Номер.
+        /// </summary>
         private string _number;
 
+        /// <summary>
+        /// Имя.
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// Фамилия.
+        /// </summary>
         private string _surname;
 
+        /// <summary>
+        /// Возвращает и задает имя.
+        /// </summary>
         public string Name 
         { 
             get
@@ -21,10 +35,14 @@ namespace Programming.Model.Classes
             }
             set
             {
-                _name = AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+                Validator.AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+                _name = value;
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает фамилию.
+        /// </summary>
         public string Surname 
         {
             get
@@ -33,10 +51,15 @@ namespace Programming.Model.Classes
             }
             set
             {
-                _surname = AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+                Validator.AsserAssertStringContainsOnlyLetters(value, nameof(Name));
+                _surname = value;
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает номер. Должен состоять только из цифр.
+        /// Должен состоять из 11 символов.
+        /// </summary>
         public string Number 
         { 
             get
@@ -55,19 +78,19 @@ namespace Programming.Model.Classes
             }
         }
 
-        private string AsserAssertStringContainsOnlyLetters(string value, string propertyName)
-        {
-            if (!Regex.IsMatch(value, @"^[a-zA-Z]+$"))
-                throw new ArgumentException(
-                    $"{propertyName} field must contain only English letters");
-            
-            return value;
-        }
-
+        /// <summary>
+        /// Создает экземпляр <see cref="Contact"/>.
+        /// </summary>        
         public Contact() 
         {
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="Contact"/>.
+        /// </summary>
+        /// <param name="name">Имя. Должно состоять только из английских букв.</param>
+        /// <param name="surname">Фамилия. Должно состоять только из английских букв.</param>
+        /// <param name="number">Номер. Должен состоять из 11 символов.</param>
         public Contact(string name, string surname, string number)
         {
             Name = name;
