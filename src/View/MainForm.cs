@@ -12,7 +12,7 @@ namespace Programming.View
         {
             InitializeComponent();
 
-            _player.SoundLocation = @"D:\учеба\2 sem\programming\lab3\src\Source\Sound\ost.wav";
+            _player.SoundLocation = @"D:\учеба\2 sem\Programming\src\Source\Sound\ost.wav";
             MusicCheckBox.Checked = true;
         }
 
