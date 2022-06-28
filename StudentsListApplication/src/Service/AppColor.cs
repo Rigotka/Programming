@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 
 
-namespace StudentsListApplication.Service
+namespace StudentsListApplication.src.Service
 {
     /// <summary>
     /// Хранит цвета используемые в приложении.

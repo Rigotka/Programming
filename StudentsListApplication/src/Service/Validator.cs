@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsListApplication.Service
+namespace StudentsListApplication.src.Service
 {
     /// <summary>
     /// Предоставляет методы для проверки данных.

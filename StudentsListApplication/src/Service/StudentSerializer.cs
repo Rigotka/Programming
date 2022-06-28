@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
-using StudentsListApplication.Model;
+using StudentsListApplication.src.Model;
 
-namespace StudentsListApplication.Service
+namespace StudentsListApplication.src.Service
 {
     /// <summary>
     /// Предоставляет методы для конвертации объектов в JSON.
@@ -23,10 +23,10 @@ namespace StudentsListApplication.Service
         public StudentSerializer()
         {
             var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            var directiry = Path.Combine(appDataFolder, "Student");
+            var fodler = Path.Combine(appDataFolder, "Student");
 
-            if (!Directory.Exists(directiry))
-                Directory.CreateDirectory(directiry);
+            if (!Directory.Exists(fodler))
+                Directory.CreateDirectory(fodler);
 
             var file = Path.Combine(appDataFolder, "Student\\Student.json");
             if (!File.Exists(file))

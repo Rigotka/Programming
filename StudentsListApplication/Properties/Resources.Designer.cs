@@ -63,9 +63,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_avatar_color {
+        internal static System.Drawing.Bitmap avatar_add {
             get {
-                object obj = ResourceManager.GetObject("add_avatar_color", resourceCulture);
+                object obj = ResourceManager.GetObject("avatar_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_avatar_enable {
+        internal static System.Drawing.Bitmap avatar_add_color {
             get {
-                object obj = ResourceManager.GetObject("add_avatar_enable", resourceCulture);
+                object obj = ResourceManager.GetObject("avatar_add_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_avatat_uncolor {
+        internal static System.Drawing.Bitmap avatar_add_disable {
             get {
-                object obj = ResourceManager.GetObject("add_avatat_uncolor", resourceCulture);
+                object obj = ResourceManager.GetObject("avatar_add_disable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_student_color {
+        internal static System.Drawing.Bitmap avatar_delete {
             get {
-                object obj = ResourceManager.GetObject("add_student_color", resourceCulture);
+                object obj = ResourceManager.GetObject("avatar_delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,19 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_student_uncolor {
+        internal static System.Drawing.Bitmap avatar_delete_color {
             get {
-                object obj = ResourceManager.GetObject("add_student_uncolor", resourceCulture);
+                object obj = ResourceManager.GetObject("avatar_delete_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap avatar_delete_disable {
+            get {
+                object obj = ResourceManager.GetObject("avatar_delete_disable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -121,11 +131,21 @@ namespace StudentsListApplication.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon favicon {
+            get {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete_avatar_color {
+        internal static System.Drawing.Bitmap student_add {
             get {
-                object obj = ResourceManager.GetObject("delete_avatar_color", resourceCulture);
+                object obj = ResourceManager.GetObject("student_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete_avatar_uncolor {
+        internal static System.Drawing.Bitmap student_add_color {
             get {
-                object obj = ResourceManager.GetObject("delete_avatar_uncolor", resourceCulture);
+                object obj = ResourceManager.GetObject("student_add_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete_student_color {
+        internal static System.Drawing.Bitmap student_delete {
             get {
-                object obj = ResourceManager.GetObject("delete_student_color", resourceCulture);
+                object obj = ResourceManager.GetObject("student_delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,19 +173,9 @@ namespace StudentsListApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete_student_uncolor {
+        internal static System.Drawing.Bitmap student_delete_color {
             get {
-                object obj = ResourceManager.GetObject("delete_student_uncolor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap delte_avatar_enable {
-            get {
-                object obj = ResourceManager.GetObject("delte_avatar_enable", resourceCulture);
+                object obj = ResourceManager.GetObject("student_delete_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

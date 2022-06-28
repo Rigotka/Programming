@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 
-namespace StudentsListApplication.Service
+namespace StudentsListApplication.src.Service
 {
     /// <summary>
     /// Представляет методы для конвертации изображений.
