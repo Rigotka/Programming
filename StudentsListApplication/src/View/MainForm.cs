@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using StudentsListApplication.Model;
-using StudentsListApplication.Service;
+using StudentsListApplication.src.Model;
+using StudentsListApplication.src.Service;
 
 namespace StudentsListApplication
 {
@@ -42,9 +42,6 @@ namespace StudentsListApplication
             
             _students = _serializer.LoadFromFile();
             UpdateList();
-
-            AddAvatarPictureBox.Image = Properties.Resources.add_avatar_enable;
-            DeleteAvatarPictureBox.Image = Properties.Resources.delte_avatar_enable;
         }
 
         /// <summary>
@@ -56,8 +53,8 @@ namespace StudentsListApplication
         {
             bool isFullData = student.FullName != null
               && student.Group != null
-              && student.Faculty != Faculty.Пусто
-              && student.EducationForm! != EducationForm.Пусто;
+              && student.Faculty != Faculty.None
+              && student.EducationForm! != EducationForm.None;
             return isFullData;
         }
 
@@ -78,16 +75,16 @@ namespace StudentsListApplication
         /// </summary>
         private void HighlightingNotEntered()
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (HighlightCheckBox.Checked && indexSelecedStudent != -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (HighlightCheckBox.Checked && index != -1)
             {
                 if (FullNameTextBox.Text == string.Empty)
                     FullNameTextBox.BackColor = AppColor.HighlightColor;
                 if (GroupTextBox.Text == string.Empty)
                     GroupTextBox.BackColor = AppColor.HighlightColor;
-                if ((Faculty)FacultyComboBox.SelectedIndex == Faculty.Пусто)
+                if ((Faculty)FacultyComboBox.SelectedIndex == Faculty.None)
                     FacultyComboBox.BackColor = AppColor.HighlightColor;
-                if ((EducationForm)EducationFormComboBox.SelectedIndex == EducationForm.Пусто)
+                if ((EducationForm)EducationFormComboBox.SelectedIndex == EducationForm.None)
                     EducationFormComboBox.BackColor = AppColor.HighlightColor;
 
             }
@@ -147,18 +144,18 @@ namespace StudentsListApplication
             if (!string.IsNullOrEmpty(_currentStudent.Image))
             {
                 AvatarPictureBox.Image = ConverterBase64.Base64ToImage(_currentStudent.Image);
-                DeleteAvatarPictureBox.Image = Properties.Resources.delete_avatar_uncolor;
+                DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete;
                 DeleteAvatarPictureBox.Enabled = true;
             }
             else
             {
                 AvatarPictureBox.Image = Properties.Resources.defaultAvatar;
-                DeleteAvatarPictureBox.Image = Properties.Resources.delte_avatar_enable;
+                DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete_disable;
                 DeleteAvatarPictureBox.Enabled = false;
             }
 
             AddAvatarPictureBox.Enabled = true;
-            AddAvatarPictureBox.Image = Properties.Resources.add_avatat_uncolor;
+            AddAvatarPictureBox.Image = Properties.Resources.avatar_add;
         }
 
         /// <summary>
@@ -173,7 +170,7 @@ namespace StudentsListApplication
             EducationFormComboBox.SelectedIndex = -1;
             AvatarPictureBox.Image = null;
             AddAvatarPictureBox.Enabled = false;
-            AddAvatarPictureBox.Image = Properties.Resources.add_avatar_enable;
+            AddAvatarPictureBox.Image = Properties.Resources.avatar_add_disable;
         }
 
         private void AddStudentPictureBox_Click(object sender, EventArgs e)
@@ -186,11 +183,11 @@ namespace StudentsListApplication
 
         private void DeleteStudentPictureBox_Click(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
-            _students.RemoveAt(indexSelecedStudent);
+            _students.RemoveAt(index);
             UpdateList();
             ClearFieldsInfo();
             HighlightingNotEntered();
@@ -198,19 +195,19 @@ namespace StudentsListApplication
 
         private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
-            _currentStudent = _students[indexSelecedStudent];
+            _currentStudent = _students[index];
             UpdateFieldsInfo();
             HighlightingNotEntered();
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
             FullNameTextBox.BackColor = AppColor.CorrectColor;
@@ -232,8 +229,8 @@ namespace StudentsListApplication
 
         private void GroupTextBox_TextChanged(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
             GroupTextBox.BackColor = AppColor.CorrectColor;
@@ -250,8 +247,8 @@ namespace StudentsListApplication
 
         private void FacultyComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
             FacultyComboBox.BackColor = AppColor.CorrectColor;
@@ -268,8 +265,8 @@ namespace StudentsListApplication
 
         private void EducationFormComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            int indexSelecedStudent = StudentsListBox.SelectedIndex;
-            if (indexSelecedStudent == -1)
+            int index = StudentsListBox.SelectedIndex;
+            if (index == -1)
                 return;
 
             EducationFormComboBox.BackColor = AppColor.CorrectColor;
@@ -291,23 +288,23 @@ namespace StudentsListApplication
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            List <Student> list = new List<Student>();
+            /*List <Student> list = new List<Student>();
             foreach(var student in _students)
             {
                 if (IsFullData(student))
                     list.Add(student);
             }
-            _serializer.SaveToFile(list);
+            _serializer.SaveToFile(list);*/
         }
 
         private void AddStudentPictureBox_MouseEnter(object sender, EventArgs e)
         {
-            AddStudentPictureBox.Image = Properties.Resources.add_student_color;
+            AddStudentPictureBox.Image = Properties.Resources.student_add_color;
         }
 
         private void AddStudentPictureBox_MouseLeave(object sender, EventArgs e)
         {
-            AddStudentPictureBox.Image = Properties.Resources.add_student_uncolor;
+            AddStudentPictureBox.Image = Properties.Resources.student_add;
         }
 
         private void AddStudentPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -322,12 +319,12 @@ namespace StudentsListApplication
 
         private void DeleteStudentPictureBox_MouseEnter(object sender, EventArgs e)
         {
-            DeleteStudentPictureBox.Image = Properties.Resources.delete_student_color;
+            DeleteStudentPictureBox.Image = Properties.Resources.student_delete_color;
         }
 
         private void DeleteStudentPictureBox_MouseLeave(object sender, EventArgs e)
         {
-            DeleteStudentPictureBox.Image = Properties.Resources.delete_student_uncolor;
+            DeleteStudentPictureBox.Image = Properties.Resources.student_delete;
         }
 
         private void DeleteStudentPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -354,17 +351,17 @@ namespace StudentsListApplication
             _currentStudent.Image = ConverterBase64.ImageToBase64(image);
             AvatarPictureBox.Image = image;
             DeleteAvatarPictureBox.Enabled = true;
-            DeleteAvatarPictureBox.Image = Properties.Resources.delete_avatar_uncolor;
+            DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete;
         }
 
         private void AddAvatarPictureBox_MouseEnter(object sender, EventArgs e)
         {
-            AddAvatarPictureBox.Image = Properties.Resources.add_avatar_color;
+            AddAvatarPictureBox.Image = Properties.Resources.avatar_add_color;
         }
 
         private void AddAvatarPictureBox_MouseLeave(object sender, EventArgs e)
         {
-            AddAvatarPictureBox.Image = Properties.Resources.add_avatat_uncolor;
+            AddAvatarPictureBox.Image = Properties.Resources.avatar_add;
         }
 
         private void AddAvatarPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -381,19 +378,19 @@ namespace StudentsListApplication
         {
             AvatarPictureBox.Image = Properties.Resources.defaultAvatar;
             _currentStudent.Image = null;
-            DeleteAvatarPictureBox.Image = Properties.Resources.delte_avatar_enable;
+            DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete_disable;
             DeleteAvatarPictureBox.Enabled = false;
         }
 
         private void DeleteAvatarPictureBox_MouseEnter(object sender, EventArgs e)
         {
-            DeleteAvatarPictureBox.Image = Properties.Resources.delete_avatar_color;
+            DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete_color;
         }
 
         private void DeleteAvatarPictureBox_MouseLeave(object sender, EventArgs e)
         {
             if(DeleteAvatarPictureBox.Enabled)
-                DeleteAvatarPictureBox.Image = Properties.Resources.delete_avatar_uncolor;
+                DeleteAvatarPictureBox.Image = Properties.Resources.avatar_delete;
         }
 
         private void DeleteAvatarPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -404,6 +401,38 @@ namespace StudentsListApplication
         private void DeleteAvatarPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             DeleteAvatarPictureBox.BackColor = SystemColors.Control;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                bool answer = true;
+                List<Student> list = new List<Student>();
+                foreach (var student in _students)
+                {
+                    if (IsFullData(student))
+                        list.Add(student);
+                    else
+                        answer = false;
+
+                }
+                e.Cancel = true;
+                if (!answer)
+                {
+                    string message = "\"not full data\" will not be saved. Are you sure you want to leave?";
+                    answer = MessageBox.Show(
+                            message,
+                            "EXIT?",
+                            MessageBoxButtons.YesNo) == DialogResult.Yes;
+                }
+                if (answer)
+                {
+                    Application.Exit();
+                    _serializer.SaveToFile(list);
+                }
+            }
         }
     }
 }

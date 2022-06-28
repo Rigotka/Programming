@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using StudentsListApplication.Service;
+using StudentsListApplication.src.Service;
 
-namespace StudentsListApplication.Model
+namespace StudentsListApplication.src.Model
 {
     /// <summary>
     /// Хранит данные о студенте.
@@ -96,8 +96,8 @@ namespace StudentsListApplication.Model
             }
             set
             {
-                if (value == Faculty.Пусто)
-                    throw new ArgumentException("Выберет факультет");
+                if (value == Faculty.None)
+                    throw new ArgumentException("Choose faculty");
                 _faculty = value;
             }
         }
@@ -113,8 +113,8 @@ namespace StudentsListApplication.Model
             }
             set
             {
-                if (value == EducationForm.Пусто)
-                    throw new ArgumentException("Выберете форму обучения");
+                if (value == EducationForm.None)
+                    throw new ArgumentException("Choose a form of study");
                 _educationForm = value;
             }
         }

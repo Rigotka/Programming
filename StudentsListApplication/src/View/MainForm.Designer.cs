@@ -58,6 +58,9 @@ namespace StudentsListApplication
             // 
             // StudentsListBox
             // 
+            this.StudentsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsListBox.FormattingEnabled = true;
             this.StudentsListBox.ItemHeight = 20;
             this.StudentsListBox.Location = new System.Drawing.Point(12, 12);
@@ -68,6 +71,7 @@ namespace StudentsListApplication
             // 
             // StudentGroupBox
             // 
+            this.StudentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentGroupBox.Controls.Add(this.DeleteAvatarPictureBox);
             this.StudentGroupBox.Controls.Add(this.AddAvatarPictureBox);
             this.StudentGroupBox.Controls.Add(this.AvatarPictureBox);
@@ -84,7 +88,7 @@ namespace StudentsListApplication
             this.StudentGroupBox.Controls.Add(this.RecordNumberLabel);
             this.StudentGroupBox.Location = new System.Drawing.Point(427, 12);
             this.StudentGroupBox.Name = "StudentGroupBox";
-            this.StudentGroupBox.Size = new System.Drawing.Size(418, 384);
+            this.StudentGroupBox.Size = new System.Drawing.Size(388, 384);
             this.StudentGroupBox.TabIndex = 1;
             this.StudentGroupBox.TabStop = false;
             this.StudentGroupBox.Text = "Selected Student";
@@ -93,9 +97,10 @@ namespace StudentsListApplication
             // 
             this.DeleteAvatarPictureBox.Enabled = false;
             this.DeleteAvatarPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAvatarPictureBox.Image")));
-            this.DeleteAvatarPictureBox.Location = new System.Drawing.Point(285, 82);
+            this.DeleteAvatarPictureBox.Location = new System.Drawing.Point(286, 63);
             this.DeleteAvatarPictureBox.Name = "DeleteAvatarPictureBox";
-            this.DeleteAvatarPictureBox.Size = new System.Drawing.Size(54, 50);
+            this.DeleteAvatarPictureBox.Size = new System.Drawing.Size(94, 31);
+            this.DeleteAvatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DeleteAvatarPictureBox.TabIndex = 13;
             this.DeleteAvatarPictureBox.TabStop = false;
             this.DeleteAvatarPictureBox.Click += new System.EventHandler(this.DeleteAvatarPictureBox_Click);
@@ -109,9 +114,10 @@ namespace StudentsListApplication
             this.AddAvatarPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.AddAvatarPictureBox.Enabled = false;
             this.AddAvatarPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AddAvatarPictureBox.Image")));
-            this.AddAvatarPictureBox.Location = new System.Drawing.Point(285, 26);
+            this.AddAvatarPictureBox.Location = new System.Drawing.Point(286, 26);
             this.AddAvatarPictureBox.Name = "AddAvatarPictureBox";
-            this.AddAvatarPictureBox.Size = new System.Drawing.Size(54, 50);
+            this.AddAvatarPictureBox.Size = new System.Drawing.Size(94, 31);
+            this.AddAvatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddAvatarPictureBox.TabIndex = 12;
             this.AddAvatarPictureBox.TabStop = false;
             this.AddAvatarPictureBox.Click += new System.EventHandler(this.AddAvatarPictureBox_Click);
@@ -126,7 +132,7 @@ namespace StudentsListApplication
             this.AvatarPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("AvatarPictureBox.InitialImage")));
             this.AvatarPictureBox.Location = new System.Drawing.Point(129, 26);
             this.AvatarPictureBox.Name = "AvatarPictureBox";
-            this.AvatarPictureBox.Size = new System.Drawing.Size(150, 150);
+            this.AvatarPictureBox.Size = new System.Drawing.Size(151, 150);
             this.AvatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AvatarPictureBox.TabIndex = 4;
             this.AvatarPictureBox.TabStop = false;
@@ -167,7 +173,7 @@ namespace StudentsListApplication
             this.FacultyComboBox.FormattingEnabled = true;
             this.FacultyComboBox.Location = new System.Drawing.Point(130, 281);
             this.FacultyComboBox.Name = "FacultyComboBox";
-            this.FacultyComboBox.Size = new System.Drawing.Size(151, 28);
+            this.FacultyComboBox.Size = new System.Drawing.Size(150, 28);
             this.FacultyComboBox.TabIndex = 8;
             this.FacultyComboBox.SelectionChangeCommitted += new System.EventHandler(this.FacultyComboBox_SelectionChangeCommitted);
             // 
@@ -175,15 +181,15 @@ namespace StudentsListApplication
             // 
             this.GroupTextBox.Location = new System.Drawing.Point(130, 248);
             this.GroupTextBox.Name = "GroupTextBox";
-            this.GroupTextBox.Size = new System.Drawing.Size(125, 27);
+            this.GroupTextBox.Size = new System.Drawing.Size(150, 27);
             this.GroupTextBox.TabIndex = 7;
             this.GroupTextBox.TextChanged += new System.EventHandler(this.GroupTextBox_TextChanged);
             // 
             // RecordNumberTextBox
             // 
-            this.RecordNumberTextBox.Location = new System.Drawing.Point(130, 215);
+            this.RecordNumberTextBox.Location = new System.Drawing.Point(129, 215);
             this.RecordNumberTextBox.Name = "RecordNumberTextBox";
-            this.RecordNumberTextBox.Size = new System.Drawing.Size(125, 27);
+            this.RecordNumberTextBox.Size = new System.Drawing.Size(151, 27);
             this.RecordNumberTextBox.TabIndex = 6;
             this.RecordNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RecordNumberTextBox_KeyPress);
             // 
@@ -200,7 +206,7 @@ namespace StudentsListApplication
             // 
             this.FullNameTextBox.Location = new System.Drawing.Point(129, 182);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(279, 27);
+            this.FullNameTextBox.Size = new System.Drawing.Size(251, 27);
             this.FullNameTextBox.TabIndex = 5;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
@@ -233,11 +239,13 @@ namespace StudentsListApplication
             // 
             // AddStudentPictureBox
             // 
+            this.AddStudentPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddStudentPictureBox.BackColor = System.Drawing.SystemColors.Control;
             this.AddStudentPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AddStudentPictureBox.Image")));
             this.AddStudentPictureBox.Location = new System.Drawing.Point(12, 402);
             this.AddStudentPictureBox.Name = "AddStudentPictureBox";
-            this.AddStudentPictureBox.Size = new System.Drawing.Size(54, 50);
+            this.AddStudentPictureBox.Size = new System.Drawing.Size(94, 30);
+            this.AddStudentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddStudentPictureBox.TabIndex = 4;
             this.AddStudentPictureBox.TabStop = false;
             this.AddStudentPictureBox.Click += new System.EventHandler(this.AddStudentPictureBox_Click);
@@ -248,11 +256,13 @@ namespace StudentsListApplication
             // 
             // DeleteStudentPictureBox
             // 
+            this.DeleteStudentPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteStudentPictureBox.BackColor = System.Drawing.SystemColors.Control;
             this.DeleteStudentPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("DeleteStudentPictureBox.Image")));
-            this.DeleteStudentPictureBox.Location = new System.Drawing.Point(72, 402);
+            this.DeleteStudentPictureBox.Location = new System.Drawing.Point(112, 402);
             this.DeleteStudentPictureBox.Name = "DeleteStudentPictureBox";
-            this.DeleteStudentPictureBox.Size = new System.Drawing.Size(54, 50);
+            this.DeleteStudentPictureBox.Size = new System.Drawing.Size(94, 31);
+            this.DeleteStudentPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DeleteStudentPictureBox.TabIndex = 5;
             this.DeleteStudentPictureBox.TabStop = false;
             this.DeleteStudentPictureBox.Click += new System.EventHandler(this.DeleteStudentPictureBox_Click);
@@ -265,13 +275,16 @@ namespace StudentsListApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 462);
+            this.ClientSize = new System.Drawing.Size(823, 445);
             this.Controls.Add(this.DeleteStudentPictureBox);
             this.Controls.Add(this.AddStudentPictureBox);
             this.Controls.Add(this.StudentGroupBox);
             this.Controls.Add(this.StudentsListBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(841, 492);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "StudentsList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.StudentGroupBox.ResumeLayout(false);
             this.StudentGroupBox.PerformLayout();

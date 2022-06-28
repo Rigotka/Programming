@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsListApplication.Model
+namespace StudentsListApplication.src.Model
 {
     /// <summary>
     /// Хранит перечисление форматов обучения.
     /// </summary>
     public enum EducationForm
     {
-        Пусто,
-        Очно,
-        Заочно,
-        Дистанционно
+        None,
+        Fulltime,
+        Absentia,
+        Remotely
     }
 }
