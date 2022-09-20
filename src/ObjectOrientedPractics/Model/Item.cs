@@ -3,16 +3,34 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
+	/// <summary>
+	/// Хранит данные о товаре.
+	/// </summary>
 	public class Item
 	{
+		/// <summary>
+		/// ID товара.
+		/// </summary>
 		private readonly int _id;
 
+		/// <summary>
+		/// Название товара.
+		/// </summary>
 		private string _name;
 
+		/// <summary>
+		/// Информация о товаре.
+		/// </summary>
 		private string _info;
 
+		/// <summary>
+		/// Цена товара.
+		/// </summary>
 		private int _cost;
 		
+		/// <summary>
+		/// Возвращает ID товара.
+		/// </summary>
 		public int Id
         {
 			get 
@@ -21,6 +39,9 @@ namespace ObjectOrientedPractics.Model
 			}
         }
 
+		/// <summary>
+		/// Возвращает и задает название товара.
+		/// </summary>
 		public string Name
         {
 			get 
@@ -35,6 +56,9 @@ namespace ObjectOrientedPractics.Model
 			}
         }
 
+		/// <summary>
+		/// Возвращает и задает информацию о товаре.
+		/// </summary>
 		public string Info
         {
 			get 
@@ -49,6 +73,9 @@ namespace ObjectOrientedPractics.Model
 			}
         }
 
+		/// <summary>
+		/// Возвращает и задает стоимость товара.
+		/// </summary>
 		public int Cost
         {
 			get 
@@ -63,6 +90,12 @@ namespace ObjectOrientedPractics.Model
 			}
         }
 
+		/// <summary>
+		/// Создает экземпляр <see cref="Item"/>
+		/// </summary>
+		/// <param name="name">Название. До 200 символов.</param>
+		/// <param name="info">Информация. до 1000 символов.</param>
+		/// <param name="cost">Стоимость товара. от 0 до 100000.</param>
 		public Item(string name, string info, int cost)
         {
 			_id = IdGenerator.GetNextID();

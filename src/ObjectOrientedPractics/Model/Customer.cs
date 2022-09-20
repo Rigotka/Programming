@@ -7,14 +7,29 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Хранит данные о покупатели.
+    /// </summary>
     public class Customer
     {
+        /// <summary>
+        /// ID покупателя.
+        /// </summary>
         private readonly int _id;
 
+        /// <summary>
+        /// ФИО покупателя.
+        /// </summary>
         private string _fullName;
 
+        /// <summary>
+        /// Адрес покупателя.
+        /// </summary>
         private string _address;
 
+        /// <summary>
+        /// Возвращает ID покупателя.
+        /// </summary>
         public int Id
         {
             get
@@ -23,6 +38,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает ФИО покупателя.
+        /// </summary>
         public string FullName
         {
             get
@@ -37,6 +55,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Развращает и задает адрес покупателя.
+        /// </summary>
         public string Address
         {
             get
@@ -51,6 +72,11 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="Customer"/>
+        /// </summary>
+        /// <param name="fullName">ФИО. До 200 символов.</param>
+        /// <param name="address">Адрес. До 500 символов.</param>
         public Customer(string fullName, string address)
         {
             _id = IdGenerator.GetNextID();
