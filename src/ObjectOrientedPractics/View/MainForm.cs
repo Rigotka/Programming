@@ -6,5 +6,7 @@ namespace ObjectOrientedPractics
         {
             InitializeComponent();
         }
+
+
     }
 }

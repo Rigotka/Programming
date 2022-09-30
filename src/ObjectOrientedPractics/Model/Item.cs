@@ -93,6 +93,17 @@ namespace ObjectOrientedPractics.Model
 		/// <summary>
 		/// Создает экземпляр <see cref="Item"/>
 		/// </summary>
+		public Item()
+        {
+			_id = IdGenerator.GetNextID();
+			Name = $"Товар {_id}";
+			Info = "Не заполнено";
+			Cost = 0;
+		}
+
+		/// <summary>
+		/// Создает экземпляр <see cref="Item"/>
+		/// </summary>
 		/// <param name="name">Название. До 200 символов.</param>
 		/// <param name="info">Информация. до 1000 символов.</param>
 		/// <param name="cost">Стоимость товара. от 0 до 100000.</param>
