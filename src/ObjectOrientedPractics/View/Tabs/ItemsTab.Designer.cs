@@ -86,6 +86,7 @@
             this.DeleteButton.TabIndex = 3;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 
@@ -163,7 +164,7 @@
             // 
             // CostTextBox
             // 
-            this.CostTextBox.Location = new System.Drawing.Point(61, 56);
+            this.CostTextBox.Location = new System.Drawing.Point(88, 56);
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(125, 27);
             this.CostTextBox.TabIndex = 6;
@@ -171,7 +172,7 @@
             // 
             // IDTextBox
             // 
-            this.IDTextBox.Location = new System.Drawing.Point(61, 23);
+            this.IDTextBox.Location = new System.Drawing.Point(88, 23);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(125, 27);
             this.IDTextBox.TabIndex = 5;

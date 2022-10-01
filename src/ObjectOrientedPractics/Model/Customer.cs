@@ -73,6 +73,16 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Создает экземпляр <see cref="Customer"/> 
+        /// </summary>
+        public Customer()
+        {
+            _id = IdGenerator.GetNextID();
+            FullName = "Не заполнено";
+            Address = "Не заполнено";
+        }
+
+        /// <summary>
         /// Создает экземпляр <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО. До 200 символов.</param>

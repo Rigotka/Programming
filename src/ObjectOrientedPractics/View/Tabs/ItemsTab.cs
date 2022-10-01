@@ -39,6 +39,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 id = _currentItem.Id;
             ItemsListBox.Items.Clear();
 
+            _items.Sort(new ItemComparer());
             foreach(var item in _items)
             {
                 ItemsListBox.Items.Add(item.Name);
@@ -52,6 +53,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             Item item = new();
             _items.Add(item);
+            UpdateList();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            int index = ItemsListBox.SelectedIndex;
+            if (index == -1)
+                return;
+
+            _items.RemoveAt(index);
             UpdateList();
         }
 
