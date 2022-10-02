@@ -1,3 +1,5 @@
+using ObjectOrientedPractics.View.Tabs;
+
 namespace ObjectOrientedPractics
 {
     public partial class MainForm : Form
@@ -7,6 +9,10 @@ namespace ObjectOrientedPractics
             InitializeComponent();
         }
 
-
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ItemsTab.SaveData();
+            CustomersTab.SaveData();
+        }
     }
 }

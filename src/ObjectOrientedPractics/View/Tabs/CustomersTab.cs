@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -18,9 +9,19 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private Customer _currentCustomer;
 
+        private ProjectSerializer _serializer = new("Customers");
+
+
         public CustomersTab()
         {
             InitializeComponent();
+            _customers = _serializer.LoadCustomersFromFile();
+            UpdateList();
+        }
+
+        public void SaveData()
+        {
+            _serializer.SaveCustomerToFIle(_customers);
         }
 
         private void UpdateFieldInfo()

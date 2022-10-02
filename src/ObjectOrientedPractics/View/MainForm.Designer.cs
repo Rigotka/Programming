@@ -94,7 +94,8 @@
             this.ClientSize = new System.Drawing.Size(754, 489);
             this.Controls.Add(this.TabControl);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Object Oriented Practics";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.TabControl.ResumeLayout(false);
             this.ItemsTabPage.ResumeLayout(false);
             this.CUstomersTabPage.ResumeLayout(false);
