@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsTab));
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemsPanel = new System.Windows.Forms.Panel();
+            this.RandomButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
@@ -44,9 +47,12 @@
             this.CostLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedItemLabel = new System.Windows.Forms.Label();
+            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanel.SuspendLayout();
             this.ItemsPanel.SuspendLayout();
             this.SelectedItemPanel.SuspendLayout();
+            this.ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -67,6 +73,7 @@
             // ItemsPanel
             // 
             this.ItemsPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ItemsPanel.Controls.Add(this.RandomButton);
             this.ItemsPanel.Controls.Add(this.DeleteButton);
             this.ItemsPanel.Controls.Add(this.AddButton);
             this.ItemsPanel.Controls.Add(this.ItemsListBox);
@@ -76,6 +83,17 @@
             this.ItemsPanel.Name = "ItemsPanel";
             this.ItemsPanel.Size = new System.Drawing.Size(362, 441);
             this.ItemsPanel.TabIndex = 0;
+            // 
+            // RandomButton
+            // 
+            this.RandomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RandomButton.Location = new System.Drawing.Point(203, 409);
+            this.RandomButton.Name = "RandomButton";
+            this.RandomButton.Size = new System.Drawing.Size(94, 29);
+            this.RandomButton.TabIndex = 4;
+            this.RandomButton.Text = "Random";
+            this.RandomButton.UseVisualStyleBackColor = true;
+            this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
             // 
             // DeleteButton
             // 
@@ -104,6 +122,7 @@
             this.ItemsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemsListBox.ContextMenuStrip = this.ContextMenuStrip;
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.ItemHeight = 20;
             this.ItemsListBox.Location = new System.Drawing.Point(3, 23);
@@ -223,6 +242,22 @@
             this.SelectedItemLabel.TabIndex = 0;
             this.SelectedItemLabel.Text = "Selected Item";
             // 
+            // ContextMenuStrip
+            // 
+            this.ContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteAllMenuItem});
+            this.ContextMenuStrip.Name = "ContextMenuStrip";
+            this.ContextMenuStrip.Size = new System.Drawing.Size(215, 58);
+            // 
+            // DeleteAllMenuItem
+            // 
+            this.DeleteAllMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAllMenuItem.Image")));
+            this.DeleteAllMenuItem.Name = "DeleteAllMenuItem";
+            this.DeleteAllMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.DeleteAllMenuItem.Text = "Очистить";
+            this.DeleteAllMenuItem.Click += new System.EventHandler(this.DeleteAllMenuItem_Click);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -235,6 +270,7 @@
             this.ItemsPanel.PerformLayout();
             this.SelectedItemPanel.ResumeLayout(false);
             this.SelectedItemPanel.PerformLayout();
+            this.ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -257,5 +293,8 @@
         private Label SelectedItemLabel;
         private TextBox InfoTextBox;
         private TextBox NameTextBox;
+        private Button RandomButton;
+        private ContextMenuStrip ContextMenuStrip;
+        private ToolStripMenuItem DeleteAllMenuItem;
     }
 }

@@ -57,4 +57,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="СontextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DeleteAllMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACoSURBVDhP7dI9CsJAFATgrQXR2iuYzkLF1sJ0aayskyt4
+        Eq30VoL4cxczA/PAIk+y2S0d+ODtbhh2IaFHxnATzslZwkfW3EjNCqxww43U/AvTk71wAluZciMmJewj
+        7cDNG+x5fd3BTfbCAhaR5uCmgWOkGty8oOtZvzzAzZDCJ7jJXshDfnSFmeYuPLto5iXcWOEZRprpILbm
+        2UnzoMJKbP1dyH9XCaEF8/mDuh0nCcYAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

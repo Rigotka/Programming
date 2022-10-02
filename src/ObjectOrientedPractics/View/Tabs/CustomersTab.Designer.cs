@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersTab));
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CustomersPanel = new System.Windows.Forms.Panel();
+            this.RandomButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
+            this.СontextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.CustomerSelectedPanel = new System.Windows.Forms.Panel();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
@@ -44,6 +49,7 @@
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
+            this.СontextMenuStrip.SuspendLayout();
             this.CustomerSelectedPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +71,7 @@
             // CustomersPanel
             // 
             this.CustomersPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CustomersPanel.Controls.Add(this.RandomButton);
             this.CustomersPanel.Controls.Add(this.DeleteButton);
             this.CustomersPanel.Controls.Add(this.AddButton);
             this.CustomersPanel.Controls.Add(this.CustomersListBox);
@@ -74,6 +81,17 @@
             this.CustomersPanel.Name = "CustomersPanel";
             this.CustomersPanel.Size = new System.Drawing.Size(362, 441);
             this.CustomersPanel.TabIndex = 0;
+            // 
+            // RandomButton
+            // 
+            this.RandomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RandomButton.Location = new System.Drawing.Point(203, 409);
+            this.RandomButton.Name = "RandomButton";
+            this.RandomButton.Size = new System.Drawing.Size(94, 29);
+            this.RandomButton.TabIndex = 4;
+            this.RandomButton.Text = "Random";
+            this.RandomButton.UseVisualStyleBackColor = true;
+            this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
             // 
             // DeleteButton
             // 
@@ -102,6 +120,7 @@
             this.CustomersListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomersListBox.ContextMenuStrip = this.СontextMenuStrip;
             this.CustomersListBox.FormattingEnabled = true;
             this.CustomersListBox.ItemHeight = 20;
             this.CustomersListBox.Location = new System.Drawing.Point(3, 23);
@@ -109,6 +128,25 @@
             this.CustomersListBox.Size = new System.Drawing.Size(356, 384);
             this.CustomersListBox.TabIndex = 1;
             this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
+            // 
+            // СontextMenuStrip
+            // 
+            this.СontextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.СontextMenuStrip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.СontextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteAllMenuItem});
+            this.СontextMenuStrip.Name = "contextMenuStrip1";
+            this.СontextMenuStrip.Size = new System.Drawing.Size(215, 58);
+            // 
+            // DeleteAllMenuItem
+            // 
+            this.DeleteAllMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.DeleteAllMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAllMenuItem.Image")));
+            this.DeleteAllMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+            this.DeleteAllMenuItem.Name = "DeleteAllMenuItem";
+            this.DeleteAllMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.DeleteAllMenuItem.Text = "Очистить";
+            this.DeleteAllMenuItem.Click += new System.EventHandler(this.DeleteAllMenuItem_Click);
             // 
             // CustomersLabel
             // 
@@ -210,6 +248,7 @@
             this.TableLayoutPanel.ResumeLayout(false);
             this.CustomersPanel.ResumeLayout(false);
             this.CustomersPanel.PerformLayout();
+            this.СontextMenuStrip.ResumeLayout(false);
             this.CustomerSelectedPanel.ResumeLayout(false);
             this.CustomerSelectedPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -232,5 +271,8 @@
         private TextBox AddressTextBox;
         private TextBox FullNameTextBox;
         private TextBox IDTextBox;
+        private Button RandomButton;
+        private ContextMenuStrip СontextMenuStrip;
+        private ToolStripMenuItem DeleteAllMenuItem;
     }
 }

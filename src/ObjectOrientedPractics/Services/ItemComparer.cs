@@ -2,6 +2,9 @@
 
 namespace ObjectOrientedPractics.Services
 {
+    /// <summary>
+    /// Представляет методы для сравнения объектов класса <see cref="Item"./>
+    /// </summary>
     public class ItemComparer : IComparer<Item>
     {
         public int Compare(Item item1, Item item2)

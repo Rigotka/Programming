@@ -3,12 +3,24 @@ using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Реализация товаров.
+    /// </summary>
     public partial class ItemsTab : UserControl
     {
+        /// <summary>
+        /// Коллекция товаров.
+        /// </summary>
         private List<Item> _items = new();
 
+        /// <summary>
+        /// Выбранный товар.
+        /// </summary>
         private Item _currentItem;
 
+        /// <summary>
+        /// Сериалайзер.
+        /// </summary>
         private ProjectSerializer _serializer = new("Items");
 
         public ItemsTab()
@@ -18,11 +30,17 @@ namespace ObjectOrientedPractics.View.Tabs
             UpdateList();
         }
 
+        /// <summary>
+        /// Сохранение данных.
+        /// </summary>
         public void SaveData()
         {
             _serializer.SaveItemsToFile(_items);
         }
 
+        /// <summary>
+        /// Обновление полей с информацией о товаре.
+        /// </summary>
         private void UpdateFieldInfo()
         {
             IDTextBox.Text = _currentItem.Id.ToString();
@@ -32,6 +50,25 @@ namespace ObjectOrientedPractics.View.Tabs
 
         }
 
+        /// <summary>
+        /// Очистка полей с информацией о товаре.
+        /// </summary>
+        private void ClearFieldInfo()
+        {
+            IDTextBox.Clear();
+            CostTextBox.Clear();
+            NameTextBox.Clear();
+            InfoTextBox.Clear();
+
+            IDTextBox.BackColor = AppColor.CorrectColor;
+            CostTextBox.BackColor = AppColor.CorrectColor;
+            NameTextBox.BackColor = AppColor.CorrectColor;
+            InfoTextBox.BackColor = AppColor.CorrectColor;
+        }
+
+        /// <summary>
+        /// Обновление списка покупателей.
+        /// </summary>
         private void UpdateList()
         {
             int id = -1;
@@ -64,6 +101,14 @@ namespace ObjectOrientedPractics.View.Tabs
 
             _items.RemoveAt(index);
             UpdateList();
+            ClearFieldInfo();
+        }
+
+        private void RandomButton_Click(object sender, EventArgs e)
+        {
+            Item item = ItemFactory.RandomItem();
+            _items.Add(item);
+            UpdateList();
         }
 
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,6 +119,13 @@ namespace ObjectOrientedPractics.View.Tabs
 
             _currentItem = _items[index];
             UpdateFieldInfo();
+        }
+
+        private void DeleteAllMenuItem_Click(object sender, EventArgs e)
+        {
+            _items.Clear();
+            UpdateList();
+            ClearFieldInfo();
         }
 
         private void IDTextBox_KeyPress(object sender, KeyPressEventArgs e)
