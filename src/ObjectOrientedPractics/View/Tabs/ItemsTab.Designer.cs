@@ -36,8 +36,12 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
+            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.SelectedItemPanel = new System.Windows.Forms.Panel();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.InfoTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.CostTextBox = new System.Windows.Forms.TextBox();
@@ -47,12 +51,10 @@
             this.CostLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedItemLabel = new System.Windows.Forms.Label();
-            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanel.SuspendLayout();
             this.ItemsPanel.SuspendLayout();
-            this.SelectedItemPanel.SuspendLayout();
             this.ContextMenuStrip.SuspendLayout();
+            this.SelectedItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -131,6 +133,22 @@
             this.ItemsListBox.TabIndex = 1;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
+            // ContextMenuStrip
+            // 
+            this.ContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteAllMenuItem});
+            this.ContextMenuStrip.Name = "ContextMenuStrip";
+            this.ContextMenuStrip.Size = new System.Drawing.Size(147, 30);
+            // 
+            // DeleteAllMenuItem
+            // 
+            this.DeleteAllMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAllMenuItem.Image")));
+            this.DeleteAllMenuItem.Name = "DeleteAllMenuItem";
+            this.DeleteAllMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.DeleteAllMenuItem.Text = "Очистить";
+            this.DeleteAllMenuItem.Click += new System.EventHandler(this.DeleteAllMenuItem_Click);
+            // 
             // ItemsLabel
             // 
             this.ItemsLabel.AutoSize = true;
@@ -143,6 +161,8 @@
             // SelectedItemPanel
             // 
             this.SelectedItemPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SelectedItemPanel.Controls.Add(this.CategoryLabel);
+            this.SelectedItemPanel.Controls.Add(this.CategoryComboBox);
             this.SelectedItemPanel.Controls.Add(this.InfoTextBox);
             this.SelectedItemPanel.Controls.Add(this.NameTextBox);
             this.SelectedItemPanel.Controls.Add(this.CostTextBox);
@@ -158,15 +178,33 @@
             this.SelectedItemPanel.Size = new System.Drawing.Size(362, 441);
             this.SelectedItemPanel.TabIndex = 1;
             // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(3, 95);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(72, 20);
+            this.CategoryLabel.TabIndex = 13;
+            this.CategoryLabel.Text = "Category:";
+            // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(88, 92);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(125, 28);
+            this.CategoryComboBox.TabIndex = 12;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
+            // 
             // InfoTextBox
             // 
             this.InfoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InfoTextBox.Location = new System.Drawing.Point(3, 267);
+            this.InfoTextBox.Location = new System.Drawing.Point(4, 254);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
-            this.InfoTextBox.Size = new System.Drawing.Size(356, 120);
+            this.InfoTextBox.Size = new System.Drawing.Size(355, 101);
             this.InfoTextBox.TabIndex = 11;
             this.InfoTextBox.TextChanged += new System.EventHandler(this.InfoTextBox_TextChanged);
             // 
@@ -174,10 +212,10 @@
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.Location = new System.Drawing.Point(3, 115);
+            this.NameTextBox.Location = new System.Drawing.Point(4, 152);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(356, 120);
+            this.NameTextBox.Size = new System.Drawing.Size(355, 76);
             this.NameTextBox.TabIndex = 10;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -200,7 +238,7 @@
             // InfoLabel
             // 
             this.InfoLabel.AutoSize = true;
-            this.InfoLabel.Location = new System.Drawing.Point(3, 244);
+            this.InfoLabel.Location = new System.Drawing.Point(3, 231);
             this.InfoLabel.Name = "InfoLabel";
             this.InfoLabel.Size = new System.Drawing.Size(38, 20);
             this.InfoLabel.TabIndex = 4;
@@ -209,7 +247,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(3, 92);
+            this.NameLabel.Location = new System.Drawing.Point(3, 129);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(52, 20);
             this.NameLabel.TabIndex = 3;
@@ -218,7 +256,7 @@
             // CostLabel
             // 
             this.CostLabel.AutoSize = true;
-            this.CostLabel.Location = new System.Drawing.Point(3, 59);
+            this.CostLabel.Location = new System.Drawing.Point(4, 59);
             this.CostLabel.Name = "CostLabel";
             this.CostLabel.Size = new System.Drawing.Size(41, 20);
             this.CostLabel.TabIndex = 2;
@@ -227,7 +265,7 @@
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
-            this.IDLabel.Location = new System.Drawing.Point(3, 26);
+            this.IDLabel.Location = new System.Drawing.Point(4, 26);
             this.IDLabel.Name = "IDLabel";
             this.IDLabel.Size = new System.Drawing.Size(27, 20);
             this.IDLabel.TabIndex = 1;
@@ -242,22 +280,6 @@
             this.SelectedItemLabel.TabIndex = 0;
             this.SelectedItemLabel.Text = "Selected Item";
             // 
-            // ContextMenuStrip
-            // 
-            this.ContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteAllMenuItem});
-            this.ContextMenuStrip.Name = "ContextMenuStrip";
-            this.ContextMenuStrip.Size = new System.Drawing.Size(215, 58);
-            // 
-            // DeleteAllMenuItem
-            // 
-            this.DeleteAllMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAllMenuItem.Image")));
-            this.DeleteAllMenuItem.Name = "DeleteAllMenuItem";
-            this.DeleteAllMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.DeleteAllMenuItem.Text = "Очистить";
-            this.DeleteAllMenuItem.Click += new System.EventHandler(this.DeleteAllMenuItem_Click);
-            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -268,9 +290,9 @@
             this.TableLayoutPanel.ResumeLayout(false);
             this.ItemsPanel.ResumeLayout(false);
             this.ItemsPanel.PerformLayout();
+            this.ContextMenuStrip.ResumeLayout(false);
             this.SelectedItemPanel.ResumeLayout(false);
             this.SelectedItemPanel.PerformLayout();
-            this.ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -296,5 +318,7 @@
         private Button RandomButton;
         private ContextMenuStrip ContextMenuStrip;
         private ToolStripMenuItem DeleteAllMenuItem;
+        private ComboBox CategoryComboBox;
+        private Label CategoryLabel;
     }
 }

@@ -91,6 +91,11 @@ namespace ObjectOrientedPractics.Model
         }
 
 		/// <summary>
+		/// Возвращает и задает категорию товара.
+		/// </summary>
+		public Category Category { get; set; }
+
+		/// <summary>
 		/// Создает экземпляр <see cref="Item"/>
 		/// </summary>
 		public Item()
@@ -99,6 +104,7 @@ namespace ObjectOrientedPractics.Model
 			Name = $"Товар {_id}";
 			Info = "Не заполнено";
 			Cost = 0;
+			Category = Category.none;
 		}
 
 		/// <summary>
@@ -107,12 +113,14 @@ namespace ObjectOrientedPractics.Model
 		/// <param name="name">Название. До 200 символов.</param>
 		/// <param name="info">Информация. до 1000 символов.</param>
 		/// <param name="cost">Стоимость товара. от 0 до 100000.</param>
-		public Item(string name, string info, int cost)
+		/// <param name="category">Категория товара. Должно быть из перечисления.</param>
+		public Item(string name, string info, int cost, Category category)
         {
 			_id = IdGenerator.GetNextID();
 			Name = name;
 			Info = info;
 			Cost = cost;
+			Category = category;
         }
 
 	}

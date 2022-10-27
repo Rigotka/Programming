@@ -53,8 +53,9 @@ namespace ObjectOrientedPractics.Model
             string name = $"{_adjective[_random.Next(0, _adjective.Length)]} {_noun[_random.Next(0, _noun.Length)]}";
             string info = _info[_random.Next(0, _info.Length)];
             int cost = _random.Next(1000, 10000);
+            Category category = Category.none;
 
-            return new Item(name, info, cost);
+            return new Item(name, info, cost, category);
         }
     }
 }

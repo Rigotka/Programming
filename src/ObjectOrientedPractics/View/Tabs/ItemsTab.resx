@@ -63,11 +63,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DeleteAllMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACoSURBVDhP7dI9CsJAFATgrQXR2iuYzkLF1sJ0aayskyt4Eq30VoL4cxczA/PAIk+y2S0d+ODt
-        bhh2IaFHxnATzslZwkfW3EjNCqxww43U/AvTk71wAluZciMmJewj7cDNG+x5fd3BTfbCAhaR5uCmgWOk
-        Gty8oOtZvzzAzZDCJ7jJXshDfnSFmeYuPLto5iXcWOEZRprpILbm2UnzoMJKbP1dyH9XCaEF8/mDuh0n
-        CcYAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAKhJREFUOE/t
+        0j0KwkAUBOCtBdHaK5jOQsXWwnRprKyTK3gSrfRWgvhzFzMD88AiT7LZLR344O1uGHYhoUfGcBPOyVnC
+        R9bcSM0KrHDDjdT8C9OTvXACW5lyIyYl7CPtwM0b7Hl93cFN9sICFpHm4KaBY6Qa3Lyg61m/PMDNkMIn
+        uMleyEN+dIWZ5i48u2jmJdxY4RlGmukgtubZSfOgwkps/V3If1cJoQXz+YO6HScJxgAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
 </root>

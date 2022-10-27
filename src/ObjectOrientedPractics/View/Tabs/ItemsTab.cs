@@ -26,6 +26,13 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+
+            var categoryValues = Enum.GetValues(typeof(Category));
+            foreach(var value in categoryValues)
+            {
+                CategoryComboBox.Items.Add(value);
+            }
+
             _items = _serializer.LoadItemsFromFile();
             UpdateList();
         }
@@ -47,6 +54,7 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Text = _currentItem.Cost.ToString();
             NameTextBox.Text = _currentItem.Name;
             InfoTextBox.Text = _currentItem.Info;
+            CategoryComboBox.SelectedIndex = (int)_currentItem.Category;
 
         }
 
@@ -59,11 +67,13 @@ namespace ObjectOrientedPractics.View.Tabs
             CostTextBox.Clear();
             NameTextBox.Clear();
             InfoTextBox.Clear();
+            CategoryComboBox.SelectedIndex = -1;
 
             IDTextBox.BackColor = AppColor.CorrectColor;
             CostTextBox.BackColor = AppColor.CorrectColor;
             NameTextBox.BackColor = AppColor.CorrectColor;
             InfoTextBox.BackColor = AppColor.CorrectColor;
+            CategoryComboBox.BackColor = AppColor.CorrectColor;
         }
 
         /// <summary>
@@ -180,6 +190,23 @@ namespace ObjectOrientedPractics.View.Tabs
             catch
             {
                 InfoTextBox.BackColor = AppColor.ErrorColor;
+            }
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_currentItem == null)
+                return;
+
+            CategoryComboBox.BackColor = AppColor.CorrectColor;
+            try
+            {
+                _currentItem.Category = (Category)CategoryComboBox.SelectedIndex;
+                UpdateList();
+            }
+            catch
+            {
+                CategoryComboBox.BackColor = AppColor.ErrorColor;
             }
         }
     }
