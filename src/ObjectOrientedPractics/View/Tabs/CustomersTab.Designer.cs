@@ -125,7 +125,7 @@
             this.CustomersListBox.ItemHeight = 20;
             this.CustomersListBox.Location = new System.Drawing.Point(3, 23);
             this.CustomersListBox.Name = "CustomersListBox";
-            this.CustomersListBox.Size = new System.Drawing.Size(296, 384);
+            this.CustomersListBox.Size = new System.Drawing.Size(294, 384);
             this.CustomersListBox.TabIndex = 1;
             this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
             // 
@@ -151,9 +151,10 @@
             // CustomersLabel
             // 
             this.CustomersLabel.AutoSize = true;
+            this.CustomersLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CustomersLabel.Location = new System.Drawing.Point(3, 0);
             this.CustomersLabel.Name = "CustomersLabel";
-            this.CustomersLabel.Size = new System.Drawing.Size(78, 20);
+            this.CustomersLabel.Size = new System.Drawing.Size(84, 20);
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
             // 
@@ -181,32 +182,35 @@
             address1.Index = 100000;
             address1.Street = "-";
             this.AddressControl.Address = address1;
-            this.AddressControl.Location = new System.Drawing.Point(3, 129);
+            this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressControl.Location = new System.Drawing.Point(3, 126);
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(618, 196);
             this.AddressControl.TabIndex = 6;
             // 
             // FullNameTextBox
             // 
+            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(88, 56);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(559, 27);
+            this.FullNameTextBox.Size = new System.Drawing.Size(531, 27);
             this.FullNameTextBox.TabIndex = 5;
-            this.FullNameTextBox.Text = "111111111111111111111111111111111111111111111111111111111111111111";
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // IDTextBox
             // 
             this.IDTextBox.Location = new System.Drawing.Point(88, 23);
             this.IDTextBox.Name = "IDTextBox";
-            this.IDTextBox.Size = new System.Drawing.Size(115, 27);
+            this.IDTextBox.Size = new System.Drawing.Size(60, 27);
             this.IDTextBox.TabIndex = 4;
             this.IDTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IDTextBox_KeyPress);
             // 
             // FullNameLabel
             // 
             this.FullNameLabel.AutoSize = true;
-            this.FullNameLabel.Location = new System.Drawing.Point(3, 56);
+            this.FullNameLabel.Location = new System.Drawing.Point(3, 59);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(79, 20);
             this.FullNameLabel.TabIndex = 2;
@@ -215,7 +219,7 @@
             // IDlabel
             // 
             this.IDlabel.AutoSize = true;
-            this.IDlabel.Location = new System.Drawing.Point(3, 23);
+            this.IDlabel.Location = new System.Drawing.Point(3, 26);
             this.IDlabel.Name = "IDlabel";
             this.IDlabel.Size = new System.Drawing.Size(27, 20);
             this.IDlabel.TabIndex = 1;
@@ -224,9 +228,10 @@
             // SelectedCustomerLabel
             // 
             this.SelectedCustomerLabel.AutoSize = true;
+            this.SelectedCustomerLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SelectedCustomerLabel.Location = new System.Drawing.Point(3, 0);
             this.SelectedCustomerLabel.Name = "SelectedCustomerLabel";
-            this.SelectedCustomerLabel.Size = new System.Drawing.Size(133, 20);
+            this.SelectedCustomerLabel.Size = new System.Drawing.Size(139, 20);
             this.SelectedCustomerLabel.TabIndex = 0;
             this.SelectedCustomerLabel.Text = "Selected Customer";
             // 
