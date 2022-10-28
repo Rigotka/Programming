@@ -19,24 +19,27 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer _currentCustomer;
 
         /// <summary>
-        /// Сериалайзер.
+        /// Создает экземпляр класса <see cref="CustomersTab"/>
         /// </summary>
-        private ProjectSerializer _serializer = new("Customers");
-
-
         public CustomersTab()
         {
             InitializeComponent();
-            _customers = _serializer.LoadCustomersFromFile();
-            UpdateList();
         }
 
         /// <summary>
-        /// Сохранение данных.
+        /// Возвращает и задает список покупателей..
         /// </summary>
-        public void SaveData()
+        public List<Customer> Customers
         {
-            _serializer.SaveCustomerToFIle(_customers);
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+                UpdateList();
+            }
         }
 
         /// <summary>
@@ -144,11 +147,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 FullNameTextBox.BackColor = AppColor.ErrorColor;
             }
-        }
-
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

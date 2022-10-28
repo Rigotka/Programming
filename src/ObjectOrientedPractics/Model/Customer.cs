@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -22,6 +17,9 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private string _fullName;
 
+        /// <summary>
+        /// Возвращает и задает адрес.
+        /// </summary>
         public Address Address { get; set; }
 
         /// <summary>
@@ -66,7 +64,7 @@ namespace ObjectOrientedPractics.Model
         /// Создает экземпляр <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО. До 200 символов.</param>
-        /// <param name="address">Адрес. До 500 символов.</param>
+        /// <param name="address">Адрес. Экземпляр класса <see cref="Address"/>.</param>
         public Customer(string fullName, Address address)
         {
             _id = IdGenerator.GetNextID();

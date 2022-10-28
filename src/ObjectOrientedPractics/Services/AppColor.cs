@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ObjectOrientedPractics.Services
+﻿namespace ObjectOrientedPractics.Services
 {
     /// <summary>
     /// Хранит цвета используемые в приложении. 

@@ -19,10 +19,8 @@ namespace ObjectOrientedPractics.View.Tabs
         private Item _currentItem;
 
         /// <summary>
-        /// Сериалайзер.
+        /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
-        private ProjectSerializer _serializer = new("Items");
-
         public ItemsTab()
         {
             InitializeComponent();
@@ -32,17 +30,22 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CategoryComboBox.Items.Add(value);
             }
-
-            _items = _serializer.LoadItemsFromFile();
-            UpdateList();
         }
 
         /// <summary>
-        /// Сохранение данных.
+        /// Возвращает и задает список товаров.
         /// </summary>
-        public void SaveData()
+        public List<Item> Items
         {
-            _serializer.SaveItemsToFile(_items);
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                UpdateList();
+            }
         }
 
         /// <summary>
@@ -55,7 +58,6 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.Text = _currentItem.Name;
             InfoTextBox.Text = _currentItem.Info;
             CategoryComboBox.SelectedIndex = (int)_currentItem.Category;
-
         }
 
         /// <summary>

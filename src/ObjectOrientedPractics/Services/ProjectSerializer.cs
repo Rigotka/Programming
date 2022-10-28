@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ObjectOrientedPractics.Model;
 
 
@@ -37,50 +33,31 @@ namespace ObjectOrientedPractics.Services
         }
 
         /// <summary>
-        /// Сериализует список <see cref="Item"/> в JSON и сохраняет в файл.
+        /// Сериализует экземпляр <see cref="Store"/> в JSON и сохраняет в файл.
         /// </summary>
-        /// <param name="students">Список студентов.</param>
-        public void SaveItemsToFile(List<Item> items)
-        { 
-            JsonSerializer serializer = new JsonSerializer();
-            using (StreamWriter sw = new StreamWriter(Filename))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, items);
-            }
-
-        }
-
-        public void SaveCustomerToFIle(List<Customer> customers)
+        /// <param name="store">Магазин.</param>
+        public void SaveToFile(Store store)
         {
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter sw = new StreamWriter(Filename))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, customers);
+                serializer.Serialize(writer, store);
             }
+
         }
+
         /// <summary>
-        /// Сериализует файл JSON в список <see cref="Item"/>.
+        /// Сериализует файл JSON в экземпляр <see cref="Store"/>.
         /// </summary>
-        /// <returns>Список <see cref="Item"/> </returns>
-        public List<Item> LoadItemsFromFile()
+        /// <returns>Экземпляр<see cref="Store"/> </returns>
+        public Store LoadFromFile()
         {
             JsonSerializer serializer = new JsonSerializer();
             using (StreamReader sr = new StreamReader(Filename))
             using (JsonReader reader = new JsonTextReader(sr))
             {
-                return serializer.Deserialize<List<Item>>(reader) ?? new List<Item>();
-            }
-        }
-
-        public List<Customer> LoadCustomersFromFile()
-        {
-            JsonSerializer serializer = new JsonSerializer();
-            using (StreamReader sr = new StreamReader(Filename))
-            using (JsonReader reader = new JsonTextReader(sr))
-            {
-                return serializer.Deserialize<List<Customer>>(reader) ?? new List<Customer>();
+                return serializer.Deserialize<Store>(reader) ?? new Store();
             }
         }
     }
