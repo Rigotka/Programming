@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersTab));
+            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.RandomButton = new System.Windows.Forms.Button();
@@ -40,10 +41,9 @@
             this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.CustomerSelectedPanel = new System.Windows.Forms.Panel();
-            this.AddressTextBox = new System.Windows.Forms.TextBox();
+            this.AddressControl = new ObjectOrientedPractics.View.Control.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
-            this.AddressLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.IDlabel = new System.Windows.Forms.Label();
             this.SelectedCustomerLabel = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.ColumnCount = 2;
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.97414F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.02586F));
             this.TableLayoutPanel.Controls.Add(this.CustomersPanel, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.CustomerSelectedPanel, 1, 0);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -65,7 +65,7 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(736, 447);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 447);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // CustomersPanel
@@ -79,7 +79,7 @@
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(3, 3);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(362, 441);
+            this.CustomersPanel.Size = new System.Drawing.Size(303, 441);
             this.CustomersPanel.TabIndex = 0;
             // 
             // RandomButton
@@ -125,7 +125,7 @@
             this.CustomersListBox.ItemHeight = 20;
             this.CustomersListBox.Location = new System.Drawing.Point(3, 23);
             this.CustomersListBox.Name = "CustomersListBox";
-            this.CustomersListBox.Size = new System.Drawing.Size(356, 384);
+            this.CustomersListBox.Size = new System.Drawing.Size(296, 384);
             this.CustomersListBox.TabIndex = 1;
             this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
             // 
@@ -136,7 +136,7 @@
             this.СontextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DeleteAllMenuItem});
             this.СontextMenuStrip.Name = "contextMenuStrip1";
-            this.СontextMenuStrip.Size = new System.Drawing.Size(215, 58);
+            this.СontextMenuStrip.Size = new System.Drawing.Size(147, 30);
             // 
             // DeleteAllMenuItem
             // 
@@ -144,7 +144,7 @@
             this.DeleteAllMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("DeleteAllMenuItem.Image")));
             this.DeleteAllMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.DeleteAllMenuItem.Name = "DeleteAllMenuItem";
-            this.DeleteAllMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.DeleteAllMenuItem.Size = new System.Drawing.Size(146, 26);
             this.DeleteAllMenuItem.Text = "Очистить";
             this.DeleteAllMenuItem.Click += new System.EventHandler(this.DeleteAllMenuItem_Click);
             // 
@@ -160,56 +160,48 @@
             // CustomerSelectedPanel
             // 
             this.CustomerSelectedPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CustomerSelectedPanel.Controls.Add(this.AddressTextBox);
+            this.CustomerSelectedPanel.Controls.Add(this.AddressControl);
             this.CustomerSelectedPanel.Controls.Add(this.FullNameTextBox);
             this.CustomerSelectedPanel.Controls.Add(this.IDTextBox);
-            this.CustomerSelectedPanel.Controls.Add(this.AddressLabel);
             this.CustomerSelectedPanel.Controls.Add(this.FullNameLabel);
             this.CustomerSelectedPanel.Controls.Add(this.IDlabel);
             this.CustomerSelectedPanel.Controls.Add(this.SelectedCustomerLabel);
             this.CustomerSelectedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerSelectedPanel.Location = new System.Drawing.Point(371, 3);
+            this.CustomerSelectedPanel.Location = new System.Drawing.Point(312, 3);
             this.CustomerSelectedPanel.Name = "CustomerSelectedPanel";
-            this.CustomerSelectedPanel.Size = new System.Drawing.Size(362, 441);
+            this.CustomerSelectedPanel.Size = new System.Drawing.Size(623, 441);
             this.CustomerSelectedPanel.TabIndex = 1;
             // 
-            // AddressTextBox
+            // AddressControl
             // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressTextBox.Location = new System.Drawing.Point(3, 115);
-            this.AddressTextBox.Multiline = true;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(356, 120);
-            this.AddressTextBox.TabIndex = 6;
-            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
+            address1.Apartment = "-";
+            address1.Building = "-";
+            address1.City = "-";
+            address1.Country = "-";
+            address1.Index = 100000;
+            address1.Street = "-";
+            this.AddressControl.Address = address1;
+            this.AddressControl.Location = new System.Drawing.Point(3, 129);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(618, 196);
+            this.AddressControl.TabIndex = 6;
             // 
             // FullNameTextBox
             // 
-            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(88, 56);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(271, 27);
+            this.FullNameTextBox.Size = new System.Drawing.Size(559, 27);
             this.FullNameTextBox.TabIndex = 5;
+            this.FullNameTextBox.Text = "111111111111111111111111111111111111111111111111111111111111111111";
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // IDTextBox
             // 
             this.IDTextBox.Location = new System.Drawing.Point(88, 23);
             this.IDTextBox.Name = "IDTextBox";
-            this.IDTextBox.Size = new System.Drawing.Size(125, 27);
+            this.IDTextBox.Size = new System.Drawing.Size(115, 27);
             this.IDTextBox.TabIndex = 4;
             this.IDTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IDTextBox_KeyPress);
-            // 
-            // AddressLabel
-            // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(3, 92);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(65, 20);
-            this.AddressLabel.TabIndex = 3;
-            this.AddressLabel.Text = "Address:";
             // 
             // FullNameLabel
             // 
@@ -244,7 +236,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Name = "CustomersTab";
-            this.Size = new System.Drawing.Size(736, 447);
+            this.Size = new System.Drawing.Size(938, 447);
             this.TableLayoutPanel.ResumeLayout(false);
             this.CustomersPanel.ResumeLayout(false);
             this.CustomersPanel.PerformLayout();
@@ -267,12 +259,11 @@
         private Label IDlabel;
         private Label SelectedCustomerLabel;
         private Label FullNameLabel;
-        private Label AddressLabel;
-        private TextBox AddressTextBox;
         private TextBox FullNameTextBox;
         private TextBox IDTextBox;
         private Button RandomButton;
         private ContextMenuStrip СontextMenuStrip;
         private ToolStripMenuItem DeleteAllMenuItem;
+        private Control.AddressControl AddressControl;
     }
 }

@@ -22,10 +22,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private string _fullName;
 
-        /// <summary>
-        /// Адрес покупателя.
-        /// </summary>
-        private string _address;
+        public Address Address { get; set; }
 
         /// <summary>
         /// Возвращает ID покупателя.
@@ -56,30 +53,13 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Развращает и задает адрес покупателя.
-        /// </summary>
-        public string Address
-        {
-            get
-            {
-                return _address;
-            }
-            set
-            {
-                ValueValidator.AssertStringNotNull(value, nameof(Address));
-                ValueValidator.AssertStringOnLength(value, 500, nameof(Address));
-                _address = value;
-            }
-        }
-
-        /// <summary>
         /// Создает экземпляр <see cref="Customer"/> 
         /// </summary>
         public Customer()
         {
             _id = IdGenerator.GetNextID();
             FullName = "Не заполнено";
-            Address = "Не заполнено";
+            Address = new Address();
         }
 
         /// <summary>
@@ -87,7 +67,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО. До 200 символов.</param>
         /// <param name="address">Адрес. До 500 символов.</param>
-        public Customer(string fullName, string address)
+        public Customer(string fullName, Address address)
         {
             _id = IdGenerator.GetNextID();
             FullName = fullName;

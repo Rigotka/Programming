@@ -46,7 +46,7 @@
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(754, 489);
+            this.TabControl.Size = new System.Drawing.Size(948, 489);
             this.TabControl.TabIndex = 0;
             // 
             // ItemsTabPage
@@ -74,7 +74,7 @@
             this.CUstomersTabPage.Location = new System.Drawing.Point(4, 29);
             this.CUstomersTabPage.Name = "CUstomersTabPage";
             this.CUstomersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CUstomersTabPage.Size = new System.Drawing.Size(746, 456);
+            this.CUstomersTabPage.Size = new System.Drawing.Size(940, 456);
             this.CUstomersTabPage.TabIndex = 1;
             this.CUstomersTabPage.Text = "Customers";
             this.CUstomersTabPage.UseVisualStyleBackColor = true;
@@ -84,14 +84,14 @@
             this.CustomersTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersTab.Location = new System.Drawing.Point(3, 3);
             this.CustomersTab.Name = "CustomersTab";
-            this.CustomersTab.Size = new System.Drawing.Size(740, 450);
+            this.CustomersTab.Size = new System.Drawing.Size(934, 450);
             this.CustomersTab.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 489);
+            this.ClientSize = new System.Drawing.Size(948, 489);
             this.Controls.Add(this.TabControl);
             this.Name = "MainForm";
             this.Text = "Object Oriented Practics";

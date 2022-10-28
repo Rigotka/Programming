@@ -46,7 +46,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName;
-            AddressTextBox.Text = _currentCustomer.Address;
         }
 
         /// <summary>
@@ -56,11 +55,9 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Clear();
             FullNameTextBox.Clear();
-            AddressTextBox.Clear();
             
             IDTextBox.BackColor = AppColor.CorrectColor;
             FullNameTextBox.BackColor = AppColor.CorrectColor;
-            AddressTextBox.BackColor = AppColor.CorrectColor;
         }
 
         /// <summary>
@@ -99,6 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
             _customers.RemoveAt(index);
             UpdateList();
             ClearFieldInfo();
+            AddressControl.ClearFieldsInfo();
         }
 
         private void RandomButton_Click(object sender, EventArgs e)
@@ -115,6 +113,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 return;
 
             _currentCustomer = _customers[index];
+            AddressControl.Address = _currentCustomer.Address;
             UpdateFieldInfo();
         }
 
@@ -149,19 +148,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (_currentCustomer == null)
-                return;
 
-            AddressTextBox.BackColor = AppColor.CorrectColor;
-            try
-            {
-                _currentCustomer.Address = AddressTextBox.Text;
-                UpdateList();
-            }
-            catch
-            {
-                AddressTextBox.BackColor = AppColor.ErrorColor;
-            }
         }
     }
 }

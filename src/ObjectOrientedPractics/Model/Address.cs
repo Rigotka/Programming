@@ -146,9 +146,14 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Создает экземпляр <see cref="Address"/>
         /// </summary>
-        Address()
+        public Address()
         {
-
+            Index = 100000;
+            Country = "-";
+            City = "-";
+            Street = "-";
+            Building = "-";
+            Apartment = "-";
         }
 
         /// <summary>
@@ -160,7 +165,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="street">Улица. строка, не более 100 символов.</param>
         /// <param name="building">Номер дома.  строка, не более 10 символов.</param>
         /// <param name="apartment">Номер квартиры. не более 10 символов.</param>
-        Address(int index, string country, string city, string street, string building, string apartment)
+        public Address(int index, string country, string city, string street, string building, string apartment)
         {
             Index = index;
             Country = country;

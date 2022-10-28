@@ -36,12 +36,8 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адреса.
         /// </summary>
-        private static string[] _address = {
-            "Вологодская область, город Чехов, пл. Балканская, 33",
-            "Калужская область, город Солнечногорск, спуск Ленина, 81",
-            "Вологодская область, город Чехов, пл. Космонавтов, 92",
-            "Самарская область, город Раменское, спуск Космонавтов, 58",
-            " Курганская область, город Воскресенск, наб. Сталина, 36"
+        private static Address[] _address = {
+            new Address(100000, "KZ", "TM", "AM", "3V", "16")
         };
 
         /// <summary>
@@ -52,7 +48,7 @@ namespace ObjectOrientedPractics.Model
         {
             string firstName = _firsNames[_random.Next(0, _firsNames.Length)];
             string secondName = _secondNames[_random.Next(0, _secondNames.Length)];
-            string address = _address[_random.Next(0, _address.Length)];
+            Address address = _address[_random.Next(0, _address.Length)];
 
             return new Customer($"{firstName} {secondName}", address);
         }
