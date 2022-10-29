@@ -57,17 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="DeleteAllMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAKhJREFUOE/t
-        0j0KwkAUBOCtBdHaK5jOQsXWwnRprKyTK3gSrfRWgvhzFzMD88AiT7LZLR344O1uGHYhoUfGcBPOyVnC
-        R9bcSM0KrHDDjdT8C9OTvXACW5lyIyYl7CPtwM0b7Hl93cFN9sICFpHm4KaBY6Qa3Lyg61m/PMDNkMIn
-        uMleyEN+dIWZ5i48u2jmJdxY4RlGmukgtubZSfOgwkps/V3If1cJoQXz+YO6HScJxgAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
 </root>

@@ -19,24 +19,27 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer _currentCustomer;
 
         /// <summary>
-        /// Сериалайзер.
+        /// Создает экземпляр класса <see cref="CustomersTab"/>
         /// </summary>
-        private ProjectSerializer _serializer = new("Customers");
-
-
         public CustomersTab()
         {
             InitializeComponent();
-            _customers = _serializer.LoadCustomersFromFile();
-            UpdateList();
         }
 
         /// <summary>
-        /// Сохранение данных.
+        /// Возвращает и задает список покупателей..
         /// </summary>
-        public void SaveData()
+        public List<Customer> Customers
         {
-            _serializer.SaveCustomerToFIle(_customers);
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+                UpdateList();
+            }
         }
 
         /// <summary>
@@ -46,7 +49,6 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName;
-            AddressTextBox.Text = _currentCustomer.Address;
         }
 
         /// <summary>
@@ -56,11 +58,9 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Clear();
             FullNameTextBox.Clear();
-            AddressTextBox.Clear();
             
             IDTextBox.BackColor = AppColor.CorrectColor;
             FullNameTextBox.BackColor = AppColor.CorrectColor;
-            AddressTextBox.BackColor = AppColor.CorrectColor;
         }
 
         /// <summary>
@@ -99,6 +99,7 @@ namespace ObjectOrientedPractics.View.Tabs
             _customers.RemoveAt(index);
             UpdateList();
             ClearFieldInfo();
+            AddressControl.ClearFieldsInfo();
         }
 
         private void RandomButton_Click(object sender, EventArgs e)
@@ -115,6 +116,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 return;
 
             _currentCustomer = _customers[index];
+            AddressControl.Address = _currentCustomer.Address;
             UpdateFieldInfo();
         }
 
@@ -144,23 +146,6 @@ namespace ObjectOrientedPractics.View.Tabs
             catch
             {
                 FullNameTextBox.BackColor = AppColor.ErrorColor;
-            }
-        }
-
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (_currentCustomer == null)
-                return;
-
-            AddressTextBox.BackColor = AppColor.CorrectColor;
-            try
-            {
-                _currentCustomer.Address = AddressTextBox.Text;
-                UpdateList();
-            }
-            catch
-            {
-                AddressTextBox.BackColor = AppColor.ErrorColor;
             }
         }
     }
