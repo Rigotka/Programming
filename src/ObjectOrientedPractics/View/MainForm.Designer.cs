@@ -28,20 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
             this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.CUstomersTabPage = new System.Windows.Forms.TabPage();
             this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
+            this.CatrsTabPage = new System.Windows.Forms.TabPage();
+            this.СartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
             this.TabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.CUstomersTabPage.SuspendLayout();
+            this.CatrsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.ItemsTabPage);
             this.TabControl.Controls.Add(this.CUstomersTabPage);
+            this.TabControl.Controls.Add(this.CatrsTabPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.MinimumSize = new System.Drawing.Size(948, 489);
@@ -49,6 +54,7 @@
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(948, 489);
             this.TabControl.TabIndex = 0;
+            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // ItemsTabPage
             // 
@@ -91,6 +97,27 @@
             this.CustomersTab.Size = new System.Drawing.Size(934, 450);
             this.CustomersTab.TabIndex = 0;
             // 
+            // CatrsTabPage
+            // 
+            this.CatrsTabPage.Controls.Add(this.СartsTab);
+            this.CatrsTabPage.Location = new System.Drawing.Point(4, 29);
+            this.CatrsTabPage.Name = "CatrsTabPage";
+            this.CatrsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.CatrsTabPage.Size = new System.Drawing.Size(940, 456);
+            this.CatrsTabPage.TabIndex = 2;
+            this.CatrsTabPage.Text = "Carts";
+            this.CatrsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // СartsTab
+            // 
+            this.СartsTab.Customers = null;
+            this.СartsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.СartsTab.Items = null;
+            this.СartsTab.Location = new System.Drawing.Point(3, 3);
+            this.СartsTab.Name = "СartsTab";
+            this.СartsTab.Size = new System.Drawing.Size(934, 450);
+            this.СartsTab.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -104,6 +131,7 @@
             this.TabControl.ResumeLayout(false);
             this.ItemsTabPage.ResumeLayout(false);
             this.CUstomersTabPage.ResumeLayout(false);
+            this.CatrsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -113,6 +141,8 @@
         private TabPage CUstomersTabPage;
         private View.Tabs.ItemsTab ItemsTab;
         private View.Tabs.CustomersTab CustomersTab;
+        private TabPage CatrsTabPage;
+        private View.Tabs.CartsTab СartsTab;
 
         #endregion
         // private View.Tabs.ItemsTab itemsTab1;

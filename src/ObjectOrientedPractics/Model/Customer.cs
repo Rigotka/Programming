@@ -18,6 +18,16 @@ namespace ObjectOrientedPractics.Model
         private string _fullName;
 
         /// <summary>
+        /// Корзина товаров.
+        /// </summary>
+        private Cart _cart;
+
+        /// <summary>
+        /// Коллекция заказов.
+        /// </summary>
+        private List<Order> _orders;
+
+        /// <summary>
         /// Возвращает и задает адрес.
         /// </summary>
         public Address Address { get; set; }
@@ -51,6 +61,36 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задает корзину товаров.
+        /// </summary>
+        public Cart Cart 
+        { 
+            get
+            {
+                return _cart;
+            }
+            set
+            {
+                _cart = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает корзину товаров.
+        /// </summary>
+        public List<Order> Orders
+        {
+            get
+            {
+                return _orders;
+            }
+            set
+            {
+                _orders = value;
+            }
+        }
+
+        /// <summary>
         /// Создает экземпляр <see cref="Customer"/> 
         /// </summary>
         public Customer()
@@ -58,6 +98,8 @@ namespace ObjectOrientedPractics.Model
             _id = IdGenerator.GetNextID();
             FullName = "Не заполнено";
             Address = new Address();
+            Cart = new Cart();
+            Orders = new List<Order>();
         }
 
         /// <summary>
@@ -65,11 +107,13 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО. До 200 символов.</param>
         /// <param name="address">Адрес. Экземпляр класса <see cref="Address"/>.</param>
-        public Customer(string fullName, Address address)
+        public Customer(string fullName, Address address, Cart cart, List<Order> orders)
         {
             _id = IdGenerator.GetNextID();
             FullName = fullName;
             Address = address;
+            Cart = cart;
+            Orders = orders;
         }
     }
 }

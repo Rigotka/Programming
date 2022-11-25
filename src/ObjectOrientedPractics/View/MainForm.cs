@@ -17,6 +17,9 @@ namespace ObjectOrientedPractics
             _store = _serializer.LoadFromFile();
             ItemsTab.Items = _store.Items;
             CustomersTab.Customers = _store.Customers;
+            ÑartsTab.Items = _store.Items;
+            ÑartsTab.Customers = _store.Customers;
+            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -24,6 +27,15 @@ namespace ObjectOrientedPractics
             _store.Items = ItemsTab.Items;
             _store.Customers = CustomersTab.Customers;
             _serializer.SaveToFile(_store);
+        }
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = TabControl.SelectedIndex;
+            if(index == 2)
+            {
+                ÑartsTab.RefreshData();
+            }
         }
     }
 }
