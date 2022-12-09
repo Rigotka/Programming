@@ -6,12 +6,24 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+	/// Хранит данные о приоритетном товаре.
+	/// </summary>
     public class PriorityOrder : Order
     {
+        /// <summary>
+        /// Дата доставки.
+        /// </summary>
         private DateTime _deliveryDate;
 
+        /// <summary>
+        /// Время доставки.
+        /// </summary>
         private string _deliveryTime;
 
+        /// <summary>
+        /// Возвращает и задет дату доставки.
+        /// </summary>
         public DateTime DeliveryDate
         {
             get
@@ -24,6 +36,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает время доставки.
+        /// </summary>
         public string DeliveryTime
         {
             get
@@ -36,6 +51,12 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="PriorityOrder"/>
+        /// </summary>
+        /// <param name="address">Адрес доставки.</param>
+        /// <param name="items">Список товаров.</param>
+        /// <param name="deliveryTime">Время доставки.</param>
         public PriorityOrder(Address address, List<Item> items, 
             string deliveryTime) : base(address, items)
         {

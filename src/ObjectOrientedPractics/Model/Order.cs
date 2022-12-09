@@ -2,6 +2,9 @@
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+	/// Хранит данные о закате.
+	/// </summary>
     public class Order
     {
         /// <summary>

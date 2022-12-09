@@ -19,8 +19,14 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Order _currentOrder;
 
+        /// <summary>
+        /// Выбранный приоритетный заказ.
+        /// </summary>
         private PriorityOrder _currentPriorityOrder;
 
+        /// <summary>
+        /// Время доставки.
+        /// </summary>
         private string[] _deliveryTimeValues =
         {
             "9:00 - 11:00",
