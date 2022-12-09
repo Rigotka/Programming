@@ -10,6 +10,9 @@ namespace ObjectOrientedPractics.View.Control
         /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Только для чтения.
+        /// </summary>
         private bool _readOnly;
 
         /// <summary>
@@ -28,6 +31,9 @@ namespace ObjectOrientedPractics.View.Control
             }
         }
 
+        /// <summary>
+        /// Задает поле только для чтение.
+        /// </summary>
         public bool ReadOnly
         {
             set

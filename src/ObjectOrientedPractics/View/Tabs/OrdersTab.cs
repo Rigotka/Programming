@@ -13,12 +13,19 @@ namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class OrdersTab : UserControl
     {
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Customer> _customers;
 
+        /// <summary>
+        /// Список заказов.
+        /// </summary>
         private List<Order> _orders;
 
-        private List<Item> _items;
-
+        /// <summary>
+        /// Выбранный заказ.
+        /// </summary>
         private Order _currentOrder;
 
         public OrdersTab()
@@ -37,6 +44,9 @@ namespace ObjectOrientedPractics.View.Tabs
             
         }
 
+        /// <summary>
+        /// Возвращает и задает список покупателей.
+        /// </summary>
         public List<Customer> Customers
         {
             get
@@ -49,16 +59,28 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Обновляет данные.
+        /// </summary>
         public void RefreshData()
         {
+            OrdersDataGrid.CurrentCell = null;
             UpdateOrders();
         }
 
+        /// <summary>
+        /// Приводит экземпляр класса <see cref="Address"/> в строку.
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         private string FormatedAddress(Address address)
         {
             return $"{address.Index}, {address.City}";
         }
 
+        /// <summary>
+        /// Обновляет список заказов в DataGridView.
+        /// </summary>
         private void UpdateOrders()
         {
             OrdersDataGrid.Rows.Clear();
@@ -74,6 +96,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Заполняет поля данными выбранного заказа.
+        /// </summary>
         private void UpdateFields()
         {
             IDTextBox.Text = _currentOrder.Id.ToString();
