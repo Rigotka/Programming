@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            ObjectOrientedPractics.Model.Address address2 = new ObjectOrientedPractics.Model.Address();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            ObjectOrientedPractics.Model.Address address1 = new ObjectOrientedPractics.Model.Address();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OrdersPanel = new System.Windows.Forms.Panel();
             this.OrdersDataGrid = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,10 @@
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderLabel = new System.Windows.Forms.Label();
             this.SelectedOrderPanel = new System.Windows.Forms.Panel();
+            this.PriorityPanel = new System.Windows.Forms.Panel();
+            this.PriorityOptionsLabel = new System.Windows.Forms.Label();
+            this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
+            this.DeliveryTimeLabel = new System.Windows.Forms.Label();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
             this.AmountValueLabel = new System.Windows.Forms.Label();
             this.AmountLabel = new System.Windows.Forms.Label();
@@ -58,6 +62,7 @@
             this.OrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGrid)).BeginInit();
             this.SelectedOrderPanel.SuspendLayout();
+            this.PriorityPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel
@@ -91,10 +96,10 @@
             this.OrdersDataGrid.AllowUserToDeleteRows = false;
             this.OrdersDataGrid.AllowUserToResizeColumns = false;
             this.OrdersDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.OrdersDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.OrdersDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.OrdersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -106,14 +111,14 @@
             this.deliveryAddress,
             this.customerFullName,
             this.amount});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.OrdersDataGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.OrdersDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.OrdersDataGrid.Location = new System.Drawing.Point(3, 23);
             this.OrdersDataGrid.MultiSelect = false;
             this.OrdersDataGrid.Name = "OrdersDataGrid";
@@ -192,6 +197,7 @@
             // 
             // SelectedOrderPanel
             // 
+            this.SelectedOrderPanel.Controls.Add(this.PriorityPanel);
             this.SelectedOrderPanel.Controls.Add(this.ItemsListBox);
             this.SelectedOrderPanel.Controls.Add(this.AmountValueLabel);
             this.SelectedOrderPanel.Controls.Add(this.AmountLabel);
@@ -209,6 +215,45 @@
             this.SelectedOrderPanel.Name = "SelectedOrderPanel";
             this.SelectedOrderPanel.Size = new System.Drawing.Size(594, 455);
             this.SelectedOrderPanel.TabIndex = 1;
+            // 
+            // PriorityPanel
+            // 
+            this.PriorityPanel.Controls.Add(this.PriorityOptionsLabel);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeComboBox);
+            this.PriorityPanel.Controls.Add(this.DeliveryTimeLabel);
+            this.PriorityPanel.Location = new System.Drawing.Point(245, 2);
+            this.PriorityPanel.Name = "PriorityPanel";
+            this.PriorityPanel.Size = new System.Drawing.Size(271, 63);
+            this.PriorityPanel.TabIndex = 30;
+            this.PriorityPanel.Visible = false;
+            // 
+            // PriorityOptionsLabel
+            // 
+            this.PriorityOptionsLabel.AutoSize = true;
+            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(0, 0);
+            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            this.PriorityOptionsLabel.Size = new System.Drawing.Size(120, 20);
+            this.PriorityOptionsLabel.TabIndex = 27;
+            this.PriorityOptionsLabel.Text = "Priority Options";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            this.DeliveryTimeComboBox.FormattingEnabled = true;
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(109, 20);
+            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(151, 28);
+            this.DeliveryTimeComboBox.TabIndex = 29;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
+            // 
+            // DeliveryTimeLabel
+            // 
+            this.DeliveryTimeLabel.AutoSize = true;
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(0, 24);
+            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            this.DeliveryTimeLabel.Size = new System.Drawing.Size(103, 20);
+            this.DeliveryTimeLabel.TabIndex = 28;
+            this.DeliveryTimeLabel.Text = "Delivary Time:";
             // 
             // ItemsListBox
             // 
@@ -254,13 +299,13 @@
             // 
             // AddressControl
             // 
-            address2.Apartment = "-";
-            address2.Building = "-";
-            address2.City = "-";
-            address2.Country = "-";
-            address2.Index = 100000;
-            address2.Street = "-";
-            this.AddressControl.Address = address2;
+            address1.Apartment = "-";
+            address1.Building = "-";
+            address1.City = "-";
+            address1.Country = "-";
+            address1.Index = 100000;
+            address1.Street = "-";
+            this.AddressControl.Address = address1;
             this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressControl.Location = new System.Drawing.Point(3, 126);
@@ -343,6 +388,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGrid)).EndInit();
             this.SelectedOrderPanel.ResumeLayout(false);
             this.SelectedOrderPanel.PerformLayout();
+            this.PriorityPanel.ResumeLayout(false);
+            this.PriorityPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -372,5 +419,9 @@
         private DataGridViewTextBoxColumn deliveryAddress;
         private DataGridViewTextBoxColumn customerFullName;
         private DataGridViewTextBoxColumn amount;
+        private ComboBox DeliveryTimeComboBox;
+        private Label DeliveryTimeLabel;
+        private Label PriorityOptionsLabel;
+        private Panel PriorityPanel;
     }
 }

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -28,6 +19,18 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Order _currentOrder;
 
+        private PriorityOrder _currentPriorityOrder;
+
+        private string[] _deliveryTimeValues =
+        {
+            "9:00 - 11:00",
+            "11:00 - 13:00",
+            "13:00 - 15:00",
+            "15:00 - 17:00",
+            "17:00 - 19:00",
+            "19:00 - 21:00"
+        };
+
         public OrdersTab()
         {
             InitializeComponent();
@@ -41,7 +44,12 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 StatusComboBox.Items.Add(value);
             }
-            
+
+            foreach(var value in _deliveryTimeValues)
+            {
+                DeliveryTimeComboBox.Items.Add(value);
+            }
+
         }
 
         /// <summary>
@@ -64,7 +72,6 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public void RefreshData()
         {
-            OrdersDataGrid.CurrentCell = null;
             UpdateOrders();
         }
 
@@ -84,6 +91,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void UpdateOrders()
         {
             OrdersDataGrid.Rows.Clear();
+            _orders = new List<Order>();
             foreach(var customer in _customers)
             {
                 string address = FormatedAddress(customer.Address);
@@ -112,17 +120,32 @@ namespace ObjectOrientedPractics.View.Tabs
                 ItemsListBox.Items.Add(items.Name);
             }
             AmountValueLabel.Text = _currentOrder.Amount.ToString();
+
+            if (_currentOrder is PriorityOrder priority)
+            {
+                DeliveryTimeComboBox.SelectedIndex = Array.IndexOf(_deliveryTimeValues, _currentPriorityOrder.DeliveryTime);
+            }
         }
 
         private void OrdersDataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            int index = OrdersDataGrid.CurrentCell.RowIndex;
-            if(index == -1)
+            if(OrdersDataGrid.CurrentCell == null)
             {
                 return;
             }
-
+            int index = OrdersDataGrid.CurrentCell.RowIndex;
             _currentOrder = _orders[index];
+            if (_currentOrder is PriorityOrder priority)
+            {
+                _currentPriorityOrder = (PriorityOrder) _orders[index];
+                PriorityPanel.Visible = true;
+            }
+            else
+            {
+                _currentPriorityOrder = null;
+                PriorityPanel.Visible = false;
+            }
+
             UpdateFields();
         }
 
@@ -136,6 +159,11 @@ namespace ObjectOrientedPractics.View.Tabs
             var index = OrdersDataGrid.CurrentCell.RowIndex;
             _currentOrder.Status = (OrderStatus) StatusComboBox.SelectedIndex;
             OrdersDataGrid.Rows[index].Cells[2].Value = _currentOrder.Status;
+        }
+
+        private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentPriorityOrder.DeliveryTime = (string)DeliveryTimeComboBox.SelectedItem;
         }
     }
 }

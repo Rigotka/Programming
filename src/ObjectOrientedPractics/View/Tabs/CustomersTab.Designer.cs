@@ -41,6 +41,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.CustomerSelectedPanel = new System.Windows.Forms.Panel();
+            this.PriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.AddressControl = new ObjectOrientedPractics.View.Control.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
@@ -161,6 +162,7 @@
             // CustomerSelectedPanel
             // 
             this.CustomerSelectedPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CustomerSelectedPanel.Controls.Add(this.PriorityCheckBox);
             this.CustomerSelectedPanel.Controls.Add(this.AddressControl);
             this.CustomerSelectedPanel.Controls.Add(this.FullNameTextBox);
             this.CustomerSelectedPanel.Controls.Add(this.IDTextBox);
@@ -172,6 +174,17 @@
             this.CustomerSelectedPanel.Name = "CustomerSelectedPanel";
             this.CustomerSelectedPanel.Size = new System.Drawing.Size(594, 455);
             this.CustomerSelectedPanel.TabIndex = 1;
+            // 
+            // PriorityCheckBox
+            // 
+            this.PriorityCheckBox.AutoSize = true;
+            this.PriorityCheckBox.Location = new System.Drawing.Point(88, 89);
+            this.PriorityCheckBox.Name = "PriorityCheckBox";
+            this.PriorityCheckBox.Size = new System.Drawing.Size(92, 24);
+            this.PriorityCheckBox.TabIndex = 7;
+            this.PriorityCheckBox.Text = "Is Priority";
+            this.PriorityCheckBox.UseVisualStyleBackColor = true;
+            this.PriorityCheckBox.CheckedChanged += new System.EventHandler(this.PriorityCheckBox_CheckedChanged);
             // 
             // AddressControl
             // 
@@ -270,5 +283,6 @@
         private ContextMenuStrip СontextMenuStrip;
         private ToolStripMenuItem DeleteAllMenuItem;
         private Control.AddressControl AddressControl;
+        private CheckBox PriorityCheckBox;
     }
 }

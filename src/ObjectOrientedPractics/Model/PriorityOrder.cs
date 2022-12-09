@@ -37,9 +37,8 @@ namespace ObjectOrientedPractics.Model
         }
 
         public PriorityOrder(Address address, List<Item> items, 
-            DateTime deliveryDate, string deliveryTime) : base(address, items)
+            string deliveryTime) : base(address, items)
         {
-            DeliveryDate = deliveryDate;
             DeliveryTime = deliveryTime;
         }
     }

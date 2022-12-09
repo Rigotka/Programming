@@ -157,7 +157,16 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             var address = CurrentCustomer.Address;
             var items = CurrentCustomer.Cart.Items;
-            Order order = new Order(address, items);
+            Order order;
+            if (CurrentCustomer.IsPriority)
+            {
+                order = new PriorityOrder(address, items, "");
+            }
+            else
+            {
+                order = new Order(address, items);
+            }
+            
             CurrentCustomer.Orders.Add(order);
             CurrentCustomer.Cart = new Cart();
             UpdateCartItemsListBox();

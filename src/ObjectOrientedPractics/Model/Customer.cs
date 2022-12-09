@@ -90,6 +90,8 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        public bool IsPriority { get; set; }
+
         /// <summary>
         /// Создает экземпляр <see cref="Customer"/> 
         /// </summary>
@@ -100,6 +102,7 @@ namespace ObjectOrientedPractics.Model
             Address = new Address();
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
         }
 
         /// <summary>
@@ -114,6 +117,7 @@ namespace ObjectOrientedPractics.Model
             Address = address;
             Cart = cart;
             Orders = orders;
+            IsPriority = false;
         }
     }
 }
