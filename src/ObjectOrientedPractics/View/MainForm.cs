@@ -19,6 +19,7 @@ namespace ObjectOrientedPractics
             CustomersTab.Customers = _store.Customers;
             ÑartsTab.Items = _store.Items;
             ÑartsTab.Customers = _store.Customers;
+            OrdersTab.Customers = _store.Customers;
             
         }
 
@@ -35,6 +36,10 @@ namespace ObjectOrientedPractics
             if(index == 2)
             {
                 ÑartsTab.RefreshData();
+            }
+            else if(index == 3)
+            {
+                OrdersTab.RefreshData();
             }
         }
     }

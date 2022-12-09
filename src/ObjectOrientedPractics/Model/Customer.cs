@@ -95,7 +95,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Customer()
         {
-            _id = IdGenerator.GetNextID();
+            _id = IdGenerator.GetNextCustomersID();
             FullName = "Не заполнено";
             Address = new Address();
             Cart = new Cart();
@@ -109,7 +109,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="address">Адрес. Экземпляр класса <see cref="Address"/>.</param>
         public Customer(string fullName, Address address, Cart cart, List<Order> orders)
         {
-            _id = IdGenerator.GetNextID();
+            _id = IdGenerator.GetNextCustomersID();
             FullName = fullName;
             Address = address;
             Cart = cart;

@@ -56,20 +56,35 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        public double Amount
+        {
+            get 
+            {
+                _amount = 0;
+                if(_items != null)
+                {
+                    foreach(var item in _items)
+                    {
+                        _amount += item.Cost;
+                    }
+                }
+                return _amount; 
+            }
+        }
+
         public Order()
         {
-            _id = IdGenerator.GetNextID();
+            _id = IdGenerator.GetNextOrdersID();
             _dateCreate = DateTime.Today.ToString();
         }
 
         public Order(Address address, List<Item> items)
         {
-            _id = IdGenerator.GetNextID();
+            _id = IdGenerator.GetNextOrdersID();
             _dateCreate = DateTime.Today.ToString();
             Status = OrderStatus.New;
             Address = address;
             Items = items;
         }
-
     }
 }

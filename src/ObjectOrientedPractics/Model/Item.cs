@@ -99,7 +99,7 @@ namespace ObjectOrientedPractics.Model
 		/// </summary>
 		public Item()
         {
-			_id = IdGenerator.GetNextID();
+			_id = IdGenerator.GetNextItemsID();
 			Name = $"Товар {_id}";
 			Info = "Не заполнено";
 			Cost = 0;
@@ -115,7 +115,7 @@ namespace ObjectOrientedPractics.Model
 		/// <param name="category">Категория товара. Должно быть из перечисления.</param>
 		public Item(string name, string info, int cost, Category category)
         {
-			_id = IdGenerator.GetNextID();
+			_id = IdGenerator.GetNextItemsID();
 			Name = name;
 			Info = info;
 			Cost = cost;

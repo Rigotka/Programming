@@ -36,10 +36,13 @@
             this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
             this.CatrsTabPage = new System.Windows.Forms.TabPage();
             this.СartsTab = new ObjectOrientedPractics.View.Tabs.CartsTab();
+            this.OrdersPage = new System.Windows.Forms.TabPage();
+            this.OrdersTab = new ObjectOrientedPractics.View.Tabs.OrdersTab();
             this.TabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.CUstomersTabPage.SuspendLayout();
             this.CatrsTabPage.SuspendLayout();
+            this.OrdersPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -47,6 +50,7 @@
             this.TabControl.Controls.Add(this.ItemsTabPage);
             this.TabControl.Controls.Add(this.CUstomersTabPage);
             this.TabControl.Controls.Add(this.CatrsTabPage);
+            this.TabControl.Controls.Add(this.OrdersPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.MinimumSize = new System.Drawing.Size(948, 489);
@@ -118,6 +122,25 @@
             this.СartsTab.Size = new System.Drawing.Size(934, 450);
             this.СartsTab.TabIndex = 0;
             // 
+            // OrdersPage
+            // 
+            this.OrdersPage.Controls.Add(this.OrdersTab);
+            this.OrdersPage.Location = new System.Drawing.Point(4, 29);
+            this.OrdersPage.Name = "OrdersPage";
+            this.OrdersPage.Padding = new System.Windows.Forms.Padding(3);
+            this.OrdersPage.Size = new System.Drawing.Size(940, 456);
+            this.OrdersPage.TabIndex = 3;
+            this.OrdersPage.Text = "Orders";
+            this.OrdersPage.UseVisualStyleBackColor = true;
+            // 
+            // OrdersTab
+            // 
+            this.OrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrdersTab.Location = new System.Drawing.Point(3, 3);
+            this.OrdersTab.Name = "OrdersTab";
+            this.OrdersTab.Size = new System.Drawing.Size(934, 450);
+            this.OrdersTab.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -132,6 +155,7 @@
             this.ItemsTabPage.ResumeLayout(false);
             this.CUstomersTabPage.ResumeLayout(false);
             this.CatrsTabPage.ResumeLayout(false);
+            this.OrdersPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -143,6 +167,8 @@
         private View.Tabs.CustomersTab CustomersTab;
         private TabPage CatrsTabPage;
         private View.Tabs.CartsTab СartsTab;
+        private TabPage OrdersPage;
+        private View.Tabs.OrdersTab OrdersTab;
 
         #endregion
         // private View.Tabs.ItemsTab itemsTab1;

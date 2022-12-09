@@ -10,6 +10,8 @@ namespace ObjectOrientedPractics.View.Control
         /// </summary>
         private Address _address;
 
+        private bool _readOnly;
+
         /// <summary>
         /// Возвращает и задает адрес.
         /// </summary>
@@ -23,6 +25,24 @@ namespace ObjectOrientedPractics.View.Control
             {
                 _address = value;
                 UpdateFieldsInfo();
+            }
+        }
+
+        public bool ReadOnly
+        {
+            set
+            {
+                _readOnly = value;
+
+                if(_readOnly)
+                {
+                    PostIndexTextBox.ReadOnly = true;
+                    CountryTextBox.ReadOnly = true;
+                    CityTextBox.ReadOnly = true;
+                    StreetTextBox.ReadOnly = true;
+                    BuildingTextBox.ReadOnly = true;
+                    ApartmentTextBox.ReadOnly = true;
+                }
             }
         }
 

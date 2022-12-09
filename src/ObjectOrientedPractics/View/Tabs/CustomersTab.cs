@@ -24,6 +24,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public CustomersTab()
         {
             InitializeComponent();
+            AddressControl.ReadOnly = false;
         }
 
         /// <summary>

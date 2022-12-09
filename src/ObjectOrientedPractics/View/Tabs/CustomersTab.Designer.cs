@@ -186,7 +186,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressControl.Location = new System.Drawing.Point(3, 126);
             this.AddressControl.Name = "AddressControl";
-            this.AddressControl.Size = new System.Drawing.Size(589, 196);
+            this.AddressControl.Size = new System.Drawing.Size(589, 163);
             this.AddressControl.TabIndex = 6;
             // 
             // FullNameTextBox
