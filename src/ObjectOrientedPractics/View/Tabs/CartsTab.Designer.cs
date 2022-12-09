@@ -91,9 +91,10 @@
             // 
             this.AmountValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountValueLabel.AutoSize = true;
-            this.AmountValueLabel.Location = new System.Drawing.Point(574, 309);
+            this.AmountValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AmountValueLabel.Location = new System.Drawing.Point(568, 309);
             this.AmountValueLabel.Name = "AmountValueLabel";
-            this.AmountValueLabel.Size = new System.Drawing.Size(17, 20);
+            this.AmountValueLabel.Size = new System.Drawing.Size(24, 28);
             this.AmountValueLabel.TabIndex = 4;
             this.AmountValueLabel.Text = "0";
             // 
@@ -142,7 +143,7 @@
             // 
             // CreateOrderButton
             // 
-            this.CreateOrderButton.Location = new System.Drawing.Point(3, 332);
+            this.CreateOrderButton.Location = new System.Drawing.Point(3, 340);
             this.CreateOrderButton.Name = "CreateOrderButton";
             this.CreateOrderButton.Size = new System.Drawing.Size(94, 29);
             this.CreateOrderButton.TabIndex = 9;
@@ -153,7 +154,7 @@
             // RemoveItemButton
             // 
             this.RemoveItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveItemButton.Location = new System.Drawing.Point(375, 332);
+            this.RemoveItemButton.Location = new System.Drawing.Point(375, 340);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(105, 29);
             this.RemoveItemButton.TabIndex = 10;
@@ -164,7 +165,7 @@
             // ClearCartButton
             // 
             this.ClearCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearCartButton.Location = new System.Drawing.Point(486, 332);
+            this.ClearCartButton.Location = new System.Drawing.Point(486, 340);
             this.ClearCartButton.Name = "ClearCartButton";
             this.ClearCartButton.Size = new System.Drawing.Size(105, 29);
             this.ClearCartButton.TabIndex = 11;

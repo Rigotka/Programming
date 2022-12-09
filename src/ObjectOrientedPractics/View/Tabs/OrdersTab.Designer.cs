@@ -34,6 +34,12 @@
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OrdersPanel = new System.Windows.Forms.Panel();
             this.OrdersDataGrid = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderLabel = new System.Windows.Forms.Label();
             this.SelectedOrderPanel = new System.Windows.Forms.Panel();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
@@ -48,12 +54,6 @@
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.IDLAbel = new System.Windows.Forms.Label();
             this.SelectedOrderLabel = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.created = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableLayoutPanel.SuspendLayout();
             this.OrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGrid)).BeginInit();
@@ -126,12 +126,67 @@
             this.OrdersDataGrid.TabIndex = 1;
             this.OrdersDataGrid.SelectionChanged += new System.EventHandler(this.OrdersDataGrid_SelectionChanged);
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 2;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Width = 45;
+            // 
+            // created
+            // 
+            this.created.HeaderText = "Created";
+            this.created.MinimumWidth = 6;
+            this.created.Name = "created";
+            this.created.ReadOnly = true;
+            this.created.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.created.Width = 140;
+            // 
+            // orderStatus
+            // 
+            this.orderStatus.HeaderText = "Order Status";
+            this.orderStatus.MinimumWidth = 6;
+            this.orderStatus.Name = "orderStatus";
+            this.orderStatus.ReadOnly = true;
+            this.orderStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.orderStatus.Width = 125;
+            // 
+            // deliveryAddress
+            // 
+            this.deliveryAddress.HeaderText = "Delivery Address";
+            this.deliveryAddress.MinimumWidth = 6;
+            this.deliveryAddress.Name = "deliveryAddress";
+            this.deliveryAddress.ReadOnly = true;
+            this.deliveryAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.deliveryAddress.Width = 125;
+            // 
+            // customerFullName
+            // 
+            this.customerFullName.HeaderText = "Customer Full Name";
+            this.customerFullName.MinimumWidth = 6;
+            this.customerFullName.Name = "customerFullName";
+            this.customerFullName.ReadOnly = true;
+            this.customerFullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.customerFullName.Width = 125;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "Amount";
+            this.amount.MinimumWidth = 6;
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.amount.Width = 125;
+            // 
             // OrderLabel
             // 
             this.OrderLabel.AutoSize = true;
+            this.OrderLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.OrderLabel.Location = new System.Drawing.Point(3, 0);
             this.OrderLabel.Name = "OrderLabel";
-            this.OrderLabel.Size = new System.Drawing.Size(56, 20);
+            this.OrderLabel.Size = new System.Drawing.Size(60, 20);
             this.OrderLabel.TabIndex = 0;
             this.OrderLabel.Text = "Orders:";
             // 
@@ -171,9 +226,10 @@
             // 
             this.AmountValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountValueLabel.AutoSize = true;
-            this.AmountValueLabel.Location = new System.Drawing.Point(574, 423);
+            this.AmountValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AmountValueLabel.Location = new System.Drawing.Point(568, 423);
             this.AmountValueLabel.Name = "AmountValueLabel";
-            this.AmountValueLabel.Size = new System.Drawing.Size(17, 20);
+            this.AmountValueLabel.Size = new System.Drawing.Size(24, 28);
             this.AmountValueLabel.TabIndex = 10;
             this.AmountValueLabel.Text = "0";
             // 
@@ -267,65 +323,12 @@
             // SelectedOrderLabel
             // 
             this.SelectedOrderLabel.AutoSize = true;
+            this.SelectedOrderLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SelectedOrderLabel.Location = new System.Drawing.Point(3, 0);
             this.SelectedOrderLabel.Name = "SelectedOrderLabel";
-            this.SelectedOrderLabel.Size = new System.Drawing.Size(108, 20);
+            this.SelectedOrderLabel.Size = new System.Drawing.Size(111, 20);
             this.SelectedOrderLabel.TabIndex = 0;
             this.SelectedOrderLabel.Text = "Selected Order";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 2;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.id.Width = 45;
-            // 
-            // created
-            // 
-            this.created.HeaderText = "Created";
-            this.created.MinimumWidth = 6;
-            this.created.Name = "created";
-            this.created.ReadOnly = true;
-            this.created.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.created.Width = 140;
-            // 
-            // orderStatus
-            // 
-            this.orderStatus.HeaderText = "Order Status";
-            this.orderStatus.MinimumWidth = 6;
-            this.orderStatus.Name = "orderStatus";
-            this.orderStatus.ReadOnly = true;
-            this.orderStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.orderStatus.Width = 125;
-            // 
-            // deliveryAddress
-            // 
-            this.deliveryAddress.HeaderText = "Delivery Address";
-            this.deliveryAddress.MinimumWidth = 6;
-            this.deliveryAddress.Name = "deliveryAddress";
-            this.deliveryAddress.ReadOnly = true;
-            this.deliveryAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.deliveryAddress.Width = 125;
-            // 
-            // customerFullName
-            // 
-            this.customerFullName.HeaderText = "Customer Full Name";
-            this.customerFullName.MinimumWidth = 6;
-            this.customerFullName.Name = "customerFullName";
-            this.customerFullName.ReadOnly = true;
-            this.customerFullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.customerFullName.Width = 125;
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Amount";
-            this.amount.MinimumWidth = 6;
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.amount.Width = 125;
             // 
             // OrdersTab
             // 
