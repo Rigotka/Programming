@@ -1,4 +1,6 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Discounts;
+using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -31,6 +33,8 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задает адрес.
         /// </summary>
         public Address Address { get; set; }
+
+        public List<IDiscount> Discounts { get; set; }
 
         /// <summary>
         /// Возвращает ID покупателя.
@@ -103,6 +107,7 @@ namespace ObjectOrientedPractics.Model
             Cart = new Cart();
             Orders = new List<Order>();
             IsPriority = false;
+            Discounts = new List<IDiscount>();
         }
 
         /// <summary>
@@ -118,6 +123,8 @@ namespace ObjectOrientedPractics.Model
             Cart = cart;
             Orders = orders;
             IsPriority = false;
+            Discounts = new List<IDiscount>();
+            Discounts.Add(new PointsDiscount());
         }
     }
 }

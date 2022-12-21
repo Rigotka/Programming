@@ -1,4 +1,6 @@
-﻿namespace ObjectOrientedPractics.Model
+﻿using ObjectOrientedPractics.Model.Enums;
+
+namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Предоставляет методы для создания товара.
