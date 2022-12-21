@@ -24,6 +24,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public CustomersTab()
         {
             InitializeComponent();
+            AddressControl.ReadOnly = false;
         }
 
         /// <summary>
@@ -49,6 +50,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             IDTextBox.Text = _currentCustomer.Id.ToString();
             FullNameTextBox.Text = _currentCustomer.FullName;
+            PriorityCheckBox.Checked = _currentCustomer.IsPriority;
+            AddressControl.Address = _currentCustomer.Address;
         }
 
         /// <summary>
@@ -116,7 +119,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 return;
 
             _currentCustomer = _customers[index];
-            AddressControl.Address = _currentCustomer.Address;
             UpdateFieldInfo();
         }
 
@@ -147,6 +149,14 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 FullNameTextBox.BackColor = AppColor.ErrorColor;
             }
+        }
+
+        private void PriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_currentCustomer == null)
+                return;
+
+            _currentCustomer.IsPriority = PriorityCheckBox.Checked;
         }
     }
 }

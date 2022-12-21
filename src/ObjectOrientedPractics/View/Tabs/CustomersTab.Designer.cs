@@ -34,13 +34,14 @@
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.RandomButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.СontextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CustomersLabel = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.CustomerSelectedPanel = new System.Windows.Forms.Panel();
+            this.PriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.AddressControl = new ObjectOrientedPractics.View.Control.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
@@ -56,64 +57,42 @@
             // TableLayoutPanel
             // 
             this.TableLayoutPanel.ColumnCount = 2;
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.97414F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.02586F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.14F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.86F));
             this.TableLayoutPanel.Controls.Add(this.CustomersPanel, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.CustomerSelectedPanel, 1, 0);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
-            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 447);
+            this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 461);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // CustomersPanel
             // 
             this.CustomersPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CustomersPanel.Controls.Add(this.RandomButton);
-            this.CustomersPanel.Controls.Add(this.DeleteButton);
-            this.CustomersPanel.Controls.Add(this.AddButton);
             this.CustomersPanel.Controls.Add(this.CustomersListBox);
             this.CustomersPanel.Controls.Add(this.CustomersLabel);
+            this.CustomersPanel.Controls.Add(this.DeleteButton);
+            this.CustomersPanel.Controls.Add(this.AddButton);
             this.CustomersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomersPanel.Location = new System.Drawing.Point(3, 3);
             this.CustomersPanel.Name = "CustomersPanel";
-            this.CustomersPanel.Size = new System.Drawing.Size(303, 441);
+            this.CustomersPanel.Size = new System.Drawing.Size(332, 455);
             this.CustomersPanel.TabIndex = 0;
             // 
             // RandomButton
             // 
             this.RandomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RandomButton.Location = new System.Drawing.Point(203, 409);
+            this.RandomButton.Location = new System.Drawing.Point(225, 413);
             this.RandomButton.Name = "RandomButton";
-            this.RandomButton.Size = new System.Drawing.Size(94, 29);
+            this.RandomButton.Size = new System.Drawing.Size(105, 29);
             this.RandomButton.TabIndex = 4;
             this.RandomButton.Text = "Random";
             this.RandomButton.UseVisualStyleBackColor = true;
             this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteButton.Location = new System.Drawing.Point(103, 409);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(94, 29);
-            this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // AddButton
-            // 
-            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.Location = new System.Drawing.Point(3, 409);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(94, 29);
-            this.AddButton.TabIndex = 2;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CustomersListBox
             // 
@@ -125,7 +104,7 @@
             this.CustomersListBox.ItemHeight = 20;
             this.CustomersListBox.Location = new System.Drawing.Point(3, 23);
             this.CustomersListBox.Name = "CustomersListBox";
-            this.CustomersListBox.Size = new System.Drawing.Size(294, 384);
+            this.CustomersListBox.Size = new System.Drawing.Size(327, 384);
             this.CustomersListBox.TabIndex = 1;
             this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
             // 
@@ -158,9 +137,32 @@
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteButton.Location = new System.Drawing.Point(114, 413);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(105, 29);
+            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddButton.Location = new System.Drawing.Point(3, 413);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(105, 29);
+            this.AddButton.TabIndex = 2;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
             // CustomerSelectedPanel
             // 
             this.CustomerSelectedPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CustomerSelectedPanel.Controls.Add(this.PriorityCheckBox);
             this.CustomerSelectedPanel.Controls.Add(this.AddressControl);
             this.CustomerSelectedPanel.Controls.Add(this.FullNameTextBox);
             this.CustomerSelectedPanel.Controls.Add(this.IDTextBox);
@@ -168,10 +170,21 @@
             this.CustomerSelectedPanel.Controls.Add(this.IDlabel);
             this.CustomerSelectedPanel.Controls.Add(this.SelectedCustomerLabel);
             this.CustomerSelectedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerSelectedPanel.Location = new System.Drawing.Point(312, 3);
+            this.CustomerSelectedPanel.Location = new System.Drawing.Point(341, 3);
             this.CustomerSelectedPanel.Name = "CustomerSelectedPanel";
-            this.CustomerSelectedPanel.Size = new System.Drawing.Size(623, 441);
+            this.CustomerSelectedPanel.Size = new System.Drawing.Size(594, 455);
             this.CustomerSelectedPanel.TabIndex = 1;
+            // 
+            // PriorityCheckBox
+            // 
+            this.PriorityCheckBox.AutoSize = true;
+            this.PriorityCheckBox.Location = new System.Drawing.Point(88, 89);
+            this.PriorityCheckBox.Name = "PriorityCheckBox";
+            this.PriorityCheckBox.Size = new System.Drawing.Size(92, 24);
+            this.PriorityCheckBox.TabIndex = 7;
+            this.PriorityCheckBox.Text = "Is Priority";
+            this.PriorityCheckBox.UseVisualStyleBackColor = true;
+            this.PriorityCheckBox.CheckedChanged += new System.EventHandler(this.PriorityCheckBox_CheckedChanged);
             // 
             // AddressControl
             // 
@@ -186,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressControl.Location = new System.Drawing.Point(3, 126);
             this.AddressControl.Name = "AddressControl";
-            this.AddressControl.Size = new System.Drawing.Size(618, 196);
+            this.AddressControl.Size = new System.Drawing.Size(589, 163);
             this.AddressControl.TabIndex = 6;
             // 
             // FullNameTextBox
@@ -195,7 +208,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(88, 56);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(531, 27);
+            this.FullNameTextBox.Size = new System.Drawing.Size(502, 27);
             this.FullNameTextBox.TabIndex = 5;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
@@ -241,7 +254,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Name = "CustomersTab";
-            this.Size = new System.Drawing.Size(938, 447);
+            this.Size = new System.Drawing.Size(938, 461);
             this.TableLayoutPanel.ResumeLayout(false);
             this.CustomersPanel.ResumeLayout(false);
             this.CustomersPanel.PerformLayout();
@@ -270,5 +283,6 @@
         private ContextMenuStrip СontextMenuStrip;
         private ToolStripMenuItem DeleteAllMenuItem;
         private Control.AddressControl AddressControl;
+        private CheckBox PriorityCheckBox;
     }
 }

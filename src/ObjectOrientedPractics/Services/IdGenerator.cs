@@ -6,18 +6,34 @@
     public static class IdGenerator
     {
         /// <summary>
-        /// ID
+        /// ID пользователя
         /// </summary>
-        private static int _id = 0;
+        private static int _customersID = 0;
+
+        private static int _itemsID = 0;
+
+        private static int _ordersID = 0;
 
         /// <summary>
         /// Генерирует и возвращает ID.
         /// </summary>
         /// <returns>ID.</returns>
-        public static int GetNextID()
+        public static int GetNextCustomersID()
         {
-            _id++;
-            return _id;
+            _customersID++;
+            return _customersID;
+        }
+
+        public static int GetNextItemsID()
+        {
+            _itemsID++;
+            return _itemsID;
+        }
+
+        public static int GetNextOrdersID()
+        {
+            _ordersID++;
+            return _ordersID;
         }
     }
 }

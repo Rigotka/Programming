@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.View.Control
 {
     public partial class AddressControl : UserControl
     {
+        /// <summary>
+        /// Адрес.
+        /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Только для чтения.
+        /// </summary>
+        private bool _readOnly;
+
+        /// <summary>
+        /// Возвращает и задает адрес.
+        /// </summary>
         public Address Address
         {
             get
@@ -29,6 +31,27 @@ namespace ObjectOrientedPractics.View.Control
             }
         }
 
+        /// <summary>
+        /// Задает поле только для чтение.
+        /// </summary>
+        public bool ReadOnly
+        {
+            set
+            {
+                _readOnly = value;
+
+                if(_readOnly)
+                {
+                    PostIndexTextBox.ReadOnly = true;
+                    CountryTextBox.ReadOnly = true;
+                    CityTextBox.ReadOnly = true;
+                    StreetTextBox.ReadOnly = true;
+                    BuildingTextBox.ReadOnly = true;
+                    ApartmentTextBox.ReadOnly = true;
+                }
+            }
+        }
+
         public AddressControl()
         {
             InitializeComponent();
@@ -36,6 +59,9 @@ namespace ObjectOrientedPractics.View.Control
             _address = new Address();
         }
 
+        /// <summary>
+        /// Обновляет поля информации.
+        /// </summary>
         public void UpdateFieldsInfo()
         {
             PostIndexTextBox.Text = _address.Index.ToString();
@@ -46,6 +72,9 @@ namespace ObjectOrientedPractics.View.Control
             ApartmentTextBox.Text = _address.Apartment;
         }
 
+        /// <summary>
+        /// Очищает поля информации.
+        /// </summary>
         public void ClearFieldsInfo()
         {
             PostIndexTextBox.Clear();
@@ -54,6 +83,13 @@ namespace ObjectOrientedPractics.View.Control
             StreetTextBox.Clear();
             BuildingTextBox.Clear();
             ApartmentTextBox.Clear();
+
+            PostIndexTextBox.BackColor = AppColor.CorrectColor;
+            CountryTextBox.BackColor = AppColor.CorrectColor;
+            CityTextBox.BackColor = AppColor.CorrectColor;
+            StreetTextBox.BackColor = AppColor.CorrectColor;
+            BuildingTextBox.BackColor = AppColor.CorrectColor;
+            ApartmentTextBox.BackColor = AppColor.CorrectColor;
         }
 
         private void PostIndexTextBox_TextChanged(object sender, EventArgs e)
@@ -66,6 +102,7 @@ namespace ObjectOrientedPractics.View.Control
             catch
             {
                 PostIndexTextBox.BackColor = AppColor.ErrorColor;
+                return;
             }
         }
 

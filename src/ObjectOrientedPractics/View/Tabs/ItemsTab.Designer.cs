@@ -33,12 +33,12 @@
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemsPanel = new System.Windows.Forms.Panel();
             this.RandomButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
             this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemsLabel = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.SelectedItemPanel = new System.Windows.Forms.Panel();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
@@ -61,8 +61,8 @@
             // 
             this.TableLayoutPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.TableLayoutPanel.ColumnCount = 2;
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.97F));
-            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.03F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.14F));
+            this.TableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.86F));
             this.TableLayoutPanel.Controls.Add(this.ItemsPanel, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.SelectedItemPanel, 1, 0);
             this.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,55 +70,33 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 447);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 461);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // ItemsPanel
             // 
             this.ItemsPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ItemsPanel.Controls.Add(this.RandomButton);
-            this.ItemsPanel.Controls.Add(this.DeleteButton);
-            this.ItemsPanel.Controls.Add(this.AddButton);
             this.ItemsPanel.Controls.Add(this.ItemsListBox);
             this.ItemsPanel.Controls.Add(this.ItemsLabel);
+            this.ItemsPanel.Controls.Add(this.DeleteButton);
+            this.ItemsPanel.Controls.Add(this.AddButton);
             this.ItemsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsPanel.Location = new System.Drawing.Point(3, 3);
             this.ItemsPanel.Name = "ItemsPanel";
-            this.ItemsPanel.Size = new System.Drawing.Size(303, 441);
+            this.ItemsPanel.Size = new System.Drawing.Size(332, 455);
             this.ItemsPanel.TabIndex = 0;
             // 
             // RandomButton
             // 
             this.RandomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RandomButton.Location = new System.Drawing.Point(203, 409);
+            this.RandomButton.Location = new System.Drawing.Point(225, 413);
             this.RandomButton.Name = "RandomButton";
-            this.RandomButton.Size = new System.Drawing.Size(94, 29);
+            this.RandomButton.Size = new System.Drawing.Size(105, 29);
             this.RandomButton.TabIndex = 4;
             this.RandomButton.Text = "Random";
             this.RandomButton.UseVisualStyleBackColor = true;
             this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteButton.Location = new System.Drawing.Point(103, 409);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(94, 29);
-            this.DeleteButton.TabIndex = 3;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // AddButton
-            // 
-            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.Location = new System.Drawing.Point(3, 409);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(94, 29);
-            this.AddButton.TabIndex = 2;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ItemsListBox
             // 
@@ -130,7 +108,7 @@
             this.ItemsListBox.ItemHeight = 20;
             this.ItemsListBox.Location = new System.Drawing.Point(3, 23);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(294, 384);
+            this.ItemsListBox.Size = new System.Drawing.Size(327, 384);
             this.ItemsListBox.TabIndex = 1;
             this.ItemsListBox.SelectedIndexChanged += new System.EventHandler(this.ItemsListBox_SelectedIndexChanged);
             // 
@@ -160,6 +138,28 @@
             this.ItemsLabel.TabIndex = 0;
             this.ItemsLabel.Text = "Items";
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteButton.Location = new System.Drawing.Point(114, 413);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(105, 29);
+            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddButton.Location = new System.Drawing.Point(3, 413);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(105, 29);
+            this.AddButton.TabIndex = 2;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
             // SelectedItemPanel
             // 
             this.SelectedItemPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -175,9 +175,9 @@
             this.SelectedItemPanel.Controls.Add(this.IDLabel);
             this.SelectedItemPanel.Controls.Add(this.SelectedItemLabel);
             this.SelectedItemPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SelectedItemPanel.Location = new System.Drawing.Point(312, 3);
+            this.SelectedItemPanel.Location = new System.Drawing.Point(341, 3);
             this.SelectedItemPanel.Name = "SelectedItemPanel";
-            this.SelectedItemPanel.Size = new System.Drawing.Size(623, 441);
+            this.SelectedItemPanel.Size = new System.Drawing.Size(594, 455);
             this.SelectedItemPanel.TabIndex = 1;
             // 
             // CategoryLabel
@@ -206,7 +206,7 @@
             this.InfoTextBox.Location = new System.Drawing.Point(3, 257);
             this.InfoTextBox.Multiline = true;
             this.InfoTextBox.Name = "InfoTextBox";
-            this.InfoTextBox.Size = new System.Drawing.Size(617, 92);
+            this.InfoTextBox.Size = new System.Drawing.Size(588, 106);
             this.InfoTextBox.TabIndex = 11;
             this.InfoTextBox.TextChanged += new System.EventHandler(this.InfoTextBox_TextChanged);
             // 
@@ -217,7 +217,7 @@
             this.NameTextBox.Location = new System.Drawing.Point(3, 149);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(617, 76);
+            this.NameTextBox.Size = new System.Drawing.Size(588, 76);
             this.NameTextBox.TabIndex = 10;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -290,7 +290,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.TableLayoutPanel);
             this.Name = "ItemsTab";
-            this.Size = new System.Drawing.Size(938, 447);
+            this.Size = new System.Drawing.Size(938, 461);
             this.TableLayoutPanel.ResumeLayout(false);
             this.ItemsPanel.ResumeLayout(false);
             this.ItemsPanel.PerformLayout();
