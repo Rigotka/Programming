@@ -108,6 +108,7 @@ namespace ObjectOrientedPractics.Model
             Orders = new List<Order>();
             IsPriority = false;
             Discounts = new List<IDiscount>();
+
         }
 
         /// <summary>
@@ -115,13 +116,13 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО. До 200 символов.</param>
         /// <param name="address">Адрес. Экземпляр класса <see cref="Address"/>.</param>
-        public Customer(string fullName, Address address, Cart cart, List<Order> orders)
+        public Customer(string fullName)
         {
             _id = IdGenerator.GetNextCustomersID();
             FullName = fullName;
-            Address = address;
-            Cart = cart;
-            Orders = orders;
+            Address = new Address();
+            Cart = new Cart();
+            Orders = new List<Order>();
             IsPriority = false;
             Discounts = new List<IDiscount>();
             Discounts.Add(new PointsDiscount());

@@ -41,6 +41,10 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.CustomerSelectedPanel = new System.Windows.Forms.Panel();
+            this.DiscountRemoveButton = new System.Windows.Forms.Button();
+            this.DiscountAddButton = new System.Windows.Forms.Button();
+            this.DiscountsListBox = new System.Windows.Forms.ListBox();
+            this.DIscountsLabel = new System.Windows.Forms.Label();
             this.PriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.AddressControl = new ObjectOrientedPractics.View.Control.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
@@ -162,6 +166,10 @@
             // CustomerSelectedPanel
             // 
             this.CustomerSelectedPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CustomerSelectedPanel.Controls.Add(this.DiscountRemoveButton);
+            this.CustomerSelectedPanel.Controls.Add(this.DiscountAddButton);
+            this.CustomerSelectedPanel.Controls.Add(this.DiscountsListBox);
+            this.CustomerSelectedPanel.Controls.Add(this.DIscountsLabel);
             this.CustomerSelectedPanel.Controls.Add(this.PriorityCheckBox);
             this.CustomerSelectedPanel.Controls.Add(this.AddressControl);
             this.CustomerSelectedPanel.Controls.Add(this.FullNameTextBox);
@@ -174,6 +182,48 @@
             this.CustomerSelectedPanel.Name = "CustomerSelectedPanel";
             this.CustomerSelectedPanel.Size = new System.Drawing.Size(594, 455);
             this.CustomerSelectedPanel.TabIndex = 1;
+            // 
+            // DiscountRemoveButton
+            // 
+            this.DiscountRemoveButton.Location = new System.Drawing.Point(289, 358);
+            this.DiscountRemoveButton.Name = "DiscountRemoveButton";
+            this.DiscountRemoveButton.Size = new System.Drawing.Size(105, 29);
+            this.DiscountRemoveButton.TabIndex = 11;
+            this.DiscountRemoveButton.Text = "Remove";
+            this.DiscountRemoveButton.UseVisualStyleBackColor = true;
+            this.DiscountRemoveButton.Click += new System.EventHandler(this.DiscountRemoveButton_Click);
+            // 
+            // DiscountAddButton
+            // 
+            this.DiscountAddButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DiscountAddButton.Location = new System.Drawing.Point(289, 323);
+            this.DiscountAddButton.Name = "DiscountAddButton";
+            this.DiscountAddButton.Size = new System.Drawing.Size(105, 29);
+            this.DiscountAddButton.TabIndex = 10;
+            this.DiscountAddButton.Text = "Add";
+            this.DiscountAddButton.UseVisualStyleBackColor = true;
+            this.DiscountAddButton.Click += new System.EventHandler(this.DiscountAddButton_Click);
+            // 
+            // DiscountsListBox
+            // 
+            this.DiscountsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.DiscountsListBox.FormattingEnabled = true;
+            this.DiscountsListBox.ItemHeight = 20;
+            this.DiscountsListBox.Location = new System.Drawing.Point(3, 323);
+            this.DiscountsListBox.Name = "DiscountsListBox";
+            this.DiscountsListBox.Size = new System.Drawing.Size(280, 84);
+            this.DiscountsListBox.TabIndex = 9;
+            // 
+            // DIscountsLabel
+            // 
+            this.DIscountsLabel.AutoSize = true;
+            this.DIscountsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DIscountsLabel.Location = new System.Drawing.Point(3, 300);
+            this.DIscountsLabel.Name = "DIscountsLabel";
+            this.DIscountsLabel.Size = new System.Drawing.Size(79, 20);
+            this.DIscountsLabel.TabIndex = 8;
+            this.DIscountsLabel.Text = "DIscounts";
             // 
             // PriorityCheckBox
             // 
@@ -284,5 +334,9 @@
         private ToolStripMenuItem DeleteAllMenuItem;
         private Control.AddressControl AddressControl;
         private CheckBox PriorityCheckBox;
+        private Label DIscountsLabel;
+        private Button DiscountRemoveButton;
+        private Button DiscountAddButton;
+        private ListBox DiscountsListBox;
     }
 }

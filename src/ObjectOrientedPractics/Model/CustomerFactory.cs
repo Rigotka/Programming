@@ -43,8 +43,7 @@
             string secondName = _secondNames[_random.Next(0, _secondNames.Length)];
             Address address = _address[_random.Next(0, _address.Length)];
 
-            Customer customer = new();
-            customer.FullName = $"{firstName} {secondName}";
+            Customer customer = new($"{firstName} {secondName}");
             customer.Address = address;
 
             return customer;
