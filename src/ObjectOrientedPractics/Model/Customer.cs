@@ -34,6 +34,9 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Address Address { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает коллекцию скидок.
+        /// </summary>
         public List<IDiscount> Discounts { get; set; }
 
         /// <summary>
@@ -94,6 +97,9 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Приоритет пользователя.
+        /// </summary>
         public bool IsPriority { get; set; }
 
         /// <summary>
