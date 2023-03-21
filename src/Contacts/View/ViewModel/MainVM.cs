@@ -3,12 +3,14 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using View.Model;
+using View.Model.Services;
+
 
 namespace View.ViewModel
 {
     public class MainVM : INotifyPropertyChanged
     {
-        private Contact _contact;
+        public Contact Contact { get; set; } = new Contact();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -16,11 +18,11 @@ namespace View.ViewModel
         {
             get
             {
-                return _contact.FullName;
+                return Contact.FullName;
             }
             set
             {
-                _contact.FullName = value;
+                Contact.FullName = value;
                 OnPropertyChanged(nameof(Name));
             }
         }
@@ -29,11 +31,11 @@ namespace View.ViewModel
         {
             get
             {
-                return _contact.PhoneNumber;
+                return Contact.PhoneNumber;
             }
             set
             {
-                _contact.PhoneNumber = value;
+                Contact.PhoneNumber = value;
                 OnPropertyChanged(nameof(PhoneNumber));
             }
         }
@@ -42,11 +44,11 @@ namespace View.ViewModel
         {
             get
             {
-                return _contact.Email;
+                return Contact.Email;
             }
             set
             {
-                _contact.Email = value;
+                Contact.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         }
@@ -54,6 +56,22 @@ namespace View.ViewModel
         protected void OnPropertyChanged([CallerMemberName] string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public SaveCommand SaveCommand
+        {
+            get
+            {
+                return new SaveCommand(this);
+            }
+        }
+
+        public LoadCommand LoadCommand
+        {
+            get
+            {
+                return new LoadCommand(this);
+            }
         }
     }
 }

@@ -10,13 +10,13 @@ namespace View.Model.Services
 
         public ContactSerializer(string fileName)
         {
-            var myDocumentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var fodler = Path.Combine(myDocumentsFolder, "OPP");
+            var myDocumentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var fodler = Path.Combine(myDocumentsFolder, "OOP");
 
             if (!Directory.Exists(fodler))
                 Directory.CreateDirectory(fodler);
 
-            var file = Path.Combine(myDocumentsFolder, $"OPP\\{fileName}.json");
+            var file = Path.Combine(myDocumentsFolder, $"OOP\\{fileName}.json");
             if (!File.Exists(file))
                 File.Create(file).Close();
 

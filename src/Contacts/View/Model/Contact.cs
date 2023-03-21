@@ -70,7 +70,9 @@
         /// </summary>
         public Contact()
         {
-
+            FullName = "Петров Петр";
+            PhoneNumber = "8-800-555-35-35";
+            Email = "some_soap@mail.ru";
         }
 
         /// <summary>

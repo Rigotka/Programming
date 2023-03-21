@@ -35,8 +35,8 @@
                 <Label x:Name="ReadEmailValueLabel" Content="segey__sorokin.1580@mail.ru" Padding="0" Margin="3" FontWeight="Bold"/>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="LoadButton" Content="Load" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="25" Margin="3"/>
-        <Button x:Name="SaveButton" Content="Save" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="25" Margin="0,3,83.2,3"/>
+        <Button x:Name="LoadButton" Command="{Binding LoadCommand}" Content="Load" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="25" Margin="3"/>
+        <Button x:Name="SaveButton" Command="{Binding SaveCommand}" Content="Save" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="25" Margin="0,3,83.2,3"/>
 
 
     </Grid>
