@@ -1,20 +1,28 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using View.Model;
-using View.Model.Services;
-
 
 namespace View.ViewModel
 {
+    /// <summary>
+    /// Реализация ViewModel для MainWindow.
+    /// </summary>
     public class MainVM : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Возвращает и задает контакт.
+        /// </summary>
         public Contact Contact { get; set; } = new Contact();
 
+        /// <summary>
+        /// События изменения свойства.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Name
+        /// <summary>
+        /// Возвращает и задает ФИО контакта.
+        /// </summary>
+        public string FullName
         {
             get
             {
@@ -23,10 +31,13 @@ namespace View.ViewModel
             set
             {
                 Contact.FullName = value;
-                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(FullName));
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает номер телефона контакта.
+        /// </summary>
         public string PhoneNumber
         {
             get
@@ -40,6 +51,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает электронную почту контакта.
+        /// </summary>
         public string Email
         {
             get
@@ -53,11 +67,18 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// При вызове зажигает событие <see cref="PropertyChangedEventHandler"/>
+        /// </summary>
+        /// <param name="prop">Имя свойства.</param>
         protected void OnPropertyChanged([CallerMemberName] string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
+        /// <summary>
+        /// Команда сохранения в файл.
+        /// </summary>
         public SaveCommand SaveCommand
         {
             get
@@ -66,6 +87,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Команда чтения из файла.
+        /// </summary>
         public LoadCommand LoadCommand
         {
             get

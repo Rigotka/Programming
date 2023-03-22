@@ -18,21 +18,21 @@
         <GroupBox x:Name="EditContactGroupBox" Grid.Column="0" Header="Edit Contact" Margin="3"  >
             <StackPanel Margin="0" >
                 <Label x:Name="EditNameLabel" Content="Name:" Padding="0" Margin="3"/>
-                <TextBox x:Name="EditNameTextBox" Text="Смирнов Юрий" Margin="3" VerticalContentAlignment="Bottom"/>
+                <TextBox x:Name="EditNameTextBox" Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Margin="3" VerticalContentAlignment="Bottom"/>
                 <Label x:Name="EditPhoneNumberLabel" Content="Phone Number:" Padding="0" Margin="3"/>
-                <TextBox x:Name="EditPhoneNumberTextBox" Text="+7-913-111-22-33" Margin="3" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="EditPhoneNumberTextBox" Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}" Margin="3" VerticalContentAlignment="Center"/>
                 <Label x:Name="EditEmailLabel" Content="Email:" Padding="0" Margin="3"/>
-                <TextBox x:Name="EditEmailTextBox" Text="TextBox" Margin="3" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="EditEmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Margin="3" VerticalContentAlignment="Center"/>
             </StackPanel>
         </GroupBox>
         <GroupBox x:Name="ReadContactGroupBox" Grid.Column="1" Header="Read Contact"  Margin="3"  >
             <StackPanel Margin="0" >
                 <Label x:Name="ReadNameLabel" Content="Name:" Padding="0" Margin="3"/>
-                <Label x:Name="ReadNameValueLabel" Content="Смирнов Юрий" Padding="0" Margin="3" FontWeight="Bold"/>
+                <Label x:Name="ReadNameValueLabel" Content="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Padding="0" Margin="3" FontWeight="Bold"/>
                 <Label x:Name="ReadPhoneNumberLabel" Content="Phone Number:" Padding="0" Margin="3"/>
-                <Label x:Name="ReadPhoneNumberValueLabel" Content="+7-913-111-22-33" Padding="0" Margin="3" FontWeight="Bold"/>
+                <Label x:Name="ReadPhoneNumberValueLabel" Content="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}" Padding="0" Margin="3" FontWeight="Bold"/>
                 <Label x:Name="ReadEmailLabel" Content="Email:" Padding="0" Margin="3"/>
-                <Label x:Name="ReadEmailValueLabel" Content="segey__sorokin.1580@mail.ru" Padding="0" Margin="3" FontWeight="Bold"/>
+                <Label x:Name="ReadEmailValueLabel" Content="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Padding="0" Margin="3" FontWeight="Bold"/>
             </StackPanel>
         </GroupBox>
         <Button x:Name="LoadButton" Command="{Binding LoadCommand}" Content="Load" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="25" Margin="3"/>
