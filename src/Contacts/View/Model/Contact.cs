@@ -6,64 +6,19 @@
     public class Contact
     {
         /// <summary>
-        /// ФИО контакта.
-        /// </summary>
-        private string _fullName;
-
-        /// <summary>
-        /// Номер телефона контакта.
-        /// </summary>
-        private string _phoneNumber;
-
-        /// <summary>
-        /// Электронная почта контакта.
-        /// </summary>
-        private string _email;
-
-        /// <summary>
         /// Возвращает и задет ФИО контакта.
         /// </summary>
-        public string FullName
-        {
-            get
-            {
-                return _fullName;
-            }
-            set
-            {
-                _fullName = value;
-            }
-        }
+        public string FullName { get; set; }
 
         /// <summary>
         /// возвращает и задает номер телефона контакта.
         /// </summary>
-        public string PhoneNumber
-        {
-            get
-            {
-                return _phoneNumber;
-            }
-            set
-            {
-                _phoneNumber = value;
-            }
-        }
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Возвращает и задает электронную почту контакта.
         /// </summary>
-        public string Email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                _email = value;
-            }
-        }
+        public string Email { get; set; }
 
         /// <summary>
         /// Создает экземпляр <see cref="Contact"/>

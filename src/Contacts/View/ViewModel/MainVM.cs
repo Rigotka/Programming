@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using View.Model;
 
 namespace View.ViewModel
@@ -79,7 +80,7 @@ namespace View.ViewModel
         /// <summary>
         /// Команда сохранения в файл.
         /// </summary>
-        public SaveCommand SaveCommand
+        public ICommand SaveCommand
         {
             get
             {
@@ -90,7 +91,7 @@ namespace View.ViewModel
         /// <summary>
         /// Команда чтения из файла.
         /// </summary>
-        public LoadCommand LoadCommand
+        public ICommand LoadCommand
         {
             get
             {
