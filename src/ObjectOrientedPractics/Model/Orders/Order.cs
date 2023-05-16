@@ -1,6 +1,7 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Services;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
 	/// Хранит данные о закате.
@@ -36,6 +37,16 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задает статус заказа.
         /// </summary>
         public OrderStatus Status { get; set; }
+
+        public double DiscountAmount { get; set; }
+
+        public double Total
+        {
+            get
+            {
+                return Amount - DiscountAmount;
+            }
+        }
 
         /// <summary>
         /// Возвращает ID заказа.

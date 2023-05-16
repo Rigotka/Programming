@@ -38,13 +38,15 @@ namespace ObjectOrientedPractics.Services
         /// <param name="store">Магазин.</param>
         public void SaveToFile(Store store)
         {
-            JsonSerializer serializer = new JsonSerializer();
+            JsonSerializer serializer = new JsonSerializer()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
             using (StreamWriter sw = new StreamWriter(Filename))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, store);
             }
-
         }
 
         /// <summary>
@@ -53,10 +55,16 @@ namespace ObjectOrientedPractics.Services
         /// <returns>Экземпляр<see cref="Store"/> </returns>
         public Store LoadFromFile()
         {
-            JsonSerializer serializer = new JsonSerializer();
+
+            JsonSerializer serializer = new JsonSerializer()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            
             using (StreamReader sr = new StreamReader(Filename))
             using (JsonReader reader = new JsonTextReader(sr))
             {
+                
                 return serializer.Deserialize<Store>(reader) ?? new Store();
             }
         }

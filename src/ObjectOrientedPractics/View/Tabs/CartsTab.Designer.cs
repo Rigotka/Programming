@@ -43,6 +43,12 @@
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ItemsPanel = new System.Windows.Forms.Panel();
             this.CartPanel = new System.Windows.Forms.Panel();
+            this.TotalValueLabel = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.DiscontValueLabel = new System.Windows.Forms.Label();
+            this.DiscountAmountLabel = new System.Windows.Forms.Label();
+            this.DiscontsListBox = new System.Windows.Forms.CheckedListBox();
+            this.DiscountsLabel = new System.Windows.Forms.Label();
             this.TableLayoutPanel.SuspendLayout();
             this.ItemsPanel.SuspendLayout();
             this.CartPanel.SuspendLayout();
@@ -81,9 +87,10 @@
             // 
             this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Location = new System.Drawing.Point(526, 289);
+            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AmountLabel.Location = new System.Drawing.Point(520, 289);
             this.AmountLabel.Name = "AmountLabel";
-            this.AmountLabel.Size = new System.Drawing.Size(65, 20);
+            this.AmountLabel.Size = new System.Drawing.Size(71, 20);
             this.AmountLabel.TabIndex = 3;
             this.AmountLabel.Text = "Amount:";
             // 
@@ -107,7 +114,7 @@
             this.ItemsListBox.ItemHeight = 20;
             this.ItemsListBox.Location = new System.Drawing.Point(3, 23);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(327, 384);
+            this.ItemsListBox.Size = new System.Drawing.Size(327, 464);
             this.ItemsListBox.TabIndex = 5;
             // 
             // CartItemsListbox
@@ -133,7 +140,7 @@
             // AddToCartButton
             // 
             this.AddToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddToCartButton.Location = new System.Drawing.Point(3, 413);
+            this.AddToCartButton.Location = new System.Drawing.Point(3, 496);
             this.AddToCartButton.Name = "AddToCartButton";
             this.AddToCartButton.Size = new System.Drawing.Size(105, 29);
             this.AddToCartButton.TabIndex = 8;
@@ -185,7 +192,7 @@
             this.TableLayoutPanel.Name = "TableLayoutPanel";
             this.TableLayoutPanel.RowCount = 1;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 461);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(938, 544);
             this.TableLayoutPanel.TabIndex = 12;
             // 
             // ItemsPanel
@@ -196,11 +203,17 @@
             this.ItemsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsPanel.Location = new System.Drawing.Point(3, 3);
             this.ItemsPanel.Name = "ItemsPanel";
-            this.ItemsPanel.Size = new System.Drawing.Size(332, 455);
+            this.ItemsPanel.Size = new System.Drawing.Size(332, 538);
             this.ItemsPanel.TabIndex = 0;
             // 
             // CartPanel
             // 
+            this.CartPanel.Controls.Add(this.TotalValueLabel);
+            this.CartPanel.Controls.Add(this.TotalLabel);
+            this.CartPanel.Controls.Add(this.DiscontValueLabel);
+            this.CartPanel.Controls.Add(this.DiscountAmountLabel);
+            this.CartPanel.Controls.Add(this.DiscontsListBox);
+            this.CartPanel.Controls.Add(this.DiscountsLabel);
             this.CartPanel.Controls.Add(this.CartItemsListbox);
             this.CartPanel.Controls.Add(this.RemoveItemButton);
             this.CartPanel.Controls.Add(this.AmountValueLabel);
@@ -213,8 +226,76 @@
             this.CartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CartPanel.Location = new System.Drawing.Point(341, 3);
             this.CartPanel.Name = "CartPanel";
-            this.CartPanel.Size = new System.Drawing.Size(594, 455);
+            this.CartPanel.Size = new System.Drawing.Size(594, 538);
             this.CartPanel.TabIndex = 1;
+            // 
+            // TotalValueLabel
+            // 
+            this.TotalValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalValueLabel.AutoSize = true;
+            this.TotalValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TotalValueLabel.Location = new System.Drawing.Point(567, 497);
+            this.TotalValueLabel.Name = "TotalValueLabel";
+            this.TotalValueLabel.Size = new System.Drawing.Size(24, 28);
+            this.TotalValueLabel.TabIndex = 17;
+            this.TotalValueLabel.Text = "0";
+            // 
+            // TotalLabel
+            // 
+            this.TotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TotalLabel.Location = new System.Drawing.Point(534, 477);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(58, 20);
+            this.TotalLabel.TabIndex = 16;
+            this.TotalLabel.Text = "TOTAL:";
+            // 
+            // DiscontValueLabel
+            // 
+            this.DiscontValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DiscontValueLabel.AutoSize = true;
+            this.DiscontValueLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DiscontValueLabel.Location = new System.Drawing.Point(567, 409);
+            this.DiscontValueLabel.Name = "DiscontValueLabel";
+            this.DiscontValueLabel.Size = new System.Drawing.Size(24, 28);
+            this.DiscontValueLabel.TabIndex = 15;
+            this.DiscontValueLabel.Text = "0";
+            // 
+            // DiscountAmountLabel
+            // 
+            this.DiscountAmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DiscountAmountLabel.AutoSize = true;
+            this.DiscountAmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DiscountAmountLabel.Location = new System.Drawing.Point(454, 386);
+            this.DiscountAmountLabel.Name = "DiscountAmountLabel";
+            this.DiscountAmountLabel.Size = new System.Drawing.Size(137, 20);
+            this.DiscountAmountLabel.TabIndex = 14;
+            this.DiscountAmountLabel.Text = "Discount Amount:";
+            // 
+            // DiscontsListBox
+            // 
+            this.DiscontsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.DiscontsListBox.BackColor = System.Drawing.SystemColors.Window;
+            this.DiscontsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DiscontsListBox.CheckOnClick = true;
+            this.DiscontsListBox.FormattingEnabled = true;
+            this.DiscontsListBox.Location = new System.Drawing.Point(3, 409);
+            this.DiscontsListBox.Name = "DiscontsListBox";
+            this.DiscontsListBox.Size = new System.Drawing.Size(236, 22);
+            this.DiscontsListBox.TabIndex = 13;
+            this.DiscontsListBox.SelectedIndexChanged += new System.EventHandler(this.DiscontsListBox_SelectedIndexChanged);
+            // 
+            // DiscountsLabel
+            // 
+            this.DiscountsLabel.AutoSize = true;
+            this.DiscountsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DiscountsLabel.Location = new System.Drawing.Point(3, 386);
+            this.DiscountsLabel.Name = "DiscountsLabel";
+            this.DiscountsLabel.Size = new System.Drawing.Size(82, 20);
+            this.DiscountsLabel.TabIndex = 12;
+            this.DiscountsLabel.Text = "Discounts:";
             // 
             // CartsTab
             // 
@@ -222,7 +303,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TableLayoutPanel);
             this.Name = "CartsTab";
-            this.Size = new System.Drawing.Size(938, 461);
+            this.Size = new System.Drawing.Size(938, 544);
             this.TableLayoutPanel.ResumeLayout(false);
             this.ItemsPanel.ResumeLayout(false);
             this.ItemsPanel.PerformLayout();
@@ -249,5 +330,11 @@
         private TableLayoutPanel TableLayoutPanel;
         private Panel ItemsPanel;
         private Panel CartPanel;
+        private CheckedListBox DiscontsListBox;
+        private Label DiscountsLabel;
+        private Label DiscountAmountLabel;
+        private Label TotalValueLabel;
+        private Label TotalLabel;
+        private Label DiscontValueLabel;
     }
 }

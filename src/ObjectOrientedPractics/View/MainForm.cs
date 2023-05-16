@@ -20,8 +20,6 @@ namespace ObjectOrientedPractics
             ÑartsTab.Items = _store.Items;
             ÑartsTab.Customers = _store.Customers;
             OrdersTab.Customers = _store.Customers;
-            priorityOrdersTab1.Items = _store.Items;
-
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
