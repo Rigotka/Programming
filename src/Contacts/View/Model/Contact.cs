@@ -1,33 +1,76 @@
-﻿namespace View.Model
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System;
+
+namespace View.Model
 {
     /// <summary>
     /// Хранит данные о контакте.
     /// </summary>
-    public class Contact
+    public class Contact : INotifyPropertyChanged, ICloneable
     {
+        private string _fullName;
+        
+        private string _phoneNumber;
+        
+        private string _email;
+        
         /// <summary>
         /// Возвращает и задет ФИО контакта.
         /// </summary>
-        public string FullName { get; set; }
+        public string FullName 
+        { 
+            get
+            {
+                return _fullName;
+            }
+            set
+            {
+                _fullName = value;
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
 
         /// <summary>
         /// возвращает и задает номер телефона контакта.
         /// </summary>
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber
+        {
+            get
+            {
+                return _phoneNumber;
+            }
+            set
+            {
+                _phoneNumber = value;
+                OnPropertyChanged(nameof(PhoneNumber));
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает электронную почту контакта.
         /// </summary>
-        public string Email { get; set; }
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
 
         /// <summary>
         /// Создает экземпляр <see cref="Contact"/>
         /// </summary>
         public Contact()
         {
-            FullName = "Петров Петр";
-            PhoneNumber = "8-800-555-35-35";
-            Email = "some_soap@mail.ru";
+            FullName = "";
+            PhoneNumber = "";
+            Email = "";
         }
 
         /// <summary>
@@ -42,5 +85,22 @@
             PhoneNumber = phoneNumber;
             Email = email;
         }
+
+        /// <summary>
+        /// События изменения свойства.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        /// <summary>
+        /// При вызове зажигает событие <see cref="PropertyChangedEventHandler"/>
+        /// </summary>
+        /// <param name="prop">Имя свойства.</param>
+        protected void OnPropertyChanged([CallerMemberName] string prop = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public object Clone() => MemberwiseClone();
     }
 }

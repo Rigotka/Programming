@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+
 
 namespace View.Model.Services
 {
@@ -33,26 +35,29 @@ namespace View.Model.Services
         }
 
         /// <summary>
-        /// Сериализует экземпляр <see cref="Contact"/> в JSON и сохраняет в файл.
+        /// Сериализует коллекцию <see cref="Contact"/> в JSON и сохраняет в файл.
         /// </summary>
         /// <param name="contact">Контакт.</param>
-        public void SaveToFile(Contact contact)
+        public void SaveToFile(ObservableCollection<Contact> contacts)
         {
-            using (StreamWriter writer = new StreamWriter(FileName))
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(FileName))
+            using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                writer.Write(JsonConvert.SerializeObject(contact));
+                serializer.Serialize(writer, contacts);
             }
         }
-
-        /// <summary>
-        /// Сериализует файл JSON в экземпляр <see cref="Contact"/>.
-        /// </summary>
-        /// <returns>Экземпляр<see cref="Contact"/> </returns>
-        public Contact LoadFromFile()
+            /// <summary>
+            /// Сериализует файл JSON в экземпляр <see cref="Contact"/>.
+            /// </summary>
+            /// <returns>Экземпляр<see cref="Contact"/> </returns>
+        public ObservableCollection<Contact> LoadFromFile()
         {
-            using (StreamReader reader = new StreamReader(FileName))
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamReader sr = new StreamReader(FileName))
+            using (JsonReader reader = new JsonTextReader(sr))
             {
-                return JsonConvert.DeserializeObject<Contact>(reader.ReadToEnd()) ?? new Contact();
+                return serializer.Deserialize<ObservableCollection<Contact>>(reader) ?? new ObservableCollection<Contact>();
             }
         }
     }

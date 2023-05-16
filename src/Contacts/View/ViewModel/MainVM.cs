@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using View.Model;
+using System.Collections.ObjectModel;
+using View.Model.Services;
+
 
 namespace View.ViewModel
 {
@@ -11,62 +13,207 @@ namespace View.ViewModel
     public class MainVM : INotifyPropertyChanged
     {
         /// <summary>
+        /// Хранит выбранный контакт.
+        /// </summary>
+        private Contact _contact;
+
+        /// <summary>
+        /// Индекс редактируемого объекта.
+        /// </summary>
+        private int _editIndex = -1;
+
+        /// <summary>
+        /// Хранит коллекцию контактов.
+        /// </summary>
+        public ObservableCollection<Contact> Contacts { get; set; }
+
+        /// <summary>
+        /// Команда добавления.
+        /// </summary>
+        private RelayCommand _addCommand;
+
+        /// <summary>
+        /// оОманда удаления.
+        /// </summary>
+        private RelayCommand _removeCommand;
+
+        /// <summary>
+        /// Команда изменения.
+        /// </summary>
+        private RelayCommand _editCommand;
+
+        /// <summary>
+        /// Команда принятия изменений.
+        /// </summary>
+        private RelayCommand _applyCommnad;
+
+        /// <summary>
+        /// Команда закрытия окна.
+        /// </summary>
+        private RelayCommand _closeCommand;
+
+        /// <summary>
+        /// Сериализатор.
+        /// </summary>
+        private ContactSerializer _serializer = new ContactSerializer("contact");
+
+        /// <summary>
         /// Возвращает и задает контакт.
         /// </summary>
-        public Contact Contact { get; set; } = new Contact();
+        public Contact Contact
+        {
+            get
+            {
+                return _contact;
+            }
+            set
+            {
+                _contact = value;
+                OnPropertyChanged(nameof(Contact));
+                if(Contacts.Contains(Contact))
+                    _editIndex = -1;
+                OnPropertyChanged(nameof(IsCreateOrEditMode));
+            }
+        }
+
+        /// <summary>
+        /// Возвращает команду добавления.
+        /// </summary>
+        public RelayCommand AddCommand => _addCommand ??
+            (_addCommand = new RelayCommand(
+                obj =>
+                {
+                    Contact = new Contact();
+                },
+                canExecute =>
+                {
+                    return true;
+                }));
+
+        /// <summary>
+        /// Возвращает команду изменения.
+        /// </summary>
+        public RelayCommand EditCommand => _editCommand ??
+            (_editCommand = new RelayCommand(
+                obj =>
+                {
+                    _editIndex = Contacts.IndexOf(Contact);
+                    Contact = (Contact)Contact.Clone();
+                    OnPropertyChanged(nameof(IsCreateOrEditMode));
+                },
+                canExecute =>
+                {
+                    return Contacts.Contains(Contact);
+                })
+            );
+
+        /// <summary>
+        /// Возвращает команду удаления.
+        /// </summary>
+        public RelayCommand RemoveCommand => _removeCommand ??
+            (_removeCommand = new RelayCommand( 
+                obj =>
+                {
+                    var index = Contacts.IndexOf(Contact);
+                    Contacts.Remove(Contact);
+
+                    if (Contacts.Count == 0)
+                        return;
+
+                    if (index == Contacts.Count)
+                        index -= 1;
+                    Contact = Contacts[index];
+                },
+                canExecute =>
+                {
+                    return Contacts.Contains(Contact);
+                })
+            );
+
+        /// <summary>
+        /// Возвращает команду принятия.
+        /// </summary>
+        public RelayCommand ApplyCommand => _applyCommnad ??
+            (_applyCommnad = new RelayCommand(
+                obj =>
+                {
+                    if(IsCreateMode)
+                    {
+                        Contacts.Add(Contact);
+                    }
+                    if (IsEditMode)
+                    {
+                        Contacts[_editIndex] = Contact;
+                        Contact = Contacts[_editIndex];
+
+                        _editIndex = -1;
+                    }
+                    OnPropertyChanged(nameof(IsCreateOrEditMode));
+                },
+                canExecute =>
+                {
+                    return true;
+                })
+            );
+
+
+        public RelayCommand CloseCommand => _closeCommand ??
+            (_closeCommand = new RelayCommand(
+                obj =>
+                {
+                    _serializer.SaveToFile(Contacts);
+                },
+                canExecute =>
+                {
+                    return true;
+                })
+            );
+
+        /// <summary>
+        /// Возвращает true если создается новый контакт, иначе false.
+        /// </summary>
+        public bool IsCreateMode
+        {
+            get
+            {
+                return !Contacts.Contains(Contact) && Contact != null && _editIndex == -1;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает true если изменяется контакт, иначе false. 
+        /// </summary>
+        public bool IsEditMode
+        {
+            get
+            {
+                return _editIndex != -1;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает true если идет создание или изменение контакта, иначе false.
+        /// </summary>
+        public bool IsCreateOrEditMode
+        {
+            get
+            {
+                return IsCreateMode || IsEditMode;
+            }
+        }
+
+        /// <summary>
+        /// Создает экземпляр <see cref="MainVM"/>
+        /// </summary>
+        public MainVM()
+        {
+            Contacts = _serializer.LoadFromFile();
+        }
 
         /// <summary>
         /// События изменения свойства.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Возвращает и задает ФИО контакта.
-        /// </summary>
-        public string FullName
-        {
-            get
-            {
-                return Contact.FullName;
-            }
-            set
-            {
-                Contact.FullName = value;
-                OnPropertyChanged(nameof(FullName));
-            }
-        }
-
-        /// <summary>
-        /// Возвращает и задает номер телефона контакта.
-        /// </summary>
-        public string PhoneNumber
-        {
-            get
-            {
-                return Contact.PhoneNumber;
-            }
-            set
-            {
-                Contact.PhoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
-            }
-        }
-
-        /// <summary>
-        /// Возвращает и задает электронную почту контакта.
-        /// </summary>
-        public string Email
-        {
-            get
-            {
-                return Contact.Email;
-            }
-            set
-            {
-                Contact.Email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
 
         /// <summary>
         /// При вызове зажигает событие <see cref="PropertyChangedEventHandler"/>
@@ -75,28 +222,6 @@ namespace View.ViewModel
         protected void OnPropertyChanged([CallerMemberName] string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-        /// <summary>
-        /// Команда сохранения в файл.
-        /// </summary>
-        public ICommand SaveCommand
-        {
-            get
-            {
-                return new SaveCommand(this);
-            }
-        }
-
-        /// <summary>
-        /// Команда чтения из файла.
-        /// </summary>
-        public ICommand LoadCommand
-        {
-            get
-            {
-                return new LoadCommand(this);
-            }
         }
     }
 }
