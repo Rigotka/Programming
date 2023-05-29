@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace VIew.Controls
+namespace View.Controls
 {
     /// <summary>
     /// Логика взаимодействия для ContactControl.xaml

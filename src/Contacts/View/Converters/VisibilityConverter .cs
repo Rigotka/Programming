@@ -3,7 +3,7 @@ using System.Windows.Data;
 using System.Globalization;
 using System.Windows;
 
-namespace VIew.Converters;
+namespace View.Converters;
 
 /// <summary>
 /// Конвертирует значения для поля Visibility
