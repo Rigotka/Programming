@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
 using Model;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Model.Services;
 
 namespace ViewModel;
@@ -9,12 +9,19 @@ namespace ViewModel;
 /// <summary>
 /// Реализация ViewModel для MainWindow.
 /// </summary>
-public class MainVM : INotifyPropertyChanged
+public partial class MainVM : ObservableObject
 {
     /// <summary>
-    /// Хранит выбранный контакт.
+    /// Хранит коллекцию контактов.
     /// </summary>
-    private Contact _contact;
+    [ObservableProperty]
+    private ObservableCollection<Contact> _contacts;
+
+    /// <summary>
+    /// Возвращает и задает <see cref="ContactVM"/>
+    /// </summary>
+    [ObservableProperty]
+    private ContactVM _contactVM = new ContactVM();
 
     /// <summary>
     /// Индекс редактируемого объекта.
@@ -22,172 +29,123 @@ public class MainVM : INotifyPropertyChanged
     private int _editIndex = -1;
 
     /// <summary>
-    /// Хранит коллекцию контактов.
-    /// </summary>
-    public ObservableCollection<Contact> Contacts { get; set; }
-
-    /// <summary>
-    /// Команда добавления.
-    /// </summary>
-    private RelayCommand _addCommand;
-
-    /// <summary>
-    /// оОманда удаления.
-    /// </summary>
-    private RelayCommand _removeCommand;
-
-    /// <summary>
-    /// Команда изменения.
-    /// </summary>
-    private RelayCommand _editCommand;
-
-    /// <summary>
-    /// Команда принятия изменений.
-    /// </summary>
-    private RelayCommand _applyCommnad;
-
-    /// <summary>
-    /// Команда закрытия окна.
-    /// </summary>
-    private RelayCommand _closeCommand;
-
-    /// <summary>
     /// Сериализатор.
     /// </summary>
     private ContactSerializer _serializer = new ContactSerializer("contact");
 
-    //private ContactVM _contactVM = new ContactVM();
+    /// <summary>
+    /// Хранит выбранный контакт.
+    /// </summary>
+    private Contact _contact;
 
     /// <summary>
-    /// Возвращает и задает контакт.
+    /// Возрващает и задает контакт. 
     /// </summary>
     public Contact Contact
     {
-        get
-        {
-            return _contact;
-        }
+        get => _contact;
         set
         {
             _contact = value;
             ContactVM.Contact = _contact;
-            OnPropertyChanged(nameof(Contact));
             if (Contacts.Contains(Contact))
                 _editIndex = -1;
-            OnPropertyChanged(nameof(IsCreateOrEditMode));
+            OnPropertyChanged();
             ContactVM.IsReadOnly = IsCreateOrEditMode;
+            EditCommand.NotifyCanExecuteChanged();
+            RemoveCommand.NotifyCanExecuteChanged();
+            OnPropertyChanged(nameof(IsCreateOrEditMode));
         }
     }
 
     /// <summary>
-    /// Возвращает и задает <see cref="ContactVM"/>
+    /// Команда добавления.
     /// </summary>
-    public ContactVM ContactVM { get; set; } = new ContactVM();
+    [RelayCommand]
+    private void Add()
+    {
+        _editIndex = -1;
+        Contact = new Contact();
+        ContactVM.Contact = Contact;
+    }
 
     /// <summary>
-    /// Возвращает команду добавления.
+    /// Команда изменения.
     /// </summary>
-    public RelayCommand AddCommand => _addCommand ??
-        (_addCommand = new RelayCommand(
-            obj =>
-            {
-                Contact = new Contact();
-            },
-            canExecute =>
-            {
-                return true;
-            }));
+    [RelayCommand(CanExecute = nameof(CanEdit))]
+    private void Edit()
+    {
+        _editIndex = Contacts.IndexOf(Contact);
+        Contact = (Contact)Contact.Clone();
+        ContactVM.Contact = Contact;
+    }
+
+    private bool CanEdit()
+    {
+        return Contacts.Contains(Contact);
+    }
 
     /// <summary>
-    /// Возвращает команду изменения.
+    /// Команда удаления.
     /// </summary>
-    public RelayCommand EditCommand => _editCommand ??
-        (_editCommand = new RelayCommand(
-            obj =>
-            {
-                _editIndex = Contacts.IndexOf(Contact);
-                Contact = (Contact)Contact.Clone();
-            },
-            canExecute =>
-            {
-                return Contacts.Contains(Contact);
-            })
-        );
+    [RelayCommand(CanExecute = nameof(CanRemove))]
+    private void Remove()
+    {
+        var index = Contacts.IndexOf(Contact);
+        Contacts.Remove(Contact);
+
+        if (Contacts.Count == 0)
+            return;
+
+        if (index == Contacts.Count)
+            index -= 1;
+
+        Contact = Contacts[index];
+    }
+
+    private bool CanRemove()
+    {
+        return Contacts.Contains(Contact);
+    }
 
     /// <summary>
-    /// Возвращает команду удаления.
+    /// Команда принятия.
     /// </summary>
-    public RelayCommand RemoveCommand => _removeCommand ??
-        (_removeCommand = new RelayCommand(
-            obj =>
-            {
-                var index = Contacts.IndexOf(Contact);
-                Contacts.Remove(Contact);
+    [RelayCommand]
+    private void Apply()
+    {
+        if (IsCreateMode)
+        {
+            Contacts.Add(ContactVM.Contact);
+            EditCommand.NotifyCanExecuteChanged();
+            RemoveCommand.NotifyCanExecuteChanged();
+        }
+        if (IsEditMode)
+        {
+            Contacts[_editIndex] = Contact;
+            Contact = Contacts[_editIndex];
 
-                if (Contacts.Count == 0)
-                    return;
-
-                if (index == Contacts.Count)
-                    index -= 1;
-                Contact = Contacts[index];
-            },
-            canExecute =>
-            {
-                return Contacts.Contains(Contact);
-            })
-        );
+            _editIndex = -1;
+        }
+        OnPropertyChanged(nameof(IsCreateOrEditMode));
+        ContactVM.IsReadOnly = IsCreateOrEditMode;
+    }
 
     /// <summary>
-    /// Возвращает команду принятия.
+    /// Команда закрытия.
     /// </summary>
-    public RelayCommand ApplyCommand => _applyCommnad ??
-        (_applyCommnad = new RelayCommand(
-            obj =>
-            {
-                if (IsCreateMode)
-                {
-                    Contacts.Add(Contact);
-                }
-                if (IsEditMode)
-                {
-                    Contacts[_editIndex] = Contact;
-                    Contact = Contacts[_editIndex];
-
-                    _editIndex = -1;
-                }
-                OnPropertyChanged(nameof(IsCreateOrEditMode));
-                ContactVM.IsReadOnly = IsCreateOrEditMode;
-            },
-            canExecute =>
-            {
-                return ContactVM.IsValid();
-            })
-        );
-
-    /// <summary>
-    /// Возвращает команду закрытия.
-    /// </summary>
-    public RelayCommand CloseCommand => _closeCommand ??
-        (_closeCommand = new RelayCommand(
-            obj =>
-            {
-                _serializer.SaveToFile(Contacts);
-            },
-            canExecute =>
-            {
-                return true;
-            })
-        );
+    [RelayCommand]
+    private void Close()
+    {
+        _serializer.SaveToFile(Contacts);
+    }
 
     /// <summary>
     /// Возвращает true если создается новый контакт, иначе false.
     /// </summary>
     public bool IsCreateMode
     {
-        get
-        {
-            return !Contacts.Contains(Contact) && Contact != null && _editIndex == -1;
-        }
+        get => !Contacts.Contains(Contact) && Contact != null && _editIndex == -1;
     }
 
     /// <summary>
@@ -195,10 +153,7 @@ public class MainVM : INotifyPropertyChanged
     /// </summary>
     public bool IsEditMode
     {
-        get
-        {
-            return _editIndex != -1;
-        }
+        get => _editIndex != -1;
     }
 
     /// <summary>
@@ -206,10 +161,7 @@ public class MainVM : INotifyPropertyChanged
     /// </summary>
     public bool IsCreateOrEditMode
     {
-        get
-        {
-            return IsCreateMode || IsEditMode;
-        }
+        get => IsCreateMode || IsEditMode;
     }
 
     /// <summary>
@@ -218,19 +170,5 @@ public class MainVM : INotifyPropertyChanged
     public MainVM()
     {
         Contacts = _serializer.LoadFromFile();
-    }
-
-    /// <summary>
-    /// События изменения свойства.
-    /// </summary>
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    /// <summary>
-    /// При вызове зажигает событие <see cref="PropertyChangedEventHandler"/>
-    /// </summary>
-    /// <param name="prop">Имя свойства.</param>
-    protected void OnPropertyChanged([CallerMemberName] string prop = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }

@@ -127,6 +127,7 @@
                     HorizontalAlignment="Left"
                     Command="{Binding ApplyCommand}"
                     Content="Apply"
+                    IsEnabled="{Binding ContactVM.HasErrors, Converter={StaticResource InverseBoolConverter}}"
                     Visibility="{Binding IsCreateOrEditMode, Converter={StaticResource VisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" />
 
             </StackPanel>
