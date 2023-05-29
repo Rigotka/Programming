@@ -4,7 +4,6 @@ using View.Model;
 using System.Collections.ObjectModel;
 using View.Model.Services;
 
-
 namespace View.ViewModel
 {
     /// <summary>
@@ -57,6 +56,8 @@ namespace View.ViewModel
         /// </summary>
         private ContactSerializer _serializer = new ContactSerializer("contact");
 
+        //private ContactVM _contactVM = new ContactVM();
+
         /// <summary>
         /// Возвращает и задает контакт.
         /// </summary>
@@ -69,12 +70,19 @@ namespace View.ViewModel
             set
             {
                 _contact = value;
+                ContactVM.Contact = _contact;
                 OnPropertyChanged(nameof(Contact));
                 if(Contacts.Contains(Contact))
                     _editIndex = -1;
                 OnPropertyChanged(nameof(IsCreateOrEditMode));
+                ContactVM.IsReadOnly = IsCreateOrEditMode;
             }
         }
+
+        /// <summary>
+        /// Возвращает и задает <see cref="ContactVM"/>
+        /// </summary>
+        public ContactVM ContactVM { get; set; } = new ContactVM();
 
         /// <summary>
         /// Возвращает команду добавления.
@@ -99,7 +107,6 @@ namespace View.ViewModel
                 {
                     _editIndex = Contacts.IndexOf(Contact);
                     Contact = (Contact)Contact.Clone();
-                    OnPropertyChanged(nameof(IsCreateOrEditMode));
                 },
                 canExecute =>
                 {
@@ -149,14 +156,17 @@ namespace View.ViewModel
                         _editIndex = -1;
                     }
                     OnPropertyChanged(nameof(IsCreateOrEditMode));
+                    ContactVM.IsReadOnly = IsCreateOrEditMode;
                 },
                 canExecute =>
                 {
-                    return true;
+                    return ContactVM.IsValid();
                 })
             );
 
-
+        /// <summary>
+        /// Возвращает команду закрытия.
+        /// </summary>
         public RelayCommand CloseCommand => _closeCommand ??
             (_closeCommand = new RelayCommand(
                 obj =>
