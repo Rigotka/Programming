@@ -1,9 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using System.Windows.Controls;
-using View.ViewModel;
-using System;
+﻿using System.Windows.Controls;
 
-namespace View.Controls
+namespace VIew.Controls
 {
     /// <summary>
     /// Логика взаимодействия для ContactControl.xaml
@@ -13,12 +10,6 @@ namespace View.Controls
         public ContactControl()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

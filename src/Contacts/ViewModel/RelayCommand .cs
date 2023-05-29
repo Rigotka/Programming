@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace View.ViewModel
+namespace ViewModel
 {
     /// <summary>
     /// Реализует интерфейс ICommand и представляет команду, которая принимает делегаты для выполнения и проверки возможности выполнения.
@@ -52,4 +52,3 @@ namespace View.ViewModel
         }
     }
 }
-
