@@ -18,7 +18,7 @@
     <Window.Resources>
         <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         <converters:VisibilityConverter x:Key="VisibilityConverter" />
-        <DataTemplate x:Key="contactTemplate">
+        <DataTemplate x:Key="ContactTemplate">
             <StackPanel Margin="3" Orientation="Horizontal">
                 <Ellipse Width="36" Height="36">
                     <Ellipse.Fill>
@@ -82,7 +82,7 @@
                     Grid.Row="1"
                     Grid.ColumnSpan="3"
                     Margin="3"
-                    ItemTemplate="{StaticResource contactTemplate}"
+                    ItemTemplate="{StaticResource ContactTemplate}"
                     ItemsSource="{Binding Contacts}"
                     SelectedItem="{Binding Contact}" />
 

@@ -3,14 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:converters="clr-namespace:View.Converters"
              mc:Ignorable="d"
              d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignWidth="800"
+             Validation.ErrorTemplate="{x:Null}">
     <UserControl.Resources>
         <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         <converters:VisibilityConverter x:Key="VisibilityConverter" />
-        <Style TargetType="TextBox">
+        <Style x:Key="TextBoxError"
+               TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError"
                          Value="True">
@@ -42,21 +45,26 @@
             <TextBox Margin="3"
                      VerticalContentAlignment="Center"
                      IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBoolConverter}}"
-                     Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                     Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource TextBoxError}" />
             <Label Margin="3"
                    Padding="0"
                    Content="Phone Number:" />
-            <TextBox Margin="3"
-                     VerticalContentAlignment="Center"
-                     IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBoolConverter}}"
-                     Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            <xctk:MaskedTextBox x:Name="TextBox"
+                                Margin="3"
+                                VerticalContentAlignment="Center"
+                                Mask="+7 (000) 000-00-00"
+                                IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBoolConverter}}"
+                                Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                Style="{StaticResource TextBoxError}"/>
             <Label Margin="3"
                    Padding="0"
                    Content="Email:" />
             <TextBox Margin="3"
                      VerticalContentAlignment="Center"
                      IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBoolConverter}}"
-                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Style="{StaticResource TextBoxError}" />
         </StackPanel>
     </Grid>
 </UserControl>

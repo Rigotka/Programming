@@ -39,6 +39,7 @@ public partial class ContactVM : ObservableValidator
     /// <summary>
     /// Возвращает и здает имя контакта.
     /// </summary>
+    [Required]
     [MaxLength(100)]
     public string FullName
     {
@@ -54,6 +55,7 @@ public partial class ContactVM : ObservableValidator
     /// <summary>
     /// Возвращает и задает номер телефона контакта.
     /// </summary>
+    [Required]
     [MaxLength(100)]
     public string PhoneNumber
     {
